@@ -17,3 +17,22 @@ layout-has-drawer layout-has-fixed-header
 @section('header')
   @include('includes.header')
 @endsection
+
+
+@section('scripts')
+<script src="{{ asset('js/plugins/slick/slick.min.js') }}"></script>
+<script src="{{ asset('js/plugins/chartjs/Chart.min.js') }}"></script>
+<script src="{{ asset('js/plugins/flot/jquery.flot.min.js') }}"></script>
+<script src="{{ asset('js/plugins/flot/jquery.flot.pie.min.js') }}"></script>
+<script src="{{ asset('js/plugins/flot/jquery.flot.stack.min.js') }}"></script>
+<script src="{{ asset('js/plugins/flot/jquery.flot.resize.min.js') }}"></script>
+
+<!-- Page JS Code -->
+<script src="{{ asset('js/pages/index.js') }}"></script>
+<script>
+  $(function() {
+    // Init page helpers (Slick Slider plugin)
+    App.initHelpers('slick');
+  });
+</script>
+@endsection

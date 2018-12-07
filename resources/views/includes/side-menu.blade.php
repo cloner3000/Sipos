@@ -16,11 +16,6 @@
         <li class="nav-item active">
           <a href="index.html"><i class="ion-ios-speedometer-outline"></i> Dashboard</a>
         </li>
-
-        <li class="nav-item">
-          <a href="frontend_home.html"><i class="ion-ios-monitor-outline"></i> Frontend</a>
-        </li>
-
         <li class="nav-item nav-drawer-header">Components</li>
 
         <li class="nav-item nav-item-has-subnav">
@@ -203,8 +198,7 @@
     <!-- End drawer navigation -->
 
     <div class="drawer-footer">
-      <p class="copyright">AppUI Template &copy;</p>
-      <a href="https://shapebootstrap.net/item/1525731-appui-admin-frontend-template/?ref=rustheme" target="_blank" rel="nofollow">Purchase a license</a>
+      <!-- Footer Drawe -->
     </div>
   </div>
 </aside>
