@@ -1,6 +1,6 @@
 <header class="app-layout-header">
-  <nav class="navbar navbar-default p-y">
-    <div class="container">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar-collapse" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
@@ -8,15 +8,21 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <!-- Header logo -->
-        <a class="navbar-brand" href="javascript:void(0)">
-          <img class="img-responsive" src="assets/img/logo/logo-frontend.png" title="AppUI" alt="AppUI" />
-        </a>
+        <button class="pull-left hidden-lg hidden-md navbar-toggle" type="button" data-toggle="layout" data-action="sidebar_toggle">
+          <span class="sr-only">Toggle drawer</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <span class="navbar-page-title">
+
+          Dashboard
+        </span>
       </div>
 
       <div class="collapse navbar-collapse" id="header-navbar-collapse">
         <!-- Header search form -->
-        <form class="navbar-form navbar-right app-search-form" role="search">
+        <form class="navbar-form navbar-left app-search-form" role="search">
           <div class="form-group">
             <div class="input-group">
               <input class="form-control" type="search" id="search-input" placeholder="Search..." />
@@ -27,57 +33,77 @@
           </div>
         </form>
 
-        <!-- Header navigation menu -->
         <ul id="main-menu" class="nav navbar-nav navbar-left">
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown">English <span class="caret"></span></a>
 
-          <li>
-            <a href="frontend_home.html">Home</a>
-          </li>
-
-          <li>
-            <a href="frontend_about.html">About</a>
-          </li>
-
-          <li>
-            <a href="frontend_pricing.html">Pricing</a>
-          </li>
-
-          <li>
-            <a href="frontend_team.html">Team</a>
-          </li>
-
-          <li class="dropdown active">
-            <a href="#" data-toggle="dropdown">Pages <span class="caret"></span></a>
             <ul class="dropdown-menu">
+              <li><a href="javascript:void(0)">French</a></li>
+              <li><a href="javascript:void(0)">German</a></li>
+              <li><a href="javascript:void(0)">Italian</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown">Pages <span class="caret"></span></a>
 
+            <ul class="dropdown-menu">
+              <li><a href="javascript:void(0)">Analytics</a></li>
+              <li><a href="javascript:void(0)">Visits</a></li>
+              <li><a href="javascript:void(0)">Changelog</a></li>
+            </ul>
+          </li>
+        </ul>
+        <!-- .navbar-left -->
+
+        <ul class="nav navbar-nav navbar-right navbar-toolbar hidden-sm hidden-xs">
+          <li>
+            <!-- Opens the modal found at the bottom of the page -->
+            <a href="javascript:void(0)" data-toggle="modal" data-target="#apps-modal"><i class="ion-grid"></i></a>
+          </li>
+
+          <li class="dropdown">
+            <a href="javascript:void(0)" data-toggle="dropdown"><i class="ion-ios-bell"></i> <span class="badge">3</span></a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li class="dropdown-header">Profile</li>
               <li>
-                <a href="frontend_search.html">Search</a>
+                <a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">3</span> News </a>
               </li>
-
               <li>
-                <a href="frontend_support.html">Support</a>
+                <a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">1</span> Messages </a>
               </li>
-
+              <li class="divider"></li>
+              <li class="dropdown-header">More</li>
               <li>
-                <a href="frontend_contact.html">Contact</a>
+                <a tabindex="-1" href="javascript:void(0)">Edit Profile..</a>
               </li>
-
-              <li class="active">
-                <a href="frontend_login_signup.html">Login / Signup</a>
-              </li>
-
-              <li>
-                <a href="frontend_400.html">Error 400</a>
-              </li>
-
             </ul>
           </li>
 
+          <li class="dropdown dropdown-profile">
+            <a href="javascript:void(0)" data-toggle="dropdown">
+              <span class="m-r-sm">John Doe <span class="caret"></span></span>
+              <img class="img-avatar img-avatar-48" src="assets/img/avatars/avatar3.jpg" alt="User profile pic" />
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li class="dropdown-header">
+                Pages
+              </li>
+              <li>
+                <a href="base_pages_profile.html">Profile</a>
+              </li>
+              <li>
+                <a href="base_pages_profile.html"><span class="badge badge-success pull-right">3</span> Blog</a>
+              </li>
+              <li>
+                <a href="frontend_login_signup.html">Logout</a>
+              </li>
+            </ul>
+          </li>
         </ul>
-        <!-- End header navigation menu -->
+        <!-- .navbar-right -->
       </div>
     </div>
-    <!-- .container -->
+    <!-- .container-fluid -->
   </nav>
-  <!-- .navbar -->
+  <!-- .navbar-default -->
 </header>

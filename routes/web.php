@@ -18,4 +18,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/test', function() { return view('pages.login'); });
+Route::get('/test', function() { return view('home'); });

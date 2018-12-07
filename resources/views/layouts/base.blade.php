@@ -23,22 +23,24 @@
   <link rel="stylesheet" id="css-bootstrap" href="{{ asset('css/bootstrap.css') }}" />
   <link rel="stylesheet" id="css-app" href="{{ asset('css/app.css') }}" />
   <link rel="stylesheet" id="css-app-custom" href="{{ asset('css/app-custom.css') }}" />
+  @yield('stylesheets')
 </head>
 
-<body class="app-ui">
+<body class="app-ui @yield('body-class')">
   <div class="app-layout-canvas">
     <div class="app-layout-container">
+      @yield('side-menu')
+
+      @yield('header')
+
       <main class="app-layout-content">
-        <div class="page-content">
-          <div class="container">
-            <div class="row">
-              @yield('content')
-            </div>
-          </div>
+        <div class="container-fluid p-y-md">
+        @yield('content')
         </div>
       </main>
     </div>
   </div>
+
   <!-- AppUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock and App.js -->
   <script src="{{ asset('js/core/jquery.min.js"></script>
   <script src="{{ asset('js/core/bootstrap.min.js"></script>
