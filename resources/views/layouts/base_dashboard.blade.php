@@ -4,6 +4,7 @@
 @section('stylesheets')
   <link rel="stylesheet" href="{{ asset('js/plugins/slick/slick.min.css') }}" />
   <link rel="stylesheet" href="{{ asset('js/plugins/slick/slick-theme.min.css') }}" />
+  <link rel="stylesheet" href="{{ asset('js/plugins/datatables/jquery.dataTables.min.css') }}" />
 @endsection
 
 @section('body-class')
@@ -27,7 +28,6 @@ layout-has-drawer layout-has-fixed-header
 <script src="{{ asset('js/plugins/flot/jquery.flot.stack.min.js') }}"></script>
 <script src="{{ asset('js/plugins/flot/jquery.flot.resize.min.js') }}"></script>
 
-<!-- Page JS Code -->
 <script src="{{ asset('js/pages/index.js') }}"></script>
 <script>
   $(function() {
@@ -35,4 +35,5 @@ layout-has-drawer layout-has-fixed-header
     App.initHelpers('slick');
   });
 </script>
+
 @endsection
