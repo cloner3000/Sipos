@@ -16,146 +16,67 @@
         <li class="nav-item active">
           <a href="index.html"><i class="ion-ios-speedometer-outline"></i> Dashboard</a>
         </li>
-        <li class="nav-item nav-drawer-header">Components</li>
+
+        <li class="nav-item">
+          <a href="frontend_home.html"><i class="ion-android-document"></i>Catatan</a>
+        </li>
 
         <li class="nav-item nav-item-has-subnav">
-          <a href="javascript:void(0)"><i class="ion-ios-calculator-outline"></i> UI Elements</a>
+          <a href="javascript:void(0)"><i class="ion-android-add-circle"></i>Register Bayi</a>
           <ul class="nav nav-subnav">
 
             <li>
-              <a href="base_ui_buttons.html">Buttons</a>
+              <a href="base_ui_buttons.html">0 - 11 Bulan</a>
             </li>
 
             <li>
-              <a href="base_ui_cards.html">Cards</a>
+              <a href="base_ui_cards.html">12 - 23 Bulan</a>
             </li>
 
             <li>
-              <a href="base_ui_cards_api.html">Cards API</a>
+              <a href="base_ui_cards_api.html">24 - 35 Bulan</a>
             </li>
 
             <li>
-              <a href="base_ui_layout.html">Layout</a>
+              <a href="base_ui_cards_api.html">36 - 47 Bulan</a>
             </li>
 
             <li>
-              <a href="base_ui_grid.html">Grid</a>
-            </li>
-
-            <li>
-              <a href="base_ui_icons.html">Icons</a>
-            </li>
-
-            <li>
-              <a href="base_ui_modals_tooltips.html">Modals / Tooltips</a>
-            </li>
-
-            <li>
-              <a href="base_ui_alerts_notify.html">Alerts / Notify</a>
-            </li>
-
-            <li>
-              <a href="base_ui_pagination.html">Pagination</a>
-            </li>
-
-            <li>
-              <a href="base_ui_progress.html">Progress</a>
-            </li>
-
-            <li>
-              <a href="base_ui_tabs.html">Tabs</a>
-            </li>
-
-            <li>
-              <a href="base_ui_typography.html">Typography</a>
-            </li>
-
-            <li>
-              <a href="base_ui_widgets.html">Widgets</a>
+              <a href="base_ui_cards_api.html">48 - 59 Bulan</a>
             </li>
 
           </ul>
         </li>
 
+        <li class="nav-item">
+          <a href="javascript:void(0)"><i class="ion-android-add-circle"></i>Register Wuspus</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="javascript:void(0)"><i class="ion-android-add-circle"></i>Register Ibu Hamil</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="frontend_home.html"><i class="ion-android-document"></i>Pengisian Data Posyandu</a>
+        </li>
+
         <li class="nav-item nav-item-has-subnav">
-          <a href="javascript:void(0)"><i class="ion-ios-compose-outline"></i> Forms</a>
+          <a href="javascript:void(0)"><i class="ion-android-document"></i>Pendataan</a>
           <ul class="nav nav-subnav">
 
             <li>
-              <a href="base_forms_elements.html">Elements</a>
+              <a href="base_pages_blank.html">Umum</a>
             </li>
 
             <li>
-              <a href="base_forms_samples.html">Samples</a>
-            </li>
-
-            <li>
-              <a href="base_forms_pickers_select.html">Pickers &amp; Select</a>
-            </li>
-
-            <li>
-              <a href="base_forms_validation.html">Validation</a>
-            </li>
-
-            <li>
-              <a href="base_forms_wizard.html">Wizard</a>
+              <a href="base_pages_inbox.html">Balita</a>
             </li>
 
           </ul>
         </li>
 
-        <li class="nav-item nav-item-has-subnav">
-          <a href="javascript:void(0)"><i class="ion-ios-list-outline"></i> Tables</a>
-          <ul class="nav nav-subnav">
-
-            <li>
-              <a href="base_tables_styles.html">Styles</a>
-            </li>
-
-            <li>
-              <a href="base_tables_responsive.html">Responsive</a>
-            </li>
-
-            <li>
-              <a href="base_tables_tools.html">Tools</a>
-            </li>
-
-            <li>
-              <a href="base_tables_pricing.html">Pricing</a>
-            </li>
-
-            <li>
-              <a href="base_tables_datatables.html">Wizard</a>
-            </li>
-
-          </ul>
-        </li>
-
-        <li class="nav-item nav-item-has-subnav">
-          <a href="javascript:void(0)"><i class="ion-ios-browsers-outline"></i> Pages</a>
-          <ul class="nav nav-subnav">
-
-            <li>
-              <a href="base_pages_blank.html">Blank</a>
-            </li>
-
-            <li>
-              <a href="base_pages_inbox.html">Inbox</a>
-            </li>
-
-            <li>
-              <a href="base_pages_invoice.html">Invoice</a>
-            </li>
-
-            <li>
-              <a href="base_pages_profile.html">Profile</a>
-            </li>
-
-            <li>
-              <a href="base_pages_search.html">Search</a>
-            </li>
-
-          </ul>
+        <li class="nav-item">
+          <a href="frontend_home.html"><i class="ion-briefcase"></i>Perencanaan Kerja</a>
         </li>
 
         <li class="nav-item nav-item-has-subnav">
