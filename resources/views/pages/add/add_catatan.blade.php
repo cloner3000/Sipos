@@ -4,6 +4,10 @@
 Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
 @endsection
 
+@section('stylesheets')
+  @include('assets.css-form')
+@endsection
+
 @section('content')
 <div class="card">
 
