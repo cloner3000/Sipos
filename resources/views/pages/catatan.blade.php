@@ -1,17 +1,14 @@
 @extends('layouts.base_dashboard')
 
 @section('title')
-Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
+Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
 @endsection
 
 @section('content')
 <div class="card">
-
-
-
     <div class="card-header">
         <h4>Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas</h4>
-        <button class="btn btn-app btn-block" data-toggle="modal" data-target="#modal-popin" type="button">Tambah</button>
+        <button class="btn btn-app btn-block" data-toggle="modal" data-target="#modal-popin" type="button" onclick="location.href='{{ url('/catatan/tambah') }}'">Tambah</button>
     </div>
 
     <div class="card-block">
@@ -66,27 +63,6 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
                 <!-- End of Body Data -->
             </tbody>
         </table>
-    </div>
-
-    <div class="modal fade" id="modal-popin" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-popin">
-            <div class="modal-content">
-                <div class="card-header bg-green bg-inverse">
-                    <h4>Ini Judul</h4>
-
-                    <ul class="card-actions">
-                        <li>
-                            <button data-dismiss="modal" type="button"><i class="ion-close"></i></button>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="card-block">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </div>
-            </div>
-        </div>
     </div>
 
 </div>
