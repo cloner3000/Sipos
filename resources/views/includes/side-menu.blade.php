@@ -14,11 +14,11 @@
         <li class="nav-item nav-drawer-header">Apps</li>
 
         <li class="nav-item active">
-          <a href="index.html"><i class="ion-ios-speedometer-outline"></i> Dashboard</a>
+          <a href="/home"><i class="ion-ios-speedometer-outline"></i> Dashboard</a>
         </li>
 
         <li class="nav-item">
-          <a href="frontend_home.html"><i class="ion-android-document"></i>Catatan</a>
+          <a href="/catatan"><i class="ion-android-document"></i>Catatan</a>
         </li>
 
         <li class="nav-item nav-item-has-subnav">
