@@ -8,7 +8,7 @@ Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
 <div class="card">
     <div class="card-header">
         <h4>Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas</h4>
-        <button class="btn btn-app btn-block" data-toggle="modal" data-target="#modal-popin" type="button" onclick="location.href='{{ url('/catatan/tambah') }}'">Tambah</button>
+        <button class="btn btn-app btn-block"  type="button" onclick="location.href='{{ url('/catatan/tambah') }}'">Tambah</button>
     </div>
 
     <div class="card-block">

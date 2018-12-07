@@ -1,0 +1,48 @@
+@extends('layouts.base_dashboard')
+
+@section('title')
+Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
+@endsection
+
+@section('content')
+<div class="card">
+
+  <div class="card-header bg-purple bg-inverse">
+    <h4>Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas</h4>
+  </div>
+
+  <div class="card-block">
+    <form class="form-horizontal m-t-sm" action="base_forms_samples.html" method="post" onsubmit="return false;">
+
+      <div class="form-group">
+          <div class="col-xs-12">
+              <div class="form-material">
+                  <input class="form-control" type="text" id="register2-username" name="nama-ibu" placeholder="Masukkan Nama Ibu..." />
+                  <label for="register2-username">Nama Ibu</label>
+              </div>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <div class="col-xs-12">
+              <div class="form-material">
+                  <input class="form-control" type="text" id="register2-username" name="nama-bayi" placeholder="Masukkan Nama Bayi..." />
+                  <label for="register2-username">Nama Bayi</label>
+              </div>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <div class="col-md-8">
+              <div class="form-material">
+                  <input class="js-datepicker form-control" type="text" id="example-datepicker4" name="lahir-bayi" data-date-format="mm/dd/yy" placeholder="bulan/hari/tahun">
+                  <label for="example-datepicker4">Tanggal Lahir Bayi</label>
+              </div>
+          </div>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+@endsection

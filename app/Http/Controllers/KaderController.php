@@ -13,6 +13,6 @@ class KaderController extends Controller
 
     public function addCatatan()
     {
-      return view('pages.add.catatan');
+      return view('pages.add.add_catatan');
     }
 }
