@@ -19,3 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/test', function() { return view('home'); });
+Route::get('/catatan', function() { return view('pages.catatan'); });
