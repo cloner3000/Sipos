@@ -4,6 +4,10 @@
 Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
 @endsection
 
+@section('stylesheets')
+  @include('assets.css-datatable')
+@endsection
+
 @section('content')
 <div class="card">
     <div class="card-header">
@@ -68,9 +72,6 @@ Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
 </div>
 @endsection
 
-
 @section('scripts')
-
-<script src="{{ asset('js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('js/pages/base_tables_datatables.js') }}"></script>
+  @include('assets.js-datatable')
 @endsection

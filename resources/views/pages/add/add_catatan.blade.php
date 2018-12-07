@@ -35,7 +35,7 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
       <div class="form-group">
           <div class="col-md-8">
               <div class="form-material">
-                  <input class="js-datepicker form-control" type="text" id="example-datepicker4" name="lahir-bayi" data-date-format="mm/dd/yy" placeholder="bulan/hari/tahun">
+                  <input class="js-datepicker form-control" type="text" id="example-datepicker4" name="lahir-bayi" data-date-format="mm/dd/yyyy" placeholder="bulan/hari/tahun">
                   <label for="example-datepicker4">Tanggal Lahir Bayi</label>
               </div>
           </div>
@@ -45,4 +45,8 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
   </div>
 
 </div>
+@endsection
+
+@section('scripts')
+  @include('assets.js-form')
 @endsection
