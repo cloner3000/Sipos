@@ -12,7 +12,7 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
 <div class="card">
 
   <div class="card-header bg-purple bg-inverse">
-    <h4>Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas</h4>
+    <h4>Edit Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas</h4>
   </div>
 
   <div class="card-block">

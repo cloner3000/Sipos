@@ -49,7 +49,7 @@
         </li>
 
         <li class="nav-item">
-          <a href="javascript:void(0)"><i class="ion-android-add-circle"></i>Register Wuspus</a>
+          <a href="/register-wuspus"><i class="ion-android-add-circle"></i>Register Wuspus</a>
         </li>
 
         <li class="nav-item">
