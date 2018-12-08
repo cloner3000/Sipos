@@ -19,4 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/test', function() { return view('home'); });
-Route::get('/catatan', function() { return view('pages.catatan'); });
+Route::get('/catatan', 'KaderController@getCatatanPage');
+Route::get('/catatan/tambah', 'KaderController@addCatatan');
+
+Route::get('/register-wuspus', 'KaderController@getRegisterWuspusPage');
+Route::get('/register-wuspus/tambah', 'KaderController@addRegisterWuspus');
