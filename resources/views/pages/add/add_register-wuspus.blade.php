@@ -22,7 +22,7 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
           <div class="col-xs-12">
               <div class="form-material">
                   <input class="form-control" type="text" id="register2-username" name="nama-ibu" placeholder="Masukkan Nama Ibu..." />
-                  <label for="register2-username">Nama Ibu</label>
+                  <label for="register2-username">Nama Wus / Pus</label>
               </div>
           </div>
       </div>
