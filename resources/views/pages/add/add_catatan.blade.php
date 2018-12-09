@@ -11,7 +11,7 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
 @section('content')
 <div class="card">
 
-  <div class="card-header bg-purple bg-inverse">
+  <div class="card-header">
     <h4>Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas</h4>
   </div>
 
@@ -45,17 +45,6 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="col-xs-12">Pilih satu untuk input tanggal meninggal</label>
-        <div class="col-xs-12">
-          <label class="radio-inline">
-            <input type="radio" id="example-inline-radio1" name="pilih-meninggal" value="ibu" /> Ibu
-          </label>
-          <label class="radio-inline" >
-            <input type="radio" id="example-inline-radio2" name="pilih-meninggal" value="anak" /> Anak
-          </label>
-        </div>
-      </div>
       <!-- tanggal lahir bayi-->
       <div class="form-group">
         <div class="col-md-12">
@@ -65,12 +54,25 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
           </div>
         </div>
       </div>
-      <!-- tanggal mati ibu -->
+
+      <div class="form-group">
+        <label class="col-md-12">Pilih satu untuk input tanggal meninggal</label>
+        <div class="col-md-12">
+          <label class="radio-inline">
+            <input type="radio" id="example-inline-radio1" name="pilih-meninggal" value="ibu" /> Ibu
+          </label>
+          <label class="radio-inline" >
+            <input type="radio" id="example-inline-radio2" name="pilih-meninggal" value="anak" /> Anak
+          </label>
+        </div>
+      </div>
+
+      <!-- tanggal mati -->
       <div class="form-group">
         <div class="col-md-12">
           <div class="form-material">
             <input class="js-datepicker form-control" type="text" id="example-datepicker4" name="mati-ibu" data-date-format="mm/dd/yyyy" placeholder="bulan/hari/tahun">
-            <label for="example-datepicker4">Tanggal Kematian Ibu</label>
+            <label for="example-datepicker4">Tanggal Kematian</label>
           </div>
         </div>
       </div>
