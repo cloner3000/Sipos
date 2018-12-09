@@ -22,5 +22,10 @@ Route::get('/test', function() { return view('home'); });
 Route::get('/catatan', 'KaderController@getCatatanPage');
 Route::get('/catatan/tambah', 'KaderController@addCatatan');
 
+Route::get('/register-bayi', 'KaderController@getRegisterBayiPage');
+Route::get('/register-bayi/tambah', 'KaderController@addRegisterBayi');
+Route::get('/register-bayi/data/{id_bayi}', 'KaderController@getRegisterBayiDataPage');
+Route::get('/register-bayi/data/{id_bayi}/tambah', 'KaderController@addRegisterBayiData');
+
 Route::get('/register-wuspus', 'KaderController@getRegisterWuspusPage');
 Route::get('/register-wuspus/tambah', 'KaderController@addRegisterWuspus');

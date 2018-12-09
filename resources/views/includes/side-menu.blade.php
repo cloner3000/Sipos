@@ -26,7 +26,7 @@
           <ul class="nav nav-subnav">
 
             <li>
-              <a href="base_ui_buttons.html">0 - 11 Bulan</a>
+              <a href="/register-bayi">0 - 11 Bulan</a>
             </li>
 
             <li>
