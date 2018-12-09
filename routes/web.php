@@ -29,3 +29,8 @@ Route::get('/register-bayi/data/{id_bayi}/tambah', 'KaderController@addRegisterB
 
 Route::get('/register-wuspus', 'KaderController@getRegisterWuspusPage');
 Route::get('/register-wuspus/tambah', 'KaderController@addRegisterWuspus');
+
+Route::get('/register-ibu-hamil', 'KaderController@getRegisterIbuHamilPage');
+Route::get('/register-ibu-hamil/tambah', 'KaderController@addRegisterIbuHamil');
+Route::get('/register-ibu-hamil/data/{id}', 'KaderController@getRegisterIbuHamilDataPage');
+Route::get('/register-ibu-hamil/data/{id}/tambah', 'KaderController@addRegisterIbuHamilData');

@@ -36,4 +36,14 @@ class KaderController extends Controller
       return view('pages.register-bayi-data');
     }
 
+    public function getRegisterIbuHamilPage()
+    {
+      return view('pages.register-ibu-hamil');
+    }
+
+    public function getRegisterIbuHamilDataPage()
+    {
+      return view('pages.register-ibu-hamil-data');
+    }
+
 }
