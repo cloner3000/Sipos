@@ -1,7 +1,7 @@
 @extends('layouts.base_dashboard')
 
 @section('title')
-Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
+Register WusPus
 @endsection
 
 @section('stylesheets')

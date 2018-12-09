@@ -21,7 +21,11 @@
           <a href="/catatan"><i class="ion-android-document"></i>Catatan</a>
         </li>
 
-        <li class="nav-item nav-item-has-subnav">
+        <li class="nav-item">
+          <a href="/register-bayi"><i class="ion-android-add-circle"></i>Register Bayi</a>
+        </li>
+
+        {{-- <li class="nav-item nav-item-has-subnav">
           <a href="javascript:void(0)"><i class="ion-android-add-circle"></i>Register Bayi</a>
           <ul class="nav nav-subnav">
 
@@ -46,14 +50,14 @@
             </li>
 
           </ul>
-        </li>
+        </li> --}}
 
         <li class="nav-item">
           <a href="/register-wuspus"><i class="ion-android-add-circle"></i>Register Wuspus</a>
         </li>
 
         <li class="nav-item">
-          <a href="javascript:void(0)"><i class="ion-android-add-circle"></i>Register Ibu Hamil</a>
+          <a href="/register-ibu-hamil"><i class="ion-android-add-circle"></i>Register Ibu Hamil</a>
         </li>
 
         {{-- <li class="nav-item">
