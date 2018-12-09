@@ -56,7 +56,7 @@
           <a href="javascript:void(0)"><i class="ion-android-add-circle"></i>Register Ibu Hamil</a>
         </li>
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a href="frontend_home.html"><i class="ion-android-document"></i>Pengisian Data Posyandu</a>
         </li>
 
@@ -112,7 +112,7 @@
             </li>
 
           </ul>
-        </li>
+        </li> --}}
 
       </ul>
     </nav>
