@@ -11,8 +11,8 @@ Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
 @section('content')
 <div class="card">
   <div class="card-header">
-    <h4>Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas</h4>
-    <button class="btn btn-app btn-block"  type="button" onclick="location.href='{{ url('/catatan/tambah') }}'" style="width: 100px; float:right;">Tambah</button>
+    <h4>Data WusPus</h4>
+    <button class="btn btn-app btn-block"  type="button" onclick="location.href='{{ url('/register-wuspus/tambah') }}'" style="width: 100px; float:right;">Tambah</button>
   </div>
 
   <div class="card-block">
@@ -21,14 +21,19 @@ Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
         <thead>
           <tr>
             <th class="text-center"></th>
-            <th>Nama Ibu</th>
-            <th>Nama Ayah</th>
-            <th>Nama Bayi</th>
-            <th>Tanggal Lahir</th>
-            <th>Ibu*</th>
-            <th>Bayi*</th>
+            <th>Nama WusPus</th>
             <th>Umur</th>
-            <th>Penyebab</th>
+            <th>Nama Suami</th>
+            <th>Tahapan KS</th>
+            <th>Kel. Dasa Wisma</th>
+            <th>*Hidup</th>
+            <th>*Meninggal</th>
+            <th>Pengukuran LILA</th>
+            <th>Imunisasi TT</th>
+            <th>Jenis Kontrasepsi</th>
+            <th>Ganti Kontrasepsi</th>
+            <th>Tanggal Pergantian</th>
+            <th>Kepemilikan Tabungan</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -37,14 +42,19 @@ Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
           <!-- Body Data -->
           <tr>
             <td>1</td>
-            <td>Nama Ibu</td>
-            <td>Nama Ayah</td>
-            <td>Nama Bayi</td>
-            <td>Tanggal Lahir</td>
-            <td>Ibu</td>
-            <td>Bayi</td>
+            <td>Nama WusPus</td>
             <td>Umur</td>
-            <td>Penyebab</td>
+            <td>Nama Suami</td>
+            <td>Tahapan KS</td>
+            <td>Kel. Dasa Wisma</td>
+            <td>*Hidup</td>
+            <td>*Meninggal</td>
+            <td>Pengukuran LILA</td>
+            <td>Imunisasi TT</td>
+            <td>Jenis Kontrasepsi</td>
+            <td>Ganti Kontrasepsi</td>
+            <td>Tanggal Pergantian</td>
+            <td>Kepemilikan Tabungan</td>
             <td class="text-center">
               <div class="btn-group">
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit client"><i class="ion-edit"></i></button>
@@ -55,14 +65,19 @@ Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
 
           <tr>
             <td>2</td>
-            <td>Nama Ibu</td>
-            <td>Nama Ayah</td>
-            <td>Nama Bayi</td>
-            <td>Tanggal Lahir</td>
-            <td>Ibu</td>
-            <td>Bayi</td>
+            <td>Nama WusPus</td>
             <td>Umur</td>
-            <td>Penyebab</td>
+            <td>Nama Suami</td>
+            <td>Tahapan KS</td>
+            <td>Kel. Dasa Wisma</td>
+            <td>*Hidup</td>
+            <td>*Meninggal</td>
+            <td>Pengukuran LILA</td>
+            <td>Imunisasi TT</td>
+            <td>Jenis Kontrasepsi</td>
+            <td>Ganti Kontrasepsi</td>
+            <td>Tanggal Pergantian</td>
+            <td>Kepemilikan Tabungan</td>
             <td class="text-center">
               <div class="btn-group">
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit client"><i class="ion-edit"></i></button>
@@ -73,14 +88,19 @@ Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
 
           <tr>
             <td>3</td>
-            <td>Nama Ibu</td>
-            <td>Nama Ayah</td>
-            <td>Nama Bayi</td>
-            <td>Tanggal Lahir</td>
-            <td>Ibu</td>
-            <td>Bayi</td>
+            <td>Nama WusPus</td>
             <td>Umur</td>
-            <td>Penyebab</td>
+            <td>Nama Suami</td>
+            <td>Tahapan KS</td>
+            <td>Kel. Dasa Wisma</td>
+            <td>*Hidup</td>
+            <td>*Meninggal</td>
+            <td>Pengukuran LILA</td>
+            <td>Imunisasi TT</td>
+            <td>Jenis Kontrasepsi</td>
+            <td>Ganti Kontrasepsi</td>
+            <td>Tanggal Pergantian</td>
+            <td>Kepemilikan Tabungan</td>
             <td class="text-center">
               <div class="btn-group">
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit client"><i class="ion-edit"></i></button>

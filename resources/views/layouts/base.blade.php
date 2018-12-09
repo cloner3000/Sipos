@@ -18,11 +18,8 @@
 
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,900%7CRoboto+Slab:300,400%7CRoboto+Mono:400" />
 
-  <link rel="stylesheet" id="css-font-awesome" href="{{ asset('css/font-awesome.css') }}" />
-  <link rel="stylesheet" id="css-ionicons" href="{{ asset('css/ionicons.css') }}" />
-  <link rel="stylesheet" id="css-bootstrap" href="{{ asset('css/bootstrap.css') }}" />
-  <link rel="stylesheet" id="css-app" href="{{ asset('css/app.css') }}" />
-  <link rel="stylesheet" id="css-app-custom" href="{{ asset('css/app-custom.css') }}" />
+  @include('assets.css-app')
+
   @yield('stylesheets')
 </head>
 
@@ -41,17 +38,10 @@
     </div>
   </div>
 
-  <!-- AppUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock and App.js -->
-  <script src="{{ asset('js/core/jquery.min.js') }}"></script>
-  <script src="{{ asset('js/core/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('js/core/jquery.slimscroll.min.js') }}"></script>
-  <script src="{{ asset('js/core/jquery.scrollLock.min.js') }}"></script>
-  <script src="{{ asset('js/core/jquery.placeholder.min.js') }}"></script>
-  <script src="{{ asset('js/app.js') }}"></script>
-  <script src="{{ asset('js/app-custom.js') }}"></script>
-
+  @include('assets.js-app')
   @yield('scripts')
 
+  <div class="app-ui-mask-modal"></div>
 </body>
 
 </html>

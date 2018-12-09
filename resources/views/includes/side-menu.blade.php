@@ -4,7 +4,7 @@
   <div class="app-layout-drawer-scroll">
     <!-- Drawer logo -->
     <div id="logo" class="drawer-header">
-      <a href="index.html"><img class="img-responsive" src="assets/img/logo/logo-backend.png" title="AppUI" alt="AppUI" /></a>
+      <a href="index.html"><img class="img-responsive" src="{{ asset('img/logo/logo-backend.png') }}" title="AppUI" alt="AppUI" /></a>
     </div>
 
     <!-- Drawer navigation -->
@@ -26,7 +26,7 @@
           <ul class="nav nav-subnav">
 
             <li>
-              <a href="base_ui_buttons.html">0 - 11 Bulan</a>
+              <a href="/register-bayi">0 - 11 Bulan</a>
             </li>
 
             <li>
@@ -49,7 +49,7 @@
         </li>
 
         <li class="nav-item">
-          <a href="javascript:void(0)"><i class="ion-android-add-circle"></i>Register Wuspus</a>
+          <a href="/register-wuspus"><i class="ion-android-add-circle"></i>Register Wuspus</a>
         </li>
 
         <li class="nav-item">
