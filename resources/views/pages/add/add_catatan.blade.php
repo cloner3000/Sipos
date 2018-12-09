@@ -58,11 +58,11 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
       <div class="form-group">
         <label class="col-md-12">Pilih satu untuk input tanggal meninggal</label>
         <div class="col-md-12">
-          <label class="radio-inline">
-            <input type="radio" id="example-inline-radio1" name="pilih-meninggal" value="ibu" /> Ibu
+          <label class="css-input css-radio css-radio-success m-r-sm">
+            <input type="radio" name="pilih-meninggal" value="ibu" /> <span></span> Ibu
           </label>
-          <label class="radio-inline" >
-            <input type="radio" id="example-inline-radio2" name="pilih-meninggal" value="anak" /> Anak
+          <label class="css-input css-radio css-radio-success m-r-sm" >
+            <input type="radio" name="pilih-meninggal" value="anak" /> <span></span> Anak
           </label>
         </div>
       </div>
