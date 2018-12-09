@@ -21,27 +21,47 @@ Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
         <thead>
           <tr>
             <th class="text-center"></th>
-            <th>Nama Anak</th>
-            <th>Tanggal Lahir</th>
-            <th>BBL</th>
-            <th>Nama Ayah</th>
-            <th>Nama Ibu</th>
+            <th>Bulan</th>
+            <th>Hasil Penimbangan</th>
+            <th>Status</th>
+            <th>Pemberian Asi</th>
+            <th>Vit-A</th>
+            <th>HB-0</th>
+            <th>BCG</th>
+            <th>DPT/HB I</th>
+            <th>DPT/HB II</th>
+            <th>DPT/HB III</th>
+            <th>Polio I</th>
+            <th>Polio II</th>
+            <th>Polio III</th>
+            <th>Polio IV</th>
+            <th>Polio V</th>
             <th>Action</th>
           </tr>
         </thead>
 
         <tbody>
           <!-- Body Data -->
+
           <tr>
             <td>1</td>
-            <td>Ucok</td>
-            <td>19-12-2016</td>
+            <td>Desember</td>
             <td>1.2</td>
-            <td>Broto</td>
-            <td>Ita</td>
+            <td>Baru</td>
+            <td>Ya</td>
+            <td> - </td>
+            <td>20-12-2018</td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
             <td class="text-center">
               <div class="btn-group">
-                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Detail"><i class="ion-ios-information-outline" onclick="location.href='{{ url('/register-bayi/data/1') }}'"></i></button>
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button>
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Delete"><i class="ion-close"></i></button>
               </div>
@@ -50,14 +70,23 @@ Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
 
           <tr>
             <td>2</td>
-            <td>Ucok</td>
-            <td>19-12-2016</td>
-            <td>1.2</td>
-            <td>Broto</td>
-            <td>Ita</td>
+            <td>Januari</td>
+            <td>1.9</td>
+            <td>Naik</td>
+            <td>Ya</td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td>12-01-2019</td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
             <td class="text-center">
               <div class="btn-group">
-                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Detail"><i class="ion-ios-information-outline" onclick="location.href='{{ url('/register-bayi/data/2') }}'"></i></button>
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button>
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Delete"><i class="ion-close"></i></button>
               </div>
@@ -66,14 +95,23 @@ Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
 
           <tr>
             <td>3</td>
-            <td>Ucok</td>
-            <td>19-12-2016</td>
-            <td>1.2</td>
-            <td>Broto</td>
-            <td>Ita</td>
+            <td>Februari</td>
+            <td>1.8</td>
+            <td>Turun</td>
+            <td>Ya</td>
+            <td> - </td>
+            <td> - </td>
+            <td>03-01-2019</td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
             <td class="text-center">
               <div class="btn-group">
-                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Detail"><i class="ion-ios-information-outline" onclick="location.href='{{ url('/register-bayi/data/3') }}'"></i></button>
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button>
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Delete"><i class="ion-close"></i></button>
               </div>

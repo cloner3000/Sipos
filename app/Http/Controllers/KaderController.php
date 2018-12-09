@@ -31,7 +31,7 @@ class KaderController extends Controller
       return view('pages.register-bayi');
     }
 
-    public function getRegisterBayiDataPage()
+    public function getRegisterBayiDataPage($id_bayi)
     {
       return view('pages.register-bayi-data');
     }

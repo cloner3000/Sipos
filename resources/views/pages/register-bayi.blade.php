@@ -26,6 +26,7 @@ Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
             <th>BBL</th>
             <th>Nama Ayah</th>
             <th>Nama Ibu</th>
+            <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -35,10 +36,11 @@ Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
           <tr>
             <td>1</td>
             <td>Ucok</td>
-            <td>19-12-2016</td>
+            <td>10-12-2018</td>
             <td>1.2</td>
             <td>Broto</td>
             <td>Ita</td>
+            <td>Hidup</td>
             <td class="text-center">
               <div class="btn-group">
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Detail"><i class="ion-ios-information-outline" onclick="location.href='{{ url('/register-bayi/data/1') }}'"></i></button>
@@ -55,6 +57,7 @@ Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
             <td>1.2</td>
             <td>Broto</td>
             <td>Ita</td>
+            <td>Hidup</td>
             <td class="text-center">
               <div class="btn-group">
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Detail"><i class="ion-ios-information-outline" onclick="location.href='{{ url('/register-bayi/data/2') }}'"></i></button>
@@ -71,6 +74,7 @@ Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
             <td>1.2</td>
             <td>Broto</td>
             <td>Ita</td>
+            <td>Hidup</td>
             <td class="text-center">
               <div class="btn-group">
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Detail"><i class="ion-ios-information-outline" onclick="location.href='{{ url('/register-bayi/data/3') }}'"></i></button>
