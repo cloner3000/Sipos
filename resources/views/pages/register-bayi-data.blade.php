@@ -1,7 +1,7 @@
 @extends('layouts.base_dashboard')
 
 @section('title')
-Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
+Data Register Bayi
 @endsection
 
 @section('stylesheets')
@@ -11,11 +11,19 @@ Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
 @section('content')
 <div class="card">
   <div class="card-header">
-    <h4>Register Bayi</h4>
+    <h4>Data Register Bayi</h4>
     <button class="btn btn-app btn-block"  type="button" onclick="location.href='{{ url('/register-wuspus/tambah') }}'" style="width: 100px; float:right;">Tambah</button>
   </div>
 
   <div class="card-block">
+
+    Nama Anak : Ucok <br>
+    Tanggal Lahir : 10-12-2018 <br>
+    Berat Badan Lahir : 1.2 Kg <br>
+    Nama Ayah : Broto <br>
+    Nama Ibu : Ita <br>
+    <br>
+
     <div class="table-responsive">
       <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
         <thead>
