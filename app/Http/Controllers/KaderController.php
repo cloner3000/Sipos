@@ -26,4 +26,14 @@ class KaderController extends Controller
       return view('pages.add.add_register-wuspus');
     }
 
+    public function getRegisterBayiPage()
+    {
+      return view('pages.register-bayi');
+    }
+
+    public function getRegisterBayiDataPage()
+    {
+      return view('pages.register-bayi-data');
+    }
+
 }
