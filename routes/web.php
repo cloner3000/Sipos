@@ -30,5 +30,12 @@ Route::get('/register-bayi/data/{id_bayi}/tambah', 'KaderController@addRegisterB
 Route::get('/register-wuspus', 'KaderController@getRegisterWuspusPage');
 Route::get('/register-wuspus/tambah', 'KaderController@addRegisterWuspus');
 
-Route::get('/Pengunjung-balita-0-12bulan', 'KaderController@getPengunjungBalta012blnPage');
-Route::get('/Pengunjung-balita-1-5tahun', 'KaderController@getPengunjungBalta15thnPage');
+Route::get('/Pengunjung-balita-0-12bulan', 'KaderController@getPengunjungBalita012blnPage');
+Route::get('/Pengunjung-balita-1-5tahun', 'KaderController@getPengunjungBalita15thnPage');
+Route::get('/Pengunjung-ibu', 'KaderController@getPengunjungIbuPage');
+Route::get('/Absensi-kader-pkk', 'KaderController@getAbsensikaderpkkPage');
+Route::get('/Absensi-kader-posy', 'KaderController@getAbsensikaderposyPage');
+Route::get('/Absensi-plkb', 'KaderController@getAbsensiplkbPage');
+Route::get('/Absensi-medisparamedis', 'KaderController@getAbsensimedisparamedisPage');
+Route::get('/jumlahbayi-lahir', 'KaderController@getjmlhbayilahirPage');
+Route::get('/jumlahbayi-meninggal', 'KaderController@getjmlhbayimeninggalPage');

@@ -68,19 +68,28 @@
           </li>
 
           <li>
-            <a href="base_ui_cards_api.html">Pengunjung WUS</a>
+            <a href="/Pengunjung-ibu">Pengunjung Ibu</a>
           </li>
 
           <li>
-            <a href="base_ui_cards_api.html">Pengunjung Ibu PUS</a>
+            <a href="/Absensi-kader-pkk">Absensi Kader PKK</a>
+          </li>
+          <li>
+            <a href="/Absensi-kader-posy">Absensi Kader Possy</a>
+          </li>
+          <li>
+            <a href="/Absensi-plkb">Absensi PLKB</a>
+          </li>
+          <li>
+            <a href="/Absensi-medisparamedis">Absensi Medis/Paramedis</a>
           </li>
 
           <li>
-            <a href="base_ui_cards_api.html">Pengunjung Ibu Hamil</a>
+            <a href="/jumlahbayi-lahir">Bayi yang Lahir</a>
+          </li><li>
+            <a href="/jumlahbayi-meninggal">Bayi yang Meninggal</a>
           </li>
-          <li>
-            <a href="base_ui_cards_api.html">Pengunjung Ibu Menyusui</a>
-          </li>
+
 
         </li>
 

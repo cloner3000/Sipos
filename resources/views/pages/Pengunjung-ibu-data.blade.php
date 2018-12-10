@@ -1,7 +1,7 @@
 @extends('layouts.base_dashboard')
 
 @section('title')
-Pengunjung Balita 0-12 Bulan
+Pengunjung Ibu
 @endsection
 
 @section('stylesheets')
@@ -11,7 +11,7 @@ Pengunjung Balita 0-12 Bulan
 @section('content')
 <div class="card">
   <div class="card-header">
-    <h4>Pengunjung Balita 0-12 Bulan</h4>
+    <h4>Pengunjung Ibu</h4>
     <button class="btn btn-app btn-block"  type="button" onclick="#" style="width: 100px; float:right;">Tambah</button>
   </div>
 
@@ -22,10 +22,10 @@ Pengunjung Balita 0-12 Bulan
           <tr>
             <th class="text-center"></th>
             <th>Bulan</th>
-            <th>Pengunjung Baru Laki-Laki</th>
-            <th>Pengunjung Baru Perempuan</th>
-            <th>Pengunjung Lama Laki-Laki</th>
-            <th>Pengunjung Lama Perempuan</th>
+            <th>Pengunjung WUS</th>
+            <th>Pengunjung PUS</th>
+            <th>Pengunjung Hamil</th>
+            <th>Pengunjung Menyusui</th>
           </tr>
         </thead>
 

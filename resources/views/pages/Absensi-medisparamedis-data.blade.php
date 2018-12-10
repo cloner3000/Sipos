@@ -1,7 +1,7 @@
 @extends('layouts.base_dashboard')
 
 @section('title')
-Pengunjung Balita 0-12 Bulan
+Absensi Medis/Paramedis
 @endsection
 
 @section('stylesheets')
@@ -11,7 +11,7 @@ Pengunjung Balita 0-12 Bulan
 @section('content')
 <div class="card">
   <div class="card-header">
-    <h4>Pengunjung Balita 0-12 Bulan</h4>
+    <h4>Absensi Medis/Paramedis</h4>
     <button class="btn btn-app btn-block"  type="button" onclick="#" style="width: 100px; float:right;">Tambah</button>
   </div>
 
@@ -22,10 +22,8 @@ Pengunjung Balita 0-12 Bulan
           <tr>
             <th class="text-center"></th>
             <th>Bulan</th>
-            <th>Pengunjung Baru Laki-Laki</th>
-            <th>Pengunjung Baru Perempuan</th>
-            <th>Pengunjung Lama Laki-Laki</th>
-            <th>Pengunjung Lama Perempuan</th>
+            <th>Laki - laki</th>
+            <th>Perempuan</th>
           </tr>
         </thead>
 
@@ -34,8 +32,6 @@ Pengunjung Balita 0-12 Bulan
           <tr>
             <td>1</td>
             <td>Januari</td>
-            <td>10</td>
-            <td>10</td>
             <td>10</td>
             <td>10</td>
             <td class="text-center">
@@ -51,8 +47,7 @@ Pengunjung Balita 0-12 Bulan
             <td>Februari</td>
             <td>10</td>
             <td>10</td>
-            <td>10</td>
-            <td>10</td>
+
             <td class="text-center">
               <div class="btn-group">
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button>
@@ -66,8 +61,7 @@ Pengunjung Balita 0-12 Bulan
             <td>Maret</td>
             <td>10</td>
             <td>10</td>
-            <td>10</td>
-            <td>10</td>
+
             <td class="text-center">
               <div class="btn-group">
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button>
@@ -81,8 +75,7 @@ Pengunjung Balita 0-12 Bulan
             <td>April</td>
             <td>10</td>
             <td>10</td>
-            <td>10</td>
-            <td>10</td>
+
             <td class="text-center">
               <div class="btn-group">
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button>
