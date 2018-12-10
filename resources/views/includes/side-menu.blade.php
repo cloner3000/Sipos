@@ -58,6 +58,30 @@
 
         <li class="nav-item">
           <a href="frontend_home.html"><i class="ion-android-document"></i>Pengisian Data Posyandu</a>
+
+          <li>
+            <a href="/Pengunjung-balita-0-12bulan">Pengunjung Balita 0 - 12 Bulan</a>
+          </li>
+
+          <li>
+            <a href="/Pengunjung-balita-1-5tahun">Pengunjung Balita 1 - 5 Tahun</a>
+          </li>
+
+          <li>
+            <a href="base_ui_cards_api.html">Pengunjung WUS</a>
+          </li>
+
+          <li>
+            <a href="base_ui_cards_api.html">Pengunjung Ibu PUS</a>
+          </li>
+
+          <li>
+            <a href="base_ui_cards_api.html">Pengunjung Ibu Hamil</a>
+          </li>
+          <li>
+            <a href="base_ui_cards_api.html">Pengunjung Ibu Menyusui</a>
+          </li>
+
         </li>
 
         <li class="nav-item nav-item-has-subnav">

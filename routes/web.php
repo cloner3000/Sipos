@@ -29,3 +29,6 @@ Route::get('/register-bayi/data/{id_bayi}/tambah', 'KaderController@addRegisterB
 
 Route::get('/register-wuspus', 'KaderController@getRegisterWuspusPage');
 Route::get('/register-wuspus/tambah', 'KaderController@addRegisterWuspus');
+
+Route::get('/Pengunjung-balita-0-12bulan', 'KaderController@getPengunjungBalta012blnPage');
+Route::get('/Pengunjung-balita-1-5tahun', 'KaderController@getPengunjungBalta15thnPage');
