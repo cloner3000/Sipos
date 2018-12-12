@@ -17,7 +17,7 @@ Absensi Medis/Paramedis
 
   <div class="card-block">
     <div class="table-responsive">
-      <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
+      <table class="table table-bordered table-striped table-vcenter js-dataTable-simple">
         <thead>
           <tr>
             <th class="text-center"></th>
