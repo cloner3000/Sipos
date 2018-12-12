@@ -55,42 +55,42 @@
         <li class="nav-item">
           <a href="javascript:void(0)"><i class="ion-android-add-circle"></i>Register Ibu Hamil</a>
         </li>
+                
+        <li class="nav-item nav-item-has-subnav">
+          <a href="javascript:void(0)"><i class="ion-android-document"></i>Pengisian Data Posyandu</a>
+          <ul class="nav nav-subnav">
+            <li>
+              <a href="/Pengunjung-balita-0-12bulan">Pengunjung Balita 0 - 12 Bulan</a>
+            </li>
 
-        <li class="nav-item">
-          <a href="frontend_home.html"><i class="ion-android-document"></i>Pengisian Data Posyandu</a>
+            <li>
+              <a href="/Pengunjung-balita-1-5tahun">Pengunjung Balita 1 - 5 Tahun</a>
+            </li>
 
-          <li>
-            <a href="/Pengunjung-balita-0-12bulan">Pengunjung Balita 0 - 12 Bulan</a>
-          </li>
+            <li>
+              <a href="/Pengunjung-ibu">Pengunjung Ibu</a>
+            </li>
 
-          <li>
-            <a href="/Pengunjung-balita-1-5tahun">Pengunjung Balita 1 - 5 Tahun</a>
-          </li>
+            <li>
+              <a href="/Absensi-kader-pkk">Absensi Kader PKK</a>
+            </li>
+            <li>
+              <a href="/Absensi-kader-posy">Absensi Kader Possy</a>
+            </li>
+            <li>
+              <a href="/Absensi-plkb">Absensi PLKB</a>
+            </li>
+            <li>
+              <a href="/Absensi-medisparamedis">Absensi Medis/Paramedis</a>
+            </li>
 
-          <li>
-            <a href="/Pengunjung-ibu">Pengunjung Ibu</a>
-          </li>
+            <li>
+              <a href="/jumlahbayi-lahir">Bayi yang Lahir</a>
+            </li><li>
+              <a href="/jumlahbayi-meninggal">Bayi yang Meninggal</a>
+            </li>
 
-          <li>
-            <a href="/Absensi-kader-pkk">Absensi Kader PKK</a>
-          </li>
-          <li>
-            <a href="/Absensi-kader-posy">Absensi Kader Possy</a>
-          </li>
-          <li>
-            <a href="/Absensi-plkb">Absensi PLKB</a>
-          </li>
-          <li>
-            <a href="/Absensi-medisparamedis">Absensi Medis/Paramedis</a>
-          </li>
-
-          <li>
-            <a href="/jumlahbayi-lahir">Bayi yang Lahir</a>
-          </li><li>
-            <a href="/jumlahbayi-meninggal">Bayi yang Meninggal</a>
-          </li>
-
-
+          </ul>
         </li>
 
         <li class="nav-item nav-item-has-subnav">
