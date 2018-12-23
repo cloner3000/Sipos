@@ -4,7 +4,7 @@
   <div class="app-layout-drawer-scroll">
     <!-- Drawer logo -->
     <div id="logo" class="drawer-header">
-      <a href="index.html"><img class="img-responsive" src="{{ asset('img/logo/logo-backend.png') }}" title="AppUI" alt="AppUI" /></a>
+      <a href="#"><img class="img-responsive" src="{{ asset('img/logo/logo-backend.png') }}" title="AppUI" alt="AppUI" /></a>
     </div>
 
     <!-- Drawer navigation -->
@@ -21,36 +21,36 @@
           <a href="/catatan"><i class="ion-android-document"></i>Catatan</a>
         </li>
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a href="/register-bayi"><i class="ion-android-add-circle"></i>Register Bayi</a>
-        </li>
+        </li> --}}
 
-        {{-- <li class="nav-item nav-item-has-subnav">
+        <li class="nav-item nav-item-has-subnav">
           <a href="javascript:void(0)"><i class="ion-android-add-circle"></i>Register Bayi</a>
           <ul class="nav nav-subnav">
 
             <li>
-              <a href="/register-bayi">0 - 11 Bulan</a>
+              <a href="{{ route('register.011') }}">0 - 11 Bulan</a>
             </li>
 
             <li>
-              <a href="base_ui_cards.html">12 - 23 Bulan</a>
+              <a href="{{ route('register.1223') }}">12 - 23 Bulan</a>
             </li>
 
             <li>
-              <a href="base_ui_cards_api.html">24 - 35 Bulan</a>
+              <a href="{{ route('register.2435') }}">24 - 35 Bulan</a>
             </li>
 
             <li>
-              <a href="base_ui_cards_api.html">36 - 47 Bulan</a>
+              <a href="{{ route('register.3647') }}">36 - 47 Bulan</a>
             </li>
 
             <li>
-              <a href="base_ui_cards_api.html">48 - 59 Bulan</a>
+              <a href="{{ route('register.4859') }}">48 - 59 Bulan</a>
             </li>
 
           </ul>
-        </li> --}}
+        </li>
 
         <li class="nav-item">
           <a href="/register-wuspus"><i class="ion-android-add-circle"></i>Register Wuspus</a>
@@ -58,6 +58,22 @@
 
         <li class="nav-item">
           <a href="/register-ibu-hamil"><i class="ion-android-add-circle"></i>Register Ibu Hamil</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="/list-pasangan"><i class="ion-android-add-circle"></i>Daftar Pasangan</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="/list-anak"><i class="ion-android-add-circle"></i>Daftar Anak</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="/list-posyandu"><i class="ion-android-add-circle"></i>Daftar Posyandu</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="/list-desa"><i class="ion-android-add-circle"></i>Daftar Desa</a>
         </li>
 
         {{-- <li class="nav-item">

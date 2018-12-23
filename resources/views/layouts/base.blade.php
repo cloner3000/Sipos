@@ -14,7 +14,7 @@
   <meta name="robots" content="noindex, nofollow" />
 
   <link rel="apple-touch-icon" href="{{ asset('img/favicons/apple-touch-icon.png') }}" />
-  <link rel="icon" href="{{ asset('img/favicons/favicon.ico') }}" />
+  <link rel="icon" href="{{ asset('img/favicons/icon.png') }}" />
 
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,900%7CRoboto+Slab:300,400%7CRoboto+Mono:400" />
 

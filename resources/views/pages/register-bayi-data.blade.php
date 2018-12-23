@@ -25,7 +25,7 @@ Data Register Bayi
     <br>
 
     <div class="table-responsive">
-      <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
+      <table class="table table-bordered table-striped table-vcenter js-dataTable-full" id="table-bayi">
         <thead>
           <tr>
             <th class="text-center"></th>
@@ -135,5 +135,10 @@ Data Register Bayi
 @endsection
 
 @section('scripts')
-@include('assets.js-datatable')
+  @include('assets.js-datatable')
+  {{-- <script type="text/javascript">
+  $('#table-bayi').dataTable({
+
+  })
+</script> --}}
 @endsection
