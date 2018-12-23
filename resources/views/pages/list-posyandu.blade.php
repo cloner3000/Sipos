@@ -24,7 +24,7 @@ Daftar Anak
             <th>Nama Posyandu</th>
             <th>Desa</th>
             <th>Kecamatan</th>
-            <th>Kabupaten</th>
+            <th>Alamat</th>
             <th>Action</th>
           </tr>
         </thead>

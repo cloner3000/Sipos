@@ -21,8 +21,8 @@ Daftar Pasangan
         <thead>
           <tr>
             <th class="text-center"></th>
-            <th>Nama Ibu</th>
-            <th>Nama Ayah</th>
+            <th>Nama Suami</th>
+            <th>Nama Istri</th>
             <th>Kecamatan</th>
             <th>Desa</th>
             <th>Alamat</th>

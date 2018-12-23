@@ -12,7 +12,7 @@ Daftar Anak
 <div class="card">
   <div class="card-header">
     <h4>Daftar Anak</h4>
-    <button class="btn btn-app btn-block"  type="button" onclick="location.href='{{ route('add.posyandu') }}'" style="width: 100px; float:right;">Tambah</button>
+    <button class="btn btn-app btn-block"  type="button" onclick="location.href='{{ route('add.anak') }}'" style="width: 100px; float:right;">Tambah</button>
   </div>
 
   <div class="card-block">
@@ -21,10 +21,13 @@ Daftar Anak
         <thead>
           <tr>
             <th>No</th>
-            <th>Nama Posyandu</th>
-            <th>Desa</th>
-            <th>Kecamatan</th>
-            <th>Kabupaten</th>
+            <th>Nama Anak</th>
+            <th>Tempat Lahir</th>
+            <th>Tanggal Lahir</th>
+            <th>Berat Badan Lahir</th>
+            <th>Agama</th>
+            <th>Nama Ibu</th>
+            <th>Nama Ayah</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -40,7 +43,6 @@ Daftar Anak
             <td>Ayahnya Ahok</td>
             <td class="text-center">
               <div class="btn-group">
-                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Detail"><i class="ion-ios-information-outline" onclick="location.href='{{ url('/register-ibu-hamil/data/1') }}'"></i></button>
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button>
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Delete"><i class="ion-close"></i></button>
               </div>
@@ -56,7 +58,6 @@ Daftar Anak
             <td>Ayahnya Ahok</td>
             <td class="text-center">
               <div class="btn-group">
-                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Detail"><i class="ion-ios-information-outline" onclick="location.href='{{ url('/register-ibu-hamil/data/1') }}'"></i></button>
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button>
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Delete"><i class="ion-close"></i></button>
               </div>
@@ -72,7 +73,6 @@ Daftar Anak
             <td>Ayahnya Ahok</td>
             <td class="text-center">
               <div class="btn-group">
-                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Detail"><i class="ion-ios-information-outline" onclick="location.href='{{ url('/register-ibu-hamil/data/1') }}'"></i></button>
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button>
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Delete"><i class="ion-close"></i></button>
               </div>
