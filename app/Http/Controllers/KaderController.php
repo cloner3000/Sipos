@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 class KaderController extends Controller
 {
+
+    public $bulan = array(1 => 'Jan', 2 => 'Feb', 3 => 'Mar', 4 => 'Apr', 5 => 'Mei', 6 => 'Jun', 7 => 'Jul', 8 => 'Agu', 9 => 'Sept', 10 => 'Okt', 11 => 'Nov', 12 => 'Des');
+
     public function getCatatanPage()
     {
       return view('pages.catatan');
@@ -31,9 +34,21 @@ class KaderController extends Controller
       return $this->getRegisterBayi();
     }
 
+    public function getRegisterBayi011Tahun($tahun)
+    {
+      $bulan = $this->bulan;
+      return view('pages.register-bayi-011', compact('bulan', 'tahun'));
+    }
+
     public function getRegisterBayi1223()
     {
       return $this->getRegisterBayi();
+    }
+
+    public function getRegisterBayi1223Tahun($tahun)
+    {
+      $bulan = $this->bulan;
+      return view('pages.register-bayi-1223', compact('bulan', 'tahun'));
     }
 
     public function getRegisterBayi2435()
@@ -41,9 +56,21 @@ class KaderController extends Controller
       return $this->getRegisterBayi();
     }
 
+    public function getRegisterBayi2435Tahun($tahun)
+    {
+      $bulan = $this->bulan;
+      return view('pages.register-bayi-2435', compact('bulan', 'tahun'));
+    }
+
     public function getRegisterBayi3647()
     {
       return $this->getRegisterBayi();
+    }
+
+    public function getRegisterBayi3647Tahun($tahun)
+    {
+      $bulan = $this->bulan;
+      return view('pages.register-bayi-3647', compact('bulan', 'tahun'));
     }
 
     public function getRegisterBayi4859()
@@ -51,9 +78,15 @@ class KaderController extends Controller
       return $this->getRegisterBayi();
     }
 
+    public function getRegisterBayi4859Tahun($tahun)
+    {
+      $bulan = $this->bulan;
+      return view('pages.register-bayi-4859', compact('bulan', 'tahun'));
+    }
+
     public function getRegisterBayi()
     {
-      return view('pages.register-bayi');
+      return view('pages.pilih-tahun-register-bayi');
     }
 
     public function getRegisterBayiDataPage($id_bayi)
