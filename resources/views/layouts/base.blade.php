@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,900%7CRoboto+Slab:300,400%7CRoboto+Mono:400" />
 
   @include('assets.css-app')
+  <script src="{{ asset('js/core/jquery.min.js') }}"></script>
 
   @yield('stylesheets')
 </head>

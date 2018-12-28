@@ -31,62 +31,77 @@ class KaderController extends Controller
 
     public function getRegisterBayi011()
     {
-      return $this->getRegisterBayi();
+      $tahun = date("Y");
+      return redirect()->route('register.011.thn', compact('tahun'));
     }
 
     public function getRegisterBayi011Tahun($tahun)
     {
+      if(!is_numeric($tahun)){
+        return $this->getRegisterBayi011();
+      }
       $bulan = $this->bulan;
       return view('pages.register-bayi-011', compact('bulan', 'tahun'));
     }
 
     public function getRegisterBayi1223()
     {
-      return $this->getRegisterBayi();
+      $tahun = date("Y");
+      return redirect()->route('register.1223.thn', compact('tahun'));
     }
 
     public function getRegisterBayi1223Tahun($tahun)
     {
+      if(!is_numeric($tahun)){
+        return $this->getRegisterBayi1223();
+      }
       $bulan = $this->bulan;
       return view('pages.register-bayi-1223', compact('bulan', 'tahun'));
     }
 
     public function getRegisterBayi2435()
     {
-      return $this->getRegisterBayi();
+      $tahun = date("Y");
+      return redirect()->route('register.2435.thn', compact('tahun'));
     }
 
     public function getRegisterBayi2435Tahun($tahun)
     {
+      if(!is_numeric($tahun)){
+        return $this->getRegisterBayi2435();
+      }
       $bulan = $this->bulan;
       return view('pages.register-bayi-2435', compact('bulan', 'tahun'));
     }
 
     public function getRegisterBayi3647()
     {
-      return $this->getRegisterBayi();
+      $tahun = date("Y");
+      return redirect()->route('register.3647.thn', compact('tahun'));
     }
 
     public function getRegisterBayi3647Tahun($tahun)
     {
+      if(!is_numeric($tahun)){
+        return $this->getRegisterBayi3647();
+      }
       $bulan = $this->bulan;
       return view('pages.register-bayi-3647', compact('bulan', 'tahun'));
     }
 
     public function getRegisterBayi4859()
     {
-      return $this->getRegisterBayi();
+      $tahun = date("Y");
+      return redirect()->route('register.4859.thn', compact('tahun'));
     }
 
     public function getRegisterBayi4859Tahun($tahun)
     {
+      if(!is_numeric($tahun)){
+        return $this->getRegisterBayi4859();
+      }
       $bulan = $this->bulan;
       return view('pages.register-bayi-4859', compact('bulan', 'tahun'));
-    }
-
-    public function getRegisterBayi()
-    {
-      return view('pages.pilih-tahun-register-bayi');
     }
 
     public function getRegisterBayiDataPage($id_bayi)

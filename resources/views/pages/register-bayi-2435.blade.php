@@ -6,10 +6,12 @@ Register Bayi
 
 @section('stylesheets')
 @include('assets.css-datatable')
+<link rel="stylesheet" href="{{ asset('js/plugins/select2/select2.min.css') }}" />
+<link rel="stylesheet" href="{{ asset('js/plugins/select2/select2-bootstrap.css') }}" />
 @endsection
 
 @section('content')
-
+    @include('includes.select-year')
     <h2 class="section-title">Data Register Bayi Umur 24 - 35 Bulan tahun {{ $tahun }}</h2>
     <div class="row">
         <div class="col-lg-12">
@@ -76,4 +78,11 @@ Register Bayi
 
     @section('scripts')
     @include('assets.js-datatable')
+    <script src="{{ asset('js/plugins/select2/select2.full.min.js') }}"></script>
+    <script>
+      $(function()
+      {
+          App.initHelpers(['select2']);
+      });
+    </script>
     @endsection
