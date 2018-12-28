@@ -1,7 +1,7 @@
 @extends('layouts.base_dashboard')
 
 @section('title')
-Data Register Bayi
+Register Ibu Hamil
 @endsection
 
 @section('stylesheets')
@@ -11,65 +11,45 @@ Data Register Bayi
 @section('content')
 <div class="card">
   <div class="card-header">
-    <h4>Data Register Bayi</h4>
+    <h4>Register Ibu Hamil</h4>
     <button class="btn btn-app btn-block"  type="button" onclick="location.href='{{ url('/register-wuspus/tambah') }}'" style="width: 100px; float:right;">Tambah</button>
   </div>
 
   <div class="card-block">
-
-    Nama Anak : Ucok <br>
-    Tanggal Lahir : 10-12-2018 <br>
-    Berat Badan Lahir : 1.2 Kg <br>
-    Nama Ayah : Broto <br>
-    Nama Ibu : Ita <br>
-    <br>
-
     <div class="table-responsive">
-      <table class="table table-bordered table-striped table-vcenter js-dataTable-full" id="table-bayi">
+      <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
         <thead>
           <tr>
             <th class="text-center"></th>
-            <th>Bulan</th>
-            <th>Hasil Penimbangan</th>
-            <th>Status</th>
-            <th>Pemberian Asi</th>
-            <th>Vit-A</th>
-            <th>HB-0</th>
-            <th>BCG</th>
-            <th>DPT/HB I</th>
-            <th>DPT/HB II</th>
-            <th>DPT/HB III</th>
-            <th>Polio I</th>
-            <th>Polio II</th>
-            <th>Polio III</th>
-            <th>Polio IV</th>
-            <th>Polio V</th>
+            <th>Nama Bumil</th>
+            <th>Nama Suami</th>
+            <th>Umur</th>
+            <th>Tanggal Hamil</th>
+            <th>Umur Kehamilan</th>
+            <th>Hamil Ke-</th>
+            <th>LILA</th>
+            <th>Hb</th>
+            <th>PMT</th>
             <th>Action</th>
           </tr>
         </thead>
 
         <tbody>
           <!-- Body Data -->
-
           <tr>
+            <td>2</td>
+            <td>Ita</td>
+            <td>Sitorus</td>
+            <td>26 Tahun</td>
+            <td>08-08-2018</td>
+            <td>16 Minggu</td>
             <td>1</td>
-            <td>Desember</td>
-            <td>1.2</td>
-            <td>Baru</td>
-            <td>Ya</td>
-            <td> - </td>
-            <td>20-12-2018</td>
-            <td> - </td>
-            <td> - </td>
-            <td> - </td>
-            <td> - </td>
-            <td> - </td>
-            <td> - </td>
-            <td> - </td>
+            <td>12</td>
             <td> - </td>
             <td> - </td>
             <td class="text-center">
               <div class="btn-group">
+                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Detail"><i class="ion-ios-information-outline" onclick="location.href='{{ url('/register-ibu-hamil/data/1') }}'"></i></button>
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button>
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Delete"><i class="ion-close"></i></button>
               </div>
@@ -78,23 +58,18 @@ Data Register Bayi
 
           <tr>
             <td>2</td>
-            <td>Januari</td>
-            <td>1.9</td>
-            <td>Naik</td>
-            <td>Ya</td>
-            <td> - </td>
-            <td> - </td>
-            <td> - </td>
-            <td>12-01-2019</td>
-            <td> - </td>
-            <td> - </td>
-            <td> - </td>
-            <td> - </td>
-            <td> - </td>
+            <td>Ita</td>
+            <td>Sitorus</td>
+            <td>26 Tahun</td>
+            <td>08-08-2018</td>
+            <td>16 Minggu</td>
+            <td>1</td>
+            <td>12</td>
             <td> - </td>
             <td> - </td>
             <td class="text-center">
               <div class="btn-group">
+                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Detail"><i class="ion-ios-information-outline" onclick="location.href='{{ url('/register-ibu-hamil/data/1') }}'"></i></button>
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button>
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Delete"><i class="ion-close"></i></button>
               </div>
@@ -102,24 +77,19 @@ Data Register Bayi
           </tr>
 
           <tr>
-            <td>3</td>
-            <td>Februari</td>
-            <td>1.8</td>
-            <td>Turun</td>
-            <td>Ya</td>
-            <td> - </td>
-            <td> - </td>
-            <td>03-01-2019</td>
-            <td> - </td>
-            <td> - </td>
-            <td> - </td>
-            <td> - </td>
-            <td> - </td>
-            <td> - </td>
+            <td>1</td>
+            <td>Ita</td>
+            <td>Sitorus</td>
+            <td>26 Tahun</td>
+            <td>08-08-2018</td>
+            <td>16 Minggu</td>
+            <td>1</td>
+            <td>12</td>
             <td> - </td>
             <td> - </td>
             <td class="text-center">
               <div class="btn-group">
+                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Detail"><i class="ion-ios-information-outline" onclick="location.href='{{ url('/register-ibu-hamil/data/1') }}'"></i></button>
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button>
                 <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Delete"><i class="ion-close"></i></button>
               </div>
@@ -135,10 +105,5 @@ Data Register Bayi
 @endsection
 
 @section('scripts')
-  @include('assets.js-datatable')
-  {{-- <script type="text/javascript">
-  $('#table-bayi').dataTable({
-
-  })
-</script> --}}
+@include('assets.js-datatable')
 @endsection
