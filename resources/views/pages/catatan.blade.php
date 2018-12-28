@@ -1,7 +1,7 @@
 @extends('layouts.base_dashboard')
 
 @section('title')
-Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
+Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
 @endsection
 
 @section('stylesheets')
@@ -16,7 +16,7 @@ Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
   </div>
 
   <div class="card-block">
-    <div class="table-responsive">
+    {{-- <div class="table-responsive"> --}}
       <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
         <thead>
           <tr>
@@ -25,10 +25,12 @@ Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
             <th>Nama Ayah</th>
             <th>Nama Bayi</th>
             <th>Tanggal Lahir</th>
-            <th>Ibu*</th>
-            <th>Bayi*</th>
-            <th>Umur</th>
-            <th>Penyebab</th>
+            <th>Tanggal Meninggal Ibu</th>
+            <th>Tanggal Meninggal Bayi</th>
+            <th>Umur Meninggal Bayi (hari)</th>
+            <th>Penyebab Meninggal Bayi</th>
+            <th>Umur Meninggal Ibu (tahun)</th>
+            <th>Penyebab Meninggal Ibu</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -45,22 +47,6 @@ Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
             <td>Bayi</td>
             <td>Umur</td>
             <td>Penyebab</td>
-            <td class="text-center">
-              <div class="btn-group">
-                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit client"><i class="ion-edit"></i></button>
-                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove client"><i class="ion-close"></i></button>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td>2</td>
-            <td>Nama Ibu</td>
-            <td>Nama Ayah</td>
-            <td>Nama Bayi</td>
-            <td>Tanggal Lahir</td>
-            <td>Ibu</td>
-            <td>Bayi</td>
             <td>Umur</td>
             <td>Penyebab</td>
             <td class="text-center">
@@ -71,27 +57,10 @@ Tambah Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
             </td>
           </tr>
 
-          <tr>
-            <td>3</td>
-            <td>Nama Ibu</td>
-            <td>Nama Ayah</td>
-            <td>Nama Bayi</td>
-            <td>Tanggal Lahir</td>
-            <td>Ibu</td>
-            <td>Bayi</td>
-            <td>Umur</td>
-            <td>Penyebab</td>
-            <td class="text-center">
-              <div class="btn-group">
-                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit client"><i class="ion-edit"></i></button>
-                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove client"><i class="ion-close"></i></button>
-              </div>
-            </td>
-          </tr>
           <!-- End of Body Data -->
         </tbody>
       </table>
-    </div>
+    {{-- </div> --}}
   </div>
 
 </div>
