@@ -5,14 +5,15 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property int $id_posyandu
+ * @property int $id
  * @property int $id_desa
+ * @property int $id_user
  * @property string $no_posyandu
  * @property string $nama_posyandu
- * @property int $id_ku
  * @property string $timestamps
  * @property Desa $desa
- * @property Ibu[] $ibus
+ * @property User $user
+ * @property User[] $users
  */
 class Posyandu extends Model
 {
@@ -24,30 +25,31 @@ class Posyandu extends Model
     protected $table = 'posyandu';
 
     /**
-     * The primary key for the model.
-     * 
-     * @var string
-     */
-    protected $primaryKey = 'id_posyandu';
-
-    /**
      * @var array
      */
-    protected $fillable = ['id_desa', 'no_posyandu', 'nama_posyandu', 'id_ku', 'timestamps'];
+    protected $fillable = ['id_desa', 'id_user', 'no_posyandu', 'nama_posyandu', 'timestamps'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function desa()
     {
-        return $this->belongsTo('App\Desa', 'id_desa', 'id_desa');
+        return $this->belongsTo('App\Desa', 'id_desa');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'id_user');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function ibus()
+    public function users()
     {
-        return $this->hasMany('App\Ibu', 'id_posyandu', 'id_posyandu');
+        return $this->hasMany('App\User', 'id_posyandu');
     }
 }

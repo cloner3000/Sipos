@@ -5,13 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property int $id_kecamatan
- * @property string $no_kecamatan
+ * @property int $id
+ * @property int $id_kabupaten
+ * @property int $id_user
  * @property string $nama_kecamatan
- * @property int $id_ku
  * @property string $timestamps
+ * @property Kabupaten $kabupaten
+ * @property User $user
  * @property Desa[] $desas
- * @property Puskesma[] $puskesmas
  */
 class Kecamatan extends Model
 {
@@ -23,30 +24,31 @@ class Kecamatan extends Model
     protected $table = 'kecamatan';
 
     /**
-     * The primary key for the model.
-     * 
-     * @var string
-     */
-    protected $primaryKey = 'id_kecamatan';
-
-    /**
      * @var array
      */
-    protected $fillable = ['no_kecamatan', 'nama_kecamatan', 'id_ku', 'timestamps'];
+    protected $fillable = ['id_kabupaten', 'id_user', 'nama_kecamatan', 'timestamps'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function kabupaten()
+    {
+        return $this->belongsTo('App\Kabupaten', 'id_kabupaten');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'id_user');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function desas()
     {
-        return $this->hasMany('App\Desa', 'id_kecamatan', 'id_kecamatan');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function puskesmas()
-    {
-        return $this->hasMany('App\Puskesma', 'id_kecamatan', 'id_kecamatan');
+        return $this->hasMany('App\Desa', 'id_kecamatan');
     }
 }

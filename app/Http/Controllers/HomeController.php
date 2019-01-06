@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\Helpers\KeyHelper;
 
 class HomeController extends Controller
 {
@@ -21,6 +23,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function regToken()
+    {
+      KeyHelper::createKey(Auth::user());
+      return redirect()->route('home');
+    }
+
     public function index()
     {
         return view('home');

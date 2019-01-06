@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/regtoken', 'HomeController@regToken');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/test', function() { return view('home'); });
 Route::get('/catatan', 'KaderController@getCatatanPage');
 Route::get('/catatan/tambah', 'KaderController@addCatatan');
 
@@ -52,3 +52,14 @@ Route::get('/list-posyandu', 'KaderController@getListPosyandu');
 Route::get('/list-posyandu/tambah', 'KaderController@addListPosyandu')->name('add.posyandu');
 Route::get('/list-desa', 'KaderController@getListDesa');
 Route::get('/list-desa/tambah', 'KaderController@addListDesa')->name('add.desa');
+
+
+Route::name('ajax.')->group(function (){
+  Route::get('/ajax/{key}/hello', 'AjaxController@getCatatanApi');
+});
+
+
+
+Route::get('/test', function(){
+  return App\Helpers\KeyHelper::generateKey(1);
+});

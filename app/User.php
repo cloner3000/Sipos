@@ -20,18 +20,18 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable
 {
-  
+
     use Notifiable;
     /**
      * @var array
      */
-    protected $fillable = ['id_role', 'name', 'email', 'email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at'];
+    protected $fillable = ['id_role', 'name', 'email', 'email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at', 'token_key'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function role()
     {
-        return $this->belongsTo('App\Role', 'id_role', 'id_role');
+        return $this->belongsTo('App\Role', 'id_role');
     }
 }

@@ -8,30 +8,32 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $id_pasangan
  * @property int $id_user
- * @property string $nama_anak
- * @property string $tanggal_lahir
+ * @property string $nama
+ * @property string $nik
  * @property string $jenis_kelamin
- * @property float $berat_bayi_lahir
+ * @property string $tempat_lahir
+ * @property string $tanggal_lahir
+ * @property string $agama
+ * @property string $pendidikan_terakhir
+ * @property string $pekerjaan
  * @property boolean $status
  * @property string $timestamps
  * @property Pasangan $pasangan
  * @property User $user
- * @property Catatan[] $catatans
- * @property RegisterBayi[] $registerBayis
  */
-class Anak extends Model
+class OrangTua extends Model
 {
     /**
      * The table associated with the model.
      * 
      * @var string
      */
-    protected $table = 'anak';
+    protected $table = 'ortu';
 
     /**
      * @var array
      */
-    protected $fillable = ['id_pasangan', 'id_user', 'nama_anak', 'tanggal_lahir', 'jenis_kelamin', 'berat_bayi_lahir', 'status', 'timestamps'];
+    protected $fillable = ['id_pasangan', 'id_user', 'nama', 'nik', 'jenis_kelamin', 'tempat_lahir', 'tanggal_lahir', 'agama', 'pendidikan_terakhir', 'pekerjaan', 'status', 'timestamps'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -47,21 +49,5 @@ class Anak extends Model
     public function user()
     {
         return $this->belongsTo('App\User', 'id_user');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function catatans()
-    {
-        return $this->hasMany('App\Catatan', 'id_anak');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function registerBayis()
-    {
-        return $this->hasMany('App\RegisterBayi', 'id_anak');
     }
 }
