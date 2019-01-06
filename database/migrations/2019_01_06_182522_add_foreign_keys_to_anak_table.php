@@ -14,7 +14,8 @@ class AddForeignKeysToAnakTable extends Migration {
 	{
 		Schema::table('anak', function(Blueprint $table)
 		{
-			$table->foreign('id_ibu', 'anak_ibfk_1')->references('id_ibu')->on('ibu')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('id_pasangan', 'anak_ibfk_1')->references('id')->on('pasangan')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('id_user', 'anak_ibfk_2')->references('id')->on('users')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
@@ -29,6 +30,7 @@ class AddForeignKeysToAnakTable extends Migration {
 		Schema::table('anak', function(Blueprint $table)
 		{
 			$table->dropForeign('anak_ibfk_1');
+			$table->dropForeign('anak_ibfk_2');
 		});
 	}
 

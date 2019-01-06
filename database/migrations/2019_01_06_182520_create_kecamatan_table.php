@@ -14,11 +14,11 @@ class CreateKecamatanTable extends Migration {
 	{
 		Schema::create('kecamatan', function(Blueprint $table)
 		{
-			$table->integer('id_kecamatan', true);
-			$table->string('no_kecamatan', 32);
+			$table->integer('id', true);
+			$table->integer('id_kabupaten')->index('id_kabupaten');
 			$table->string('nama_kecamatan', 32);
-			$table->integer('id_ku');
-			$table->dateTime('timestamps');
+			$table->integer('id_user')->unsigned()->index('id_user');
+			$table->timestamp('timestamps')->default(DB::raw('CURRENT_TIMESTAMP'));
 		});
 	}
 

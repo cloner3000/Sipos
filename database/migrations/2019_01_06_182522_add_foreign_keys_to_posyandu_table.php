@@ -14,7 +14,8 @@ class AddForeignKeysToPosyanduTable extends Migration {
 	{
 		Schema::table('posyandu', function(Blueprint $table)
 		{
-			$table->foreign('id_desa', 'posyandu_ibfk_1')->references('id_desa')->on('desa')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('id_desa', 'posyandu_ibfk_1')->references('id')->on('desa')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('id_user', 'posyandu_ibfk_2')->references('id')->on('users')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
@@ -29,6 +30,7 @@ class AddForeignKeysToPosyanduTable extends Migration {
 		Schema::table('posyandu', function(Blueprint $table)
 		{
 			$table->dropForeign('posyandu_ibfk_1');
+			$table->dropForeign('posyandu_ibfk_2');
 		});
 	}
 

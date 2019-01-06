@@ -14,13 +14,11 @@ class CreateDesaTable extends Migration {
 	{
 		Schema::create('desa', function(Blueprint $table)
 		{
-			$table->integer('id_desa', true);
-			$table->string('no_desa', 32);
+			$table->integer('id', true);
 			$table->string('nama_desa', 32);
 			$table->integer('id_kecamatan')->index('id_kecamatan');
-			$table->integer('id_ku');
-			$table->dateTime('timestamp');
-			$table->string('no_puskesmas', 32);
+			$table->integer('id_user')->unsigned()->index('id_user');
+			$table->timestamp('timestamp')->default(DB::raw('CURRENT_TIMESTAMP'));
 		});
 	}
 

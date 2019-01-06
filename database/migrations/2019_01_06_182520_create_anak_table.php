@@ -14,19 +14,15 @@ class CreateAnakTable extends Migration {
 	{
 		Schema::create('anak', function(Blueprint $table)
 		{
-			$table->integer('id_anak', true);
-			$table->string('no_anak', 32);
-			$table->integer('id_ibu')->index('id_ibu');
-			$table->integer('anak_ke');
-			$table->string('nama', 32);
+			$table->integer('id', true);
+			$table->integer('id_pasangan')->index('id_pasangan');
+			$table->string('nama_anak', 32);
 			$table->date('tanggal_lahir');
 			$table->string('jenis_kelamin', 16);
-			$table->date('tanggal_meninggal')->nullable();
-			$table->string('penyebab_meninggal', 64)->nullable();
-			$table->string('penolong_persalinan', 32)->nullable();
-			$table->integer('berat_bayi_lahir');
-			$table->integer('id_ku');
-			$table->dateTime('timestamps');
+			$table->float('berat_bayi_lahir', 10, 0);
+			$table->boolean('status');
+			$table->integer('id_user')->unsigned()->index('id_user');
+			$table->timestamp('timestamps')->default(DB::raw('CURRENT_TIMESTAMP'));
 		});
 	}
 
