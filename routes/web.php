@@ -17,7 +17,8 @@ Route::get('/regtoken', 'HomeController@regToken');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/catatan', 'KaderController@getCatatanPage');
+Route::get('/catatan', 'KaderController@getCatatanPage')->name('catatan');
+Route::get('/catatan/{id}/edit', 'KaderController@getEditCatatan')->name('edit.catatan');
 Route::get('/catatan/tambah', 'KaderController@addCatatan');
 
 Route::get('/register-bayi/0-11', 'KaderController@getRegisterBayi011')->name('register.011');
@@ -56,6 +57,10 @@ Route::get('/list-desa/tambah', 'KaderController@addListDesa')->name('add.desa')
 
 Route::name('ajax.')->group(function (){
   Route::get('/ajax/{key}/hello', 'AjaxController@getCatatanApi');
+});
+
+Route::name('crud.')->group(function(){
+  Route::post('/crud/{key}/edit_catatan', 'CrudController@editCatatan')->name('edit.catatan');
 });
 
 

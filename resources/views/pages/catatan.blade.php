@@ -16,28 +16,28 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
   </div>
 
   <div class="card-block">
-    {{-- <div class="table-responsive"> --}}
-      <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped table-vcenter " id="catatan-table">
         <thead>
           <tr>
-            <th class="text-center"></th>
+            <th>No</th>
             <th>Nama Ibu</th>
             <th>Nama Ayah</th>
             <th>Nama Bayi</th>
             <th>Tanggal Lahir</th>
-            <th>Tanggal Meninggal Ibu</th>
             <th>Tanggal Meninggal Bayi</th>
             <th>Umur Meninggal Bayi (hari)</th>
             <th>Penyebab Meninggal Bayi</th>
+            <th>Tanggal Meninggal Ibu</th>
             <th>Umur Meninggal Ibu (tahun)</th>
             <th>Penyebab Meninggal Ibu</th>
             <th>Action</th>
           </tr>
         </thead>
 
-        <tbody>
+        <!-- <tbody> -->
           <!-- Body Data -->
-          <tr>
+          <!-- <tr>
             <td>1</td>
             <td>Nama Ibu</td>
             <td>Nama Ayah</td>
@@ -51,16 +51,16 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
             <td>Penyebab</td>
             <td class="text-center">
               <div class="btn-group">
-                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit client"><i class="ion-edit"></i></button>
-                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove client"><i class="ion-close"></i></button>
+                <a href="#"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit client"><i class="ion-edit"></i></button></a>
+                <a href="#"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove client"><i class="ion-close"></i></button></a>
               </div>
             </td>
-          </tr>
+          </tr> -->
 
           <!-- End of Body Data -->
-        </tbody>
+        <!-- </tbody> -->
       </table>
-    {{-- </div> --}}
+    </div>
   </div>
 
 </div>
@@ -68,4 +68,38 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
 
 @section('scripts')
 @include('assets.js-datatable')
+<script>
+  $(document).ready(function (){
+    $('#catatan-table').DataTable({
+      processing: true,
+      serverSide: true,
+      responsive: true,
+      ajax: 'http://localhost:8000/ajax/{{Auth::user()->token_key}}/hello',
+      columns: [
+        { data: 'no', name: 'no' },
+        { data: 'nama_ibu', name: 'nama_ibu' },
+        { data: 'nama_ayah', name: 'nama_ayah' },
+        { data: 'anak.nama_anak', name: 'anak.nama_anak' },
+        { data: 'tanggal_lahir_anak', name: 'tanggal_lahir_anak' },
+        { data: 'tanggal_meninggal_bayi', name: 'tanggal_meninggal_bayi' },
+        { data: 'umur_meninggal_bayi', name: 'umur_meninggal_bayi' },
+        { data: 'penyebab_meninggal_bayi', name: 'penyebab_meninggal_bayi' },
+        { data: 'tanggal_meninggal_ibu', name: 'tanggal_meninggal_ibu' },
+        { data: 'umur_meninggal_ibu', name: 'umur_meninggal_ibu' },
+        { data: 'penyebab_meninggal_ibu', name: 'penyebab_meninggal_ibu' },
+        {
+          data: 'id',
+          render: function(data, type, row){
+            var d = data;
+            return '<td class="text-center">' +
+              '<div class="btn-group">' +
+                '<a href="{{route("edit.catatan", ["id" => ])}}"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit client"><i class="ion-edit"></i></button></a>' +
+                '<a href="#"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove client"><i class="ion-close"></i></button></a>' +
+              '</div></td>';
+          }
+        }
+      ]
+    });
+  });
+</script>
 @endsection
