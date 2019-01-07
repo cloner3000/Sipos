@@ -31,4 +31,9 @@ class CrudController extends Controller
 
       return redirect()->route('catatan');
     }
+
+    public function tambahPasangan(Request $request)
+    {
+
+    }
 }

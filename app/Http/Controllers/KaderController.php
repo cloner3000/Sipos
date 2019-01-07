@@ -131,6 +131,11 @@ class KaderController extends Controller
       return view('pages.list-pasangan');
     }
 
+    public function getDetailPasangan($id)
+    {
+      return $id;
+    }
+
     public function addListPasangan()
     {
       return view('pages.add.add_list-pasangan');

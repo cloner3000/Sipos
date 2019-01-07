@@ -10,14 +10,14 @@ use App\Pasangan;
 use App\OrangTua;
 use App\Anak;
 use App\User;
+use Auth;
 use DataTables;
-
 
 class AjaxController extends Controller
 {
     public function getCatatanApi($key)
     {
-        if (KeyHelper::checkKey(1, $key)) {
+        if (KeyHelper::checkKey(Auth::user()->id, $key)) {
             $data = Catatan::with(['anak', 'anak.pasangan.ortus'])->get();
             $i = 1;
             foreach ($data as $d) {
@@ -35,16 +35,13 @@ class AjaxController extends Controller
                 $d->nama_ibu = $ibu->nama;
                 $d->tanggal_lahir_anak = DateHelper::YMDtoDMY($d->anak->tanggal_lahir);
 
-                if ($d->meninggal != NULL) {
+                if ($d->meninggal != null) {
                     if ($d->meninggal == 1) {
                         $d->umur_meninggal_bayi = DateHelper::YMDSubstract($d->anak->tanggal_lahir, $d->tanggal_meninggal)->d;
                         $d->penyebab_meninggal_bayi = $d->penyebab_meninggal;
                         $d->tanggal_meninggal_bayi = DateHelper::YMDtoDMY($d->tanggal_meninggal);
-                    } else if($d->meninggal == 2) {
-                        // return $ibu->tanggal_lahir . " ||| " . $d->tanggal_meninggal;
-                        // return DateHelper::YMDSubstract($ibu->tanggal_lahir, $d->tanggal_meninggal);
+                    } elseif ($d->meninggal == 2) {
                         $d->umur_meninggal_ibu = DateHelper::YMDSubstract($ibu->tanggal_lahir, $d->tanggal_meninggal)->y;
-                        // $d->umur_meninggal_ibu = date('d-m-Y', (strtotime($d->tanggal_meninggal) - strtotime($ibu->tanggal_lahir)));
                         $d->penyebab_meninggal_ibu = $d->penyebab_meninggal;
                         $d->tanggal_meninggal_ibu = DateHelper::YMDtoDMY($d->tanggal_meninggal);
                     }
@@ -53,6 +50,43 @@ class AjaxController extends Controller
             return DataTables::of($data)->make(true);
             // DataTables::of($data);
         }
+        return 'lo cp?';
+    }
+
+    public function getPasanganApi($key)
+    {
+      // return KeyHelper::checkKey(Auth::user()->id, $key) . '';
+        if (KeyHelper::checkKey(Auth::user()->id, $key)) {
+            $data = Pasangan::with('ortus', 'anaks', 'desa', 'desa.kecamatan')->get();
+            $i = 1;
+            foreach ($data as $d) {
+                $d->no = $i++;
+                $d->tanggal_menikah = DateHelper::YMDtoDMY($d->tanggal_menikah);
+                $d->ayah = $d->ortus[0]->jenis_kelamin == 'Laki-Laki' ? $d->ortus[0] : $d->ortus[1];
+                $d->ibu = $d->ortus[0]->jenis_kelamin == 'Perempuan' ? $d->ortus[0] : $d->ortus[1];
+                $d->jumlah_anak = count($d->anaks);
+            }
+
+            return DataTables::of($data)->make(true);
+        }
+
+        return 'lo cp?';
+    }
+
+    public function getAnakApi($key)
+    {
+      // return KeyHelper::checkKey(Auth::user()->id, $key) . '';
+        if (KeyHelper::checkKey(Auth::user()->id, $key)) {
+            $data = Anak::with('pasangan')->get();
+            $i = 1;
+            foreach($data as $d){
+              $d->no = $i++;
+              
+            }
+
+            return DataTables::of($data)->make(true);
+        }
+
         return 'lo cp?';
     }
 }

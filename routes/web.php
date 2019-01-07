@@ -19,7 +19,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/catatan', 'KaderController@getCatatanPage')->name('catatan');
 Route::get('/catatan/{id}/edit', 'KaderController@getEditCatatan')->name('edit.catatan');
-Route::get('/catatan/tambah', 'KaderController@addCatatan');
+// Route::get('/catatan/tambah', 'KaderController@addCatatan');
 
 Route::get('/register-bayi/0-11', 'KaderController@getRegisterBayi011')->name('register.011');
 Route::get('/register-bayi/12-23', 'KaderController@getRegisterBayi1223')->name('register.1223');
@@ -45,9 +45,10 @@ Route::get('/register-ibu-hamil/tambah', 'KaderController@addRegisterIbuHamil');
 Route::get('/register-ibu-hamil/data/{id}', 'KaderController@getRegisterIbuHamilDataPage');
 Route::get('/register-ibu-hamil/data/{id}/tambah', 'KaderController@addRegisterIbuHamilData');
 
-Route::get('/list-pasangan', 'KaderController@getListPasangan');
-Route::get('/list-pasangan/tambah', 'KaderController@addListPasangan')->name('add.pasangan');
-Route::get('/list-anak', 'KaderController@getListAnak');
+Route::get('/pasangan', 'KaderController@getListPasangan');
+Route::get('/pasangan/{id}', 'KaderController@getDetailPasangan');
+Route::get('/pasangan/tambah', 'KaderController@addListPasangan')->name('add.pasangan');
+Route::get('/anak', 'KaderController@getListAnak');
 Route::get('/list-anak/tambah', 'KaderController@addListAnak')->name('add.anak');
 Route::get('/list-posyandu', 'KaderController@getListPosyandu');
 Route::get('/list-posyandu/tambah', 'KaderController@addListPosyandu')->name('add.posyandu');
@@ -56,11 +57,14 @@ Route::get('/list-desa/tambah', 'KaderController@addListDesa')->name('add.desa')
 
 
 Route::name('ajax.')->group(function (){
-  Route::get('/ajax/{key}/hello', 'AjaxController@getCatatanApi');
+  Route::get('/ajax/{key}/catatan', 'AjaxController@getCatatanApi')->name('catatan');
+  Route::get('/ajax/{key}/list-pasangan', 'AjaxController@getPasanganApi')->name('list-pasangan');
+  Route::get('/ajax/{key}/list-anak', 'AjaxController@getAnakApi')->name('list-anak');
 });
 
 Route::name('crud.')->group(function(){
   Route::post('/crud/{key}/edit_catatan', 'CrudController@editCatatan')->name('edit.catatan');
+  Route::post('/crud/{key}/tambah_pasangan', 'CrudController@tambahPasangan')->name('add.pasangan');
 });
 
 

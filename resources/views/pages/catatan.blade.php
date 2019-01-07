@@ -12,7 +12,6 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
 <div class="card">
   <div class="card-header">
     <h4>Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas</h4>
-    <button class="btn btn-app btn-block"  type="button" onclick="location.href='{{ url('/catatan/tambah') }}'" style="width: 100px; float:right;">Tambah</button>
   </div>
 
   <div class="card-block">
@@ -34,31 +33,7 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
             <th>Action</th>
           </tr>
         </thead>
-
-        <!-- <tbody> -->
-          <!-- Body Data -->
-          <!-- <tr>
-            <td>1</td>
-            <td>Nama Ibu</td>
-            <td>Nama Ayah</td>
-            <td>Nama Bayi</td>
-            <td>Tanggal Lahir</td>
-            <td>Ibu</td>
-            <td>Bayi</td>
-            <td>Umur</td>
-            <td>Penyebab</td>
-            <td>Umur</td>
-            <td>Penyebab</td>
-            <td class="text-center">
-              <div class="btn-group">
-                <a href="#"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit client"><i class="ion-edit"></i></button></a>
-                <a href="#"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove client"><i class="ion-close"></i></button></a>
-              </div>
-            </td>
-          </tr> -->
-
-          <!-- End of Body Data -->
-        <!-- </tbody> -->
+        <!-- Table Body -->
       </table>
     </div>
   </div>
@@ -74,7 +49,8 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
       processing: true,
       serverSide: true,
       responsive: true,
-      ajax: 'http://localhost:8000/ajax/{{Auth::user()->token_key}}/hello',
+      dom : 'lf<"table-responsive"t>ip',
+      ajax: '{{ route("ajax.catatan", ["key" => Auth::user()->token_key]) }}',
       columns: [
         { data: 'no', name: 'no' },
         { data: 'nama_ibu', name: 'nama_ibu' },
@@ -93,7 +69,6 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
             return '<td class="text-center">' +
               '<div class="btn-group">' +
                 '<a href="/catatan/'+data+'/edit"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit client"><i class="ion-edit"></i></button></a>' +
-                '<a href="#"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove client"><i class="ion-close"></i></button></a>' +
               '</div></td>';
           }
         }

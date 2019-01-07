@@ -61,11 +61,11 @@
         </li>
 
         <li class="nav-item">
-          <a href="/list-pasangan"><i class="ion-android-add-circle"></i>Daftar Pasangan</a>
+          <a href="/pasangan"><i class="ion-android-add-circle"></i>Daftar Pasangan</a>
         </li>
 
         <li class="nav-item">
-          <a href="/list-anak"><i class="ion-android-add-circle"></i>Daftar Anak</a>
+          <a href="/anak"><i class="ion-android-add-circle"></i>Daftar Anak</a>
         </li>
 
         <li class="nav-item">
