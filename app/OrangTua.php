@@ -17,7 +17,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $pendidikan_terakhir
  * @property string $pekerjaan
  * @property boolean $status
- * @property string $timestamps
+ * @property string $created_at
+ * @property string $updated_at
  * @property Pasangan $pasangan
  * @property User $user
  */
@@ -33,7 +34,7 @@ class OrangTua extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_pasangan', 'id_user', 'nama', 'nik', 'jenis_kelamin', 'tempat_lahir', 'tanggal_lahir', 'agama', 'pendidikan_terakhir', 'pekerjaan', 'status', 'timestamps'];
+    protected $fillable = ['id_pasangan', 'id_user', 'nama', 'nik', 'jenis_kelamin', 'tempat_lahir', 'tanggal_lahir', 'agama', 'pendidikan_terakhir', 'pekerjaan', 'status', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

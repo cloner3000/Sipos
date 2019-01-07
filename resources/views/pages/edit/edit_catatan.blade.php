@@ -19,7 +19,7 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
     <form class="form-horizontal m-t-sm" action="{{ route('crud.edit.catatan', compact('key')) }}" method="post">
 
       <input type="hidden" name="id" value="{{$data->id}}">
-      @csrf_field()
+      {{csrf_field()}}
 
       <div class="form-group">
         <div class="col-xs-12">

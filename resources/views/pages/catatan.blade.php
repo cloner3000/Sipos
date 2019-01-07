@@ -90,10 +90,9 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
         {
           data: 'id',
           render: function(data, type, row){
-            var d = data;
             return '<td class="text-center">' +
               '<div class="btn-group">' +
-                '<a href="{{route("edit.catatan", ["id" => ])}}"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit client"><i class="ion-edit"></i></button></a>' +
+                '<a href="/catatan/'+data+'/edit"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit client"><i class="ion-edit"></i></button></a>' +
                 '<a href="#"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove client"><i class="ion-close"></i></button></a>' +
               '</div></td>';
           }

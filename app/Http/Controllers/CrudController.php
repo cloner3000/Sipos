@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Helpers\KeyHelper;
+use App\Helpers\DateHelper;
 use App\Catatan;
 use App\Pasangan;
 use App\OrangTua;
@@ -19,9 +20,11 @@ class CrudController extends Controller
         return 'Token Failed';
       }
 
+      // return DateHelper::convertDate($request->tanggal_meninggal);
+
       $data = Catatan::find($request->id);
       $data->meninggal = $request->meninggal;
-      $data->tanggal_meninggal = date('Y-m-d', strtotime($request->tanggal_meninggal));
+      $data->tanggal_meninggal = DateHelper::DMYtoYMD($request->tanggal_meninggal);
       $data->penyebab_meninggal = $request->penyebab_meninggal;
 
       $data->save();

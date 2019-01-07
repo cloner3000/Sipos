@@ -13,7 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $jenis_kelamin
  * @property float $berat_bayi_lahir
  * @property boolean $status
- * @property string $timestamps
+ * @property string $created_at
+ * @property string $updated_at
  * @property Pasangan $pasangan
  * @property User $user
  * @property Catatan[] $catatans
@@ -31,7 +32,7 @@ class Anak extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_pasangan', 'id_user', 'nama_anak', 'tanggal_lahir', 'jenis_kelamin', 'berat_bayi_lahir', 'status', 'timestamps'];
+    protected $fillable = ['id_pasangan', 'id_user', 'nama_anak', 'tanggal_lahir', 'jenis_kelamin', 'berat_bayi_lahir', 'status', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
