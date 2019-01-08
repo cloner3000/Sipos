@@ -32,10 +32,7 @@ Route::get('/register-bayi/24-35/{tahun}', 'KaderController@getRegisterBayi2435T
 Route::get('/register-bayi/36-47/{tahun}', 'KaderController@getRegisterBayi3647Tahun')->name('register.3647.thn');
 Route::get('/register-bayi/48-59/{tahun}', 'KaderController@getRegisterBayi4859Tahun')->name('register.4859.thn');
 
-
-// Route::get('/register-bayi/tambah', 'KaderController@addRegisterBayi');
 Route::get('/register-bayi/data/{id_bayi}', 'KaderController@getRegisterBayiDataPage');
-// Route::get('/register-bayi/data/{id_bayi}/tambah', 'KaderController@addRegisterBayiData');
 
 Route::get('/register-wuspus', 'KaderController@getRegisterWuspusPage');
 Route::get('/register-wuspus/tambah', 'KaderController@addRegisterWuspus');
@@ -48,8 +45,8 @@ Route::get('/register-ibu-hamil/data/{id}/tambah', 'KaderController@addRegisterI
 Route::get('/pasangan', 'KaderController@getListPasangan');
 Route::get('/pasangan/{id}', 'KaderController@getDetailPasangan');
 Route::get('/pasangan/tambah', 'KaderController@addListPasangan')->name('add.pasangan');
-Route::get('/anak', 'KaderController@getListAnak');
-Route::get('/list-anak/tambah', 'KaderController@addListAnak')->name('add.anak');
+Route::get('/anak', 'KaderController@getListAnak')->name('get.page.list-anak');
+Route::get('/anak/tambah', 'KaderController@addListAnak')->name('add.anak');
 Route::get('/list-posyandu', 'KaderController@getListPosyandu');
 Route::get('/list-posyandu/tambah', 'KaderController@addListPosyandu')->name('add.posyandu');
 Route::get('/list-desa', 'KaderController@getListDesa');
@@ -64,7 +61,8 @@ Route::name('ajax.')->group(function (){
 
 Route::name('crud.')->group(function(){
   Route::post('/crud/{key}/edit_catatan', 'CrudController@editCatatan')->name('edit.catatan');
-  Route::post('/crud/{key}/tambah_pasangan', 'CrudController@tambahPasangan')->name('add.pasangan');
+  Route::post('/crud/{key}/add_pasangan', 'CrudController@addPasangan')->name('add.pasangan');
+  Route::post('/crud/{key}/add_anak', 'CrudController@addAnak')->name('add.anak');
 });
 
 

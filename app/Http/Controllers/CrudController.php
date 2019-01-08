@@ -32,8 +32,29 @@ class CrudController extends Controller
       return redirect()->route('catatan');
     }
 
-    public function tambahPasangan(Request $request)
+    public function addPasangan(Request $request)
     {
 
+    }
+
+    public function addAnak(Request $request)
+    {
+      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
+        return 'Token Failed';
+      }
+
+      $d = Anak::create([
+        "id_pasangan" => $request->pasangan,
+        "nama_anak" => $request->nama,
+        "tempat_lahir" => $request->tempat_lahir,
+        "tanggal_lahir" => DateHelper::DMYtoYMD($request->tanggal_lahir),
+        "jenis_kelamin" => $request->jenis_kelamin,
+        "berat_bayi_lahir" => $request->berat_lahir,
+        "id_agama" => $request->agama,
+        "status" => 1,
+        "id_user" => Auth::user()->id
+      ]);
+
+      return redirect()->route('get.page.list-anak');
     }
 }

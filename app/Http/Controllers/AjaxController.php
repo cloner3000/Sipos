@@ -77,11 +77,14 @@ class AjaxController extends Controller
     {
       // return KeyHelper::checkKey(Auth::user()->id, $key) . '';
         if (KeyHelper::checkKey(Auth::user()->id, $key)) {
-            $data = Anak::with('pasangan')->get();
+            $data = Anak::with('pasangan.ortus', 'agama')->get();
             $i = 1;
             foreach($data as $d){
               $d->no = $i++;
-              
+              $d->ayah = $d->pasangan->ortus[0]->jenis_kelamin == 'Laki-Laki' ? $d->pasangan->ortus[0] : $d->pasangan->ortus[1];
+              $d->ibu = $d->pasangan->ortus[0]->jenis_kelamin == 'Perempuan' ? $d->pasangan->ortus[0] : $d->pasangan->ortus[1];
+              $d->status_hidup = $d->status == 1 ? 'Hidup' : 'Mati';
+
             }
 
             return DataTables::of($data)->make(true);

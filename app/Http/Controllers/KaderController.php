@@ -7,6 +7,7 @@ use App\Helpers\KeyHelper;
 use App\Catatan;
 use App\Pasangan;
 use App\OrangTua;
+use App\Agama;
 use App\Anak;
 use App\User;
 use Auth;
@@ -148,7 +149,9 @@ class KaderController extends Controller
 
     public function addListAnak()
     {
-      return view('pages.add.add_list-anak');
+      $agamas = Agama::get();
+      $pasangans = Pasangan::with('ortus')->select('id')->get();
+      return view('pages.add.add_list-anak', compact('agamas', 'pasangans'));
     }
 
     public function getListPosyandu()

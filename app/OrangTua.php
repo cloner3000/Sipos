@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
+ * @property int $id_agama
  * @property int $id_pasangan
  * @property int $id_user
  * @property string $nama
@@ -13,7 +14,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $jenis_kelamin
  * @property string $tempat_lahir
  * @property string $tanggal_lahir
- * @property string $agama
  * @property string $pendidikan_terakhir
  * @property string $pekerjaan
  * @property boolean $status
@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $updated_at
  * @property Pasangan $pasangan
  * @property User $user
+ * @property Agama $agama
  */
 class OrangTua extends Model
 {
@@ -34,7 +35,7 @@ class OrangTua extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_pasangan', 'id_user', 'nama', 'nik', 'jenis_kelamin', 'tempat_lahir', 'tanggal_lahir', 'agama', 'pendidikan_terakhir', 'pekerjaan', 'status', 'created_at', 'updated_at'];
+    protected $fillable = ['id_agama', 'id_pasangan', 'id_user', 'nama', 'nik', 'jenis_kelamin', 'tempat_lahir', 'tanggal_lahir', 'pendidikan_terakhir', 'pekerjaan', 'status', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -50,5 +51,13 @@ class OrangTua extends Model
     public function user()
     {
         return $this->belongsTo('App\User', 'id_user');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function agama()
+    {
+        return $this->belongsTo('App\Agama', 'id_agama');
     }
 }
