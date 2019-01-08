@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2019 at 02:13 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.1.23
+-- Generation Time: Jan 08, 2019 at 03:02 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sipos_1`
+-- Database: `sipos`
 --
 
 -- --------------------------------------------------------
@@ -37,15 +37,16 @@ CREATE TABLE `anak` (
   `berat_bayi_lahir` double NOT NULL,
   `status` tinyint(1) NOT NULL,
   `id_user` int(11) UNSIGNED NOT NULL,
-  `timestamps` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `anak`
 --
 
-INSERT INTO `anak` (`id`, `id_pasangan`, `nama_anak`, `tanggal_lahir`, `jenis_kelamin`, `berat_bayi_lahir`, `status`, `id_user`, `timestamps`) VALUES
-(1, 1, 'Anak Ganteng', '2019-01-16', 'Laki-Laki', 1.6, 1, 1, '2019-01-06 16:57:48');
+INSERT INTO `anak` (`id`, `id_pasangan`, `nama_anak`, `tanggal_lahir`, `jenis_kelamin`, `berat_bayi_lahir`, `status`, `id_user`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Anak Ganteng', '2019-01-16', 'Laki-Laki', 1.6, 1, 1, '2019-01-06 23:57:48', NULL);
 
 -- --------------------------------------------------------
 
@@ -58,15 +59,18 @@ CREATE TABLE `catatan` (
   `id_anak` int(11) NOT NULL,
   `meninggal` tinyint(1) DEFAULT NULL,
   `tanggal_meninggal` date DEFAULT NULL,
-  `penyebab_meninggal` varchar(64) DEFAULT NULL
+  `penyebab_meninggal` varchar(64) DEFAULT NULL,
+  `id_user` int(11) UNSIGNED NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `catatan`
 --
 
-INSERT INTO `catatan` (`id`, `id_anak`, `meninggal`, `tanggal_meninggal`, `penyebab_meninggal`) VALUES
-(1, 1, 1, '2019-01-23', 'Tolol banget');
+INSERT INTO `catatan` (`id`, `id_anak`, `meninggal`, `tanggal_meninggal`, `penyebab_meninggal`, `id_user`, `created_at`, `updated_at`) VALUES
+(1, 1, 2, '2019-01-17', 'Tolol banget', 1, NULL, '2019-01-07 06:29:18');
 
 -- --------------------------------------------------------
 
@@ -79,15 +83,16 @@ CREATE TABLE `desa` (
   `nama_desa` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_kecamatan` int(11) NOT NULL,
   `id_user` int(11) UNSIGNED NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `desa`
 --
 
-INSERT INTO `desa` (`id`, `nama_desa`, `id_kecamatan`, `id_user`, `timestamp`) VALUES
-(1, 'Test-Desa', 1, 1, '2018-12-28 15:21:02');
+INSERT INTO `desa` (`id`, `nama_desa`, `id_kecamatan`, `id_user`, `created_at`, `updated_at`) VALUES
+(1, 'Test-Desa', 1, 1, '2018-12-28 22:21:02', NULL);
 
 -- --------------------------------------------------------
 
@@ -97,15 +102,18 @@ INSERT INTO `desa` (`id`, `nama_desa`, `id_kecamatan`, `id_user`, `timestamp`) V
 
 CREATE TABLE `kabupaten` (
   `id` int(11) NOT NULL,
-  `nama_kabupaten` varchar(32) NOT NULL
+  `nama_kabupaten` varchar(32) NOT NULL,
+  `id_user` int(10) UNSIGNED NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kabupaten`
 --
 
-INSERT INTO `kabupaten` (`id`, `nama_kabupaten`) VALUES
-(1, 'Probolinggo');
+INSERT INTO `kabupaten` (`id`, `nama_kabupaten`, `id_user`, `created_at`, `updated_at`) VALUES
+(1, 'Probolinggo', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -118,15 +126,16 @@ CREATE TABLE `kecamatan` (
   `id_kabupaten` int(11) NOT NULL,
   `nama_kecamatan` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_user` int(11) UNSIGNED NOT NULL,
-  `timestamps` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `kecamatan`
 --
 
-INSERT INTO `kecamatan` (`id`, `id_kabupaten`, `nama_kecamatan`, `id_user`, `timestamps`) VALUES
-(1, 1, 'Test-Kecamatan', 1, '2018-12-28 15:19:52');
+INSERT INTO `kecamatan` (`id`, `id_kabupaten`, `nama_kecamatan`, `id_user`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Test-Kecamatan', 1, '2018-12-28 22:19:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -216,16 +225,17 @@ CREATE TABLE `ortu` (
   `status` tinyint(1) NOT NULL DEFAULT '1',
   `id_pasangan` int(11) DEFAULT NULL,
   `id_user` int(11) UNSIGNED NOT NULL,
-  `timestamps` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ortu`
 --
 
-INSERT INTO `ortu` (`id`, `nama`, `nik`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `agama`, `pendidikan_terakhir`, `pekerjaan`, `status`, `id_pasangan`, `id_user`, `timestamps`) VALUES
-(1, 'Miqdad Yanuar Farcha', '123123', 'Laki-Laki', 'Jember', '1999-01-20', 'Islam', 'SMA', 'Mahasiswa', 1, 1, 1, '2019-01-06 17:28:28'),
-(2, 'Pacarnya Miqdad', '123321123', 'Perempuan', 'Jember', '2019-01-01', 'Islam', 'SMA', 'Mahasiswa', 1, 1, 1, '2019-01-06 17:28:31');
+INSERT INTO `ortu` (`id`, `nama`, `nik`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `agama`, `pendidikan_terakhir`, `pekerjaan`, `status`, `id_pasangan`, `id_user`, `created_at`, `updated_at`) VALUES
+(1, 'Miqdad Yanuar Farcha', '123123', 'Laki-Laki', 'Jember', '1999-01-20', 'Islam', 'SMA', 'Mahasiswa', 1, 1, 1, '2019-01-07 00:28:28', NULL),
+(2, 'Pacarnya Miqdad', '123321123', 'Perempuan', 'Jember', '2000-01-16', 'Islam', 'SMA', 'Mahasiswa', 1, 1, 1, '2019-01-07 00:28:31', NULL);
 
 -- --------------------------------------------------------
 
@@ -235,15 +245,20 @@ INSERT INTO `ortu` (`id`, `nama`, `nik`, `jenis_kelamin`, `tempat_lahir`, `tangg
 
 CREATE TABLE `pasangan` (
   `id` int(11) NOT NULL,
-  `tanggal_menikah` date NOT NULL
+  `tanggal_menikah` date NOT NULL,
+  `alamat` varchar(64) NOT NULL,
+  `id_desa` int(11) NOT NULL,
+  `id_user` int(11) UNSIGNED NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pasangan`
 --
 
-INSERT INTO `pasangan` (`id`, `tanggal_menikah`) VALUES
-(1, '2019-01-01');
+INSERT INTO `pasangan` (`id`, `tanggal_menikah`, `alamat`, `id_desa`, `id_user`, `created_at`, `updated_at`) VALUES
+(1, '2019-01-01', 'Terserah', 1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -362,7 +377,8 @@ CREATE TABLE `register_bayi` (
   `id_imunisasi` int(11) NOT NULL,
   `catatan` varchar(64) DEFAULT NULL,
   `id_user` int(11) UNSIGNED NOT NULL,
-  `timestamps` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -411,7 +427,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `id_role`, `id_posyandu`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `token_key`) VALUES
-(1, 'Miqdad', 'miqdad.farcha@gmail.com', 1, NULL, NULL, '$2y$10$cUvI2slaiqGZ7XqH2XohBOetf7glqv34F4RfjI9hVW2mzs4gFAtd6', 'oJdBbnCDt74z9KgYm0kcydmySHuVxD2v3cMXtR4FdbZjS8Pasv7HfoMmnAJ1', '2018-12-28 08:13:46', '2019-01-06 09:13:25', '325fcd319a6af77e9617d60a65b2b129'),
+(1, 'Miqdad', 'miqdad.farcha@gmail.com', 1, NULL, NULL, '$2y$10$cUvI2slaiqGZ7XqH2XohBOetf7glqv34F4RfjI9hVW2mzs4gFAtd6', 'dLsTLAEAoHhNNb9YcLg1EDPI2P8BcUhpLVxIA0KlIapje40D4ODSAp1mKLEe', '2018-12-28 08:13:46', '2019-01-07 09:30:07', 'b43f3a610e8b63b24d6dede9f822b002'),
 (4, 'Kader', 'kader@gmail.com', 2, NULL, NULL, '$2y$10$3BcS63TEdDxPcVFhQeZX/.trnYfUQSKKvRXj8AOd3qD.2eibhdQBm', '', '2018-12-28 08:28:55', '2018-12-28 08:28:55', NULL);
 
 --
@@ -431,7 +447,8 @@ ALTER TABLE `anak`
 --
 ALTER TABLE `catatan`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `catatan_ibfk_1` (`id_anak`);
+  ADD KEY `catatan_ibfk_1` (`id_anak`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `desa`
@@ -445,7 +462,8 @@ ALTER TABLE `desa`
 -- Indexes for table `kabupaten`
 --
 ALTER TABLE `kabupaten`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `kecamatan`
@@ -473,7 +491,9 @@ ALTER TABLE `ortu`
 -- Indexes for table `pasangan`
 --
 ALTER TABLE `pasangan`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `id_desa` (`id_desa`);
 
 --
 -- Indexes for table `password_resets`
@@ -657,7 +677,8 @@ ALTER TABLE `anak`
 -- Constraints for table `catatan`
 --
 ALTER TABLE `catatan`
-  ADD CONSTRAINT `catatan_ibfk_1` FOREIGN KEY (`id_anak`) REFERENCES `anak` (`id`);
+  ADD CONSTRAINT `catatan_ibfk_1` FOREIGN KEY (`id_anak`) REFERENCES `anak` (`id`),
+  ADD CONSTRAINT `catatan_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `desa`
@@ -665,6 +686,12 @@ ALTER TABLE `catatan`
 ALTER TABLE `desa`
   ADD CONSTRAINT `desa_ibfk_1` FOREIGN KEY (`id_kecamatan`) REFERENCES `kecamatan` (`id`),
   ADD CONSTRAINT `desa_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `kabupaten`
+--
+ALTER TABLE `kabupaten`
+  ADD CONSTRAINT `kabupaten_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `kecamatan`
@@ -679,6 +706,13 @@ ALTER TABLE `kecamatan`
 ALTER TABLE `ortu`
   ADD CONSTRAINT `ortu_ibfk_1` FOREIGN KEY (`id_pasangan`) REFERENCES `pasangan` (`id`),
   ADD CONSTRAINT `ortu_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `pasangan`
+--
+ALTER TABLE `pasangan`
+  ADD CONSTRAINT `pasangan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `pasangan_ibfk_2` FOREIGN KEY (`id_desa`) REFERENCES `desa` (`id`);
 
 --
 -- Constraints for table `pemberian_asi`
