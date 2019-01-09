@@ -43,7 +43,6 @@ Route::get('/register-ibu-hamil/data/{id}', 'KaderController@getRegisterIbuHamil
 Route::get('/register-ibu-hamil/data/{id}/tambah', 'KaderController@addRegisterIbuHamilData');
 
 Route::get('/pasangan', 'KaderController@getListPasangan');
-Route::get('/pasangan/{id}', 'KaderController@getDetailPasangan');
 Route::get('/pasangan/tambah', 'KaderController@addListPasangan')->name('add.pasangan');
 Route::get('/anak', 'KaderController@getListAnak')->name('get.page.list-anak');
 Route::get('/anak/tambah', 'KaderController@addListAnak')->name('add.anak');
@@ -52,6 +51,9 @@ Route::get('/list-posyandu/tambah', 'KaderController@addListPosyandu')->name('ad
 Route::get('/list-desa', 'KaderController@getListDesa');
 Route::get('/list-desa/tambah', 'KaderController@addListDesa')->name('add.desa');
 
+
+
+Route::get('/pasangan/{id}', 'KaderController@getDetailPasangan');
 
 Route::name('ajax.')->group(function (){
   Route::get('/ajax/{key}/catatan', 'AjaxController@getCatatanApi')->name('catatan');
