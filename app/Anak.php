@@ -7,15 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property int $id
  * @property int $id_pasangan
+ * @property int $id_agama
  * @property int $id_user
  * @property string $nama_anak
+ * @property string $tempat_lahir
  * @property string $tanggal_lahir
  * @property string $jenis_kelamin
  * @property float $berat_bayi_lahir
  * @property boolean $status
- * @property string $timestamps
+ * @property string $created_at
+ * @property string $updated_at
  * @property Pasangan $pasangan
  * @property User $user
+ * @property Agama $agama
  * @property Catatan[] $catatans
  * @property RegisterBayi[] $registerBayis
  */
@@ -31,7 +35,7 @@ class Anak extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_pasangan', 'id_user', 'nama_anak', 'tanggal_lahir', 'jenis_kelamin', 'berat_bayi_lahir', 'status', 'timestamps'];
+    protected $fillable = ['id_pasangan', 'id_agama', 'id_user', 'nama_anak', 'tempat_lahir', 'tanggal_lahir', 'jenis_kelamin', 'berat_bayi_lahir', 'status', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -47,6 +51,14 @@ class Anak extends Model
     public function user()
     {
         return $this->belongsTo('App\User', 'id_user');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function agama()
+    {
+        return $this->belongsTo('App\Agama', 'id_agama');
     }
 
     /**

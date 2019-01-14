@@ -1,3 +1,4 @@
+php artisan krlove:generate:model Agama --table-name=agama
 php artisan krlove:generate:model Anak --table-name=anak
 php artisan krlove:generate:model Catatan --table-name=catatan
 php artisan krlove:generate:model Desa --table-name=desa

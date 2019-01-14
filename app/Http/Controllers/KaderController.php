@@ -3,6 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Helpers\KeyHelper;
+use App\Catatan;
+use App\Pasangan;
+use App\OrangTua;
+use App\Agama;
+use App\Anak;
+use App\User;
+use Auth;
 
 class KaderController extends Controller
 {
@@ -124,9 +132,15 @@ class KaderController extends Controller
       return view('pages.list-pasangan');
     }
 
+    public function getDetailPasangan($id)
+    {
+      return $id;
+    }
+
     public function addListPasangan()
     {
-      return view('pages.add.add_list-pasangan');
+      // $agamas = Agama::get();
+      return view('pages.add.add_list-pasangan', compact('agamas'));
     }
 
     public function getListAnak()
@@ -136,7 +150,9 @@ class KaderController extends Controller
 
     public function addListAnak()
     {
-      return view('pages.add.add_list-anak');
+      $agamas = Agama::get();
+      $pasangans = Pasangan::with('ortus')->select('id')->get();
+      return view('pages.add.add_list-anak', compact('agamas', 'pasangans'));
     }
 
     public function getListPosyandu()
@@ -157,6 +173,27 @@ class KaderController extends Controller
     public function addListDesa()
     {
       return view('pages.add.add_list-desa');
+    }
+
+
+
+
+    public function getEditCatatan($id)
+    {
+      $key = Auth::user()->token_key;
+      $data = Catatan::with(['anak.pasangan.ortus', 'anak'])->find($id);
+
+      $data->ibu = $data->anak->pasangan->ortus[0]->jenis_kelamin == 'Perempuan' ? $data->anak->pasangan->ortus[0] : $data->anak->pasangan->ortus[1];
+      $data->ayah = $data->anak->pasangan->ortus[0]->jenis_kelamin == 'Laki-Laki' ? $data->anak->pasangan->ortus[0] : $data->anak->pasangan->ortus[1];
+
+      if($data->tanggal_meninggal != NULL){
+        $data->tanggal_meninggal = date('d/m/Y', strtotime($data->tanggal_meninggal));
+      }
+
+      $data->anak->tanggal_lahir = date('d/m/Y', strtotime($data->anak->tanggal_lahir));
+
+      // $data;
+      return view('pages.edit.edit_catatan', compact('data', 'key'));
     }
 
 }

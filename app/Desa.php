@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id_kecamatan
  * @property int $id_user
  * @property string $nama_desa
- * @property string $timestamp
+ * @property string $created_at
+ * @property string $updated_at
  * @property Kecamatan $kecamatan
  * @property User $user
  * @property Posyandu[] $posyandus
@@ -26,7 +27,7 @@ class Desa extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_kecamatan', 'id_user', 'nama_desa', 'timestamp'];
+    protected $fillable = ['id_kecamatan', 'id_user', 'nama_desa', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

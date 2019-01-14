@@ -6,7 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
+ * @property int $id_desa
+ * @property int $id_user
  * @property string $tanggal_menikah
+ * @property string $alamat
+ * @property string $created_at
+ * @property string $updated_at
+ * @property User $user
+ * @property Desa $desa
  * @property Anak[] $anaks
  * @property Ortu[] $ortus
  */
@@ -22,7 +29,23 @@ class Pasangan extends Model
     /**
      * @var array
      */
-    protected $fillable = ['tanggal_menikah'];
+    protected $fillable = ['id_desa', 'id_user', 'tanggal_menikah', 'alamat', 'created_at', 'updated_at'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'id_user');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function desa()
+    {
+        return $this->belongsTo('App\Desa', 'id_desa');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

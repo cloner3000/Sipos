@@ -11,7 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id_imunisasi
  * @property int $id_user
  * @property string $catatan
- * @property string $timestamps
+ * @property string $created_at
+ * @property string $updated_at
  * @property Anak $anak
  * @property PemberianImunisasi $pemberianImunisasi
  * @property PemberianAsi $pemberianAsi
@@ -33,7 +34,7 @@ class RegisterBayi extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_anak', 'id_pemberian_asi', 'id_imunisasi', 'id_user', 'catatan', 'timestamps'];
+    protected $fillable = ['id_anak', 'id_pemberian_asi', 'id_imunisasi', 'id_user', 'catatan', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
