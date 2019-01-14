@@ -139,7 +139,8 @@ class KaderController extends Controller
 
     public function addListPasangan()
     {
-      return view('pages.add.add_list-pasangan');
+      // $agamas = Agama::get();
+      return view('pages.add.add_list-pasangan', compact('agamas'));
     }
 
     public function getListAnak()
