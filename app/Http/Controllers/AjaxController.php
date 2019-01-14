@@ -92,4 +92,5 @@ class AjaxController extends Controller
 
         return 'lo cp?';
     }
+
 }

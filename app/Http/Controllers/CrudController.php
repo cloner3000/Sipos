@@ -55,6 +55,22 @@ class CrudController extends Controller
         "id_user" => Auth::user()->id
       ]);
 
+      $p = Catatan::create([
+        "id_anak" => $d->id,
+        "id_user" => Auth::user()->id
+      ]);
+
+      return redirect()->route('get.page.list-anak');
+    }
+
+    public function deleteAnak(Request $request)
+    {
+      $data = Anak::find($request->id);
+      if($data == NULL){
+        return redirect()->route('get.page.list-anak')->with('Error', 'Data Not Found');
+      }
+      $catatan = Catatan::where('id_anak', $request->id)->get()->first()->delete();
+      $data->delete();
       return redirect()->route('get.page.list-anak');
     }
 }

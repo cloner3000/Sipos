@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property int $id
@@ -20,7 +21,7 @@ class Catatan extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'catatan';
@@ -29,6 +30,7 @@ class Catatan extends Model
      * @var array
      */
     protected $fillable = ['id_anak', 'id_user', 'meninggal', 'tanggal_meninggal', 'penyebab_meninggal', 'created_at', 'updated_at'];
+    protected $dates = ['deleted_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

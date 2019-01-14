@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreatePasanganTable extends Migration {
+class CreateAgamaTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,11 @@ class CreatePasanganTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('pasangan', function(Blueprint $table)
+		Schema::create('agama', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->date('tanggal_menikah');
+			$table->string('agama', 16);
+			$table->string('nama_agama', 16);
 		});
 	}
 
@@ -27,7 +28,7 @@ class CreatePasanganTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('pasangan');
+		Schema::drop('agama');
 	}
 
 }

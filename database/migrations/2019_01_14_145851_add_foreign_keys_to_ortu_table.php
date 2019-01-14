@@ -16,6 +16,7 @@ class AddForeignKeysToOrtuTable extends Migration {
 		{
 			$table->foreign('id_pasangan', 'ortu_ibfk_1')->references('id')->on('pasangan')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 			$table->foreign('id_user', 'ortu_ibfk_2')->references('id')->on('users')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('id_agama', 'ortu_ibfk_3')->references('id')->on('agama')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
@@ -31,6 +32,7 @@ class AddForeignKeysToOrtuTable extends Migration {
 		{
 			$table->dropForeign('ortu_ibfk_1');
 			$table->dropForeign('ortu_ibfk_2');
+			$table->dropForeign('ortu_ibfk_3');
 		});
 	}
 

@@ -45,7 +45,8 @@ Route::get('/register-ibu-hamil/data/{id}/tambah', 'KaderController@addRegisterI
 Route::get('/pasangan', 'KaderController@getListPasangan');
 Route::get('/pasangan/tambah', 'KaderController@addListPasangan')->name('add.pasangan');
 Route::get('/anak', 'KaderController@getListAnak')->name('get.page.list-anak');
-Route::get('/anak/tambah', 'KaderController@addListAnak')->name('add.anak');
+Route::get('/anak/tambah', 'KaderController@addListAnak')->name('get.page.add-anak');
+Route::get('/anak/{id}', 'KaderController@getAnakDetail')->name('get.page.detail-anak');
 Route::get('/list-posyandu', 'KaderController@getListPosyandu');
 Route::get('/list-posyandu/tambah', 'KaderController@addListPosyandu')->name('add.posyandu');
 Route::get('/list-desa', 'KaderController@getListDesa');
@@ -65,6 +66,7 @@ Route::name('crud.')->group(function(){
   Route::post('/crud/{key}/edit_catatan', 'CrudController@editCatatan')->name('edit.catatan');
   Route::post('/crud/{key}/add_pasangan', 'CrudController@addPasangan')->name('add.pasangan');
   Route::post('/crud/{key}/add_anak', 'CrudController@addAnak')->name('add.anak');
+  Route::post('/crud/{key}/delete_anak', 'CrudController@deleteAnak')->name('delete.anak');
 });
 
 

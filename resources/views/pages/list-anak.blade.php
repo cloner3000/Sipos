@@ -12,7 +12,7 @@ Daftar Anak
 <div class="card">
   <div class="card-header">
     <h4>Daftar Anak</h4>
-    <button class="btn btn-app btn-block"  type="button" onclick="location.href='{{ route('add.anak') }}'" style="width: 100px; float:right;">Tambah</button>
+    <a class="btn btn-app btn-block"  type="button" href="{{ route('get.page.add-anak') }}" style="width: 100px; float:right;">Tambah</a>
   </div>
 
   <div class="card-block">
@@ -37,12 +37,22 @@ Daftar Anak
     </div>
   </div>
 
+  <form class="" action="{{ route('crud.delete.anak', compact('key')) }}" method="post" style="display: none;" id="delete-form">
+    @csrf
+    <input type="hidden" name="id" value="-1">
+  </form>
+
 </div>
 @endsection
 
 @section('scripts')
 @include('assets.js-datatable')
 <script>
+
+  function deleteAnak(id){
+    document.getElementsByName('id')[0].value = id;
+    document.getElementById('delete-form').submit();
+  }
   $(document).ready(function (){
     $('#list-anak-table').DataTable({
       processing: true,
@@ -65,9 +75,9 @@ Daftar Anak
           render: function(data, type, row){
             return '<td class="text-center">' +
               '<div class="btn-group">' +
-                '<a href="/pasangan/'+data+'/"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Detail"><i class="ion-ios-information-outline"></i></button></a>' +
-                '<a href="/pasangan/'+data+'/edit"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button></a>' +
-                '<a href="/pasangan/'+data+'/delete"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Delete"><i class="ion-close"></i></button></a>' +
+                '<a href="/anak/'+data+'/"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Detail"><i class="ion-ios-information-outline"></i></button></a>' +
+                '<a href="/anak/'+data+'/edit"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button></a>' +
+                '<button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Delete" onclick="deleteAnak('+data+')"><i class="ion-close"></i></button>' +
               '</div></td>';
           }
         }

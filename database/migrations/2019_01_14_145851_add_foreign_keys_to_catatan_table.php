@@ -15,6 +15,7 @@ class AddForeignKeysToCatatanTable extends Migration {
 		Schema::table('catatan', function(Blueprint $table)
 		{
 			$table->foreign('id_anak', 'catatan_ibfk_1')->references('id')->on('anak')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('id_user', 'catatan_ibfk_2')->references('id')->on('users')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
@@ -29,6 +30,7 @@ class AddForeignKeysToCatatanTable extends Migration {
 		Schema::table('catatan', function(Blueprint $table)
 		{
 			$table->dropForeign('catatan_ibfk_1');
+			$table->dropForeign('catatan_ibfk_2');
 		});
 	}
 

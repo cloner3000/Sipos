@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateDesaTable extends Migration {
+class CreateKecamatanTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,13 @@ class CreateDesaTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('desa', function(Blueprint $table)
+		Schema::create('kecamatan', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->string('nama_desa', 32);
-			$table->integer('id_kecamatan')->index('id_kecamatan');
+			$table->integer('id_kabupaten')->index('id_kabupaten');
+			$table->string('nama_kecamatan', 32);
 			$table->integer('id_user')->unsigned()->index('id_user');
-			$table->timestamp('timestamp')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamps();
 		});
 	}
 
@@ -30,7 +30,7 @@ class CreateDesaTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('desa');
+		Schema::drop('kecamatan');
 	}
 
 }

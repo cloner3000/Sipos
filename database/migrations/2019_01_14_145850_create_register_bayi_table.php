@@ -20,7 +20,7 @@ class CreateRegisterBayiTable extends Migration {
 			$table->integer('id_imunisasi')->index('id_imunisasi');
 			$table->string('catatan', 64)->nullable();
 			$table->integer('id_user')->unsigned()->index('id_user');
-			$table->timestamp('timestamps')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamps();
 		});
 	}
 

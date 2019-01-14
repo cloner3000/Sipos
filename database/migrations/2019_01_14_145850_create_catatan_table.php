@@ -19,6 +19,9 @@ class CreateCatatanTable extends Migration {
 			$table->boolean('meninggal')->nullable();
 			$table->date('tanggal_meninggal')->nullable();
 			$table->string('penyebab_meninggal', 64)->nullable();
+			$table->integer('id_user')->unsigned()->index('id_user');
+			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

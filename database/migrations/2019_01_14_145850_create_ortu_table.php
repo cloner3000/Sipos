@@ -20,13 +20,13 @@ class CreateOrtuTable extends Migration {
 			$table->string('jenis_kelamin', 16);
 			$table->string('tempat_lahir', 32);
 			$table->date('tanggal_lahir');
-			$table->string('agama', 16);
+			$table->integer('id_agama')->index('agama');
 			$table->string('pendidikan_terakhir', 32);
 			$table->string('pekerjaan', 32)->nullable();
 			$table->boolean('status')->default(1);
 			$table->integer('id_pasangan')->nullable()->index('id_pasangan');
 			$table->integer('id_user')->unsigned()->index('id_user');
-			$table->timestamp('timestamps')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamps();
 		});
 	}
 

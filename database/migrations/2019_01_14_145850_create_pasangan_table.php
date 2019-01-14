@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateKecamatanTable extends Migration {
+class CreatePasanganTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,14 @@ class CreateKecamatanTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('kecamatan', function(Blueprint $table)
+		Schema::create('pasangan', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->integer('id_kabupaten')->index('id_kabupaten');
-			$table->string('nama_kecamatan', 32);
+			$table->date('tanggal_menikah');
+			$table->string('alamat', 64);
+			$table->integer('id_desa')->index('id_desa');
 			$table->integer('id_user')->unsigned()->index('id_user');
-			$table->timestamp('timestamps')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamps();
 		});
 	}
 
@@ -30,7 +31,7 @@ class CreateKecamatanTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('kecamatan');
+		Schema::drop('pasangan');
 	}
 
 }

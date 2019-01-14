@@ -16,6 +16,8 @@ class CreateKabupatenTable extends Migration {
 		{
 			$table->integer('id', true);
 			$table->string('nama_kabupaten', 32);
+			$table->integer('id_user')->unsigned()->index('id_user');
+			$table->timestamps();
 		});
 	}
 

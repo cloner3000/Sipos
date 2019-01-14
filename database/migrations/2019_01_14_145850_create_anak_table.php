@@ -17,12 +17,15 @@ class CreateAnakTable extends Migration {
 			$table->integer('id', true);
 			$table->integer('id_pasangan')->index('id_pasangan');
 			$table->string('nama_anak', 32);
+			$table->string('tempat_lahir', 32);
 			$table->date('tanggal_lahir');
 			$table->string('jenis_kelamin', 16);
 			$table->float('berat_bayi_lahir', 10, 0);
+			$table->integer('id_agama')->index('id_agama');
 			$table->boolean('status');
 			$table->integer('id_user')->unsigned()->index('id_user');
-			$table->timestamp('timestamps')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

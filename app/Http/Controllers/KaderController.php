@@ -145,7 +145,8 @@ class KaderController extends Controller
 
     public function getListAnak()
     {
-      return view('pages.list-anak');
+      $key = Auth::user()->token_key;
+      return view('pages.list-anak', compact('key'));
     }
 
     public function addListAnak()
@@ -153,6 +154,15 @@ class KaderController extends Controller
       $agamas = Agama::get();
       $pasangans = Pasangan::with('ortus')->select('id')->get();
       return view('pages.add.add_list-anak', compact('agamas', 'pasangans'));
+    }
+
+    public function getAnakDetail($id)
+    {
+      $anak = Anak::find($id);
+      if($anak == NULL){
+        return redirect()->route('get.page.list-anak');
+      }
+      return view('pages.detail.detail_anak');
     }
 
     public function getListPosyandu()
