@@ -12,7 +12,7 @@ Register Ibu Hamil
 <div class="card">
   <div class="card-header">
     <h4>Register Ibu Hamil</h4>
-    <button class="btn btn-app btn-block"  type="button" onclick="location.href='{{ url('/register-wuspus/tambah') }}'" style="width: 100px; float:right;">Tambah</button>
+    <button class="btn btn-app btn-block"  type="button" onclick="location.href='{{ route('pages.add.ibu-hamil') }}'" style="width: 100px; float:right;">Tambah</button>
   </div>
 
   <div class="card-block">

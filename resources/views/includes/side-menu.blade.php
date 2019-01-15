@@ -14,66 +14,62 @@
         <li class="nav-item nav-drawer-header">Apps</li>
 
         <li class="nav-item active">
-          <a href="/home"><i class="ion-ios-speedometer-outline"></i> Dashboard</a>
+          <a href="{{ route('pages.home') }}"><i class="ion-ios-speedometer-outline"></i> Dashboard</a>
         </li>
 
         <li class="nav-item">
-          <a href="/catatan"><i class="ion-android-document"></i>Catatan</a>
+          <a href="{{ route('pages.catatan') }}"><i class="ion-android-document"></i>Catatan</a>
         </li>
-
-        {{-- <li class="nav-item">
-          <a href="/register-bayi"><i class="ion-android-add-circle"></i>Register Bayi</a>
-        </li> --}}
 
         <li class="nav-item nav-item-has-subnav">
           <a href="javascript:void(0)"><i class="ion-android-add-circle"></i>Register Bayi</a>
           <ul class="nav nav-subnav">
 
             <li>
-              <a href="{{ route('register.011') }}">0 - 11 Bulan</a>
+              <a href="{{ route('pages.register.011') }}">0 - 11 Bulan</a>
             </li>
 
             <li>
-              <a href="{{ route('register.1223') }}">12 - 23 Bulan</a>
+              <a href="{{ route('pages.register.1223') }}">12 - 23 Bulan</a>
             </li>
 
             <li>
-              <a href="{{ route('register.2435') }}">24 - 35 Bulan</a>
+              <a href="{{ route('pages.register.2435') }}">24 - 35 Bulan</a>
             </li>
 
             <li>
-              <a href="{{ route('register.3647') }}">36 - 47 Bulan</a>
+              <a href="{{ route('pages.register.3647') }}">36 - 47 Bulan</a>
             </li>
 
             <li>
-              <a href="{{ route('register.4859') }}">48 - 59 Bulan</a>
+              <a href="{{ route('pages.register.4859') }}">48 - 59 Bulan</a>
             </li>
 
           </ul>
         </li>
 
         <li class="nav-item">
-          <a href="/register-wuspus"><i class="ion-android-add-circle"></i>Register Wuspus</a>
+          <a href="{{ route('pages.wuspus') }}"><i class="ion-android-add-circle"></i>Register Wuspus</a>
         </li>
 
         <li class="nav-item">
-          <a href="/register-ibu-hamil"><i class="ion-android-add-circle"></i>Register Ibu Hamil</a>
+          <a href="{{ route('pages.ibu-hamil') }}"><i class="ion-android-add-circle"></i>Register Ibu Hamil</a>
         </li>
 
         <li class="nav-item">
-          <a href="/pasangan"><i class="ion-android-add-circle"></i>Daftar Pasangan</a>
+          <a href="{{ route('pages.pasangan') }}"><i class="ion-android-add-circle"></i>Daftar Pasangan</a>
         </li>
 
         <li class="nav-item">
-          <a href="/anak"><i class="ion-android-add-circle"></i>Daftar Anak</a>
+          <a href="{{ route('pages.anak') }}"><i class="ion-android-add-circle"></i>Daftar Anak</a>
         </li>
 
         <li class="nav-item">
-          <a href="/list-posyandu"><i class="ion-android-add-circle"></i>Daftar Posyandu</a>
+          <a href="{{ route('pages.posyandu') }}"><i class="ion-android-add-circle"></i>Daftar Posyandu</a>
         </li>
 
         <li class="nav-item">
-          <a href="/list-desa"><i class="ion-android-add-circle"></i>Daftar Desa</a>
+          <a href="{{ route('pages.desa') }}"><i class="ion-android-add-circle"></i>Daftar Desa</a>
         </li>
 
         {{-- <li class="nav-item">

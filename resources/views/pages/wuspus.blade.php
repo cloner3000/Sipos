@@ -12,7 +12,7 @@ Register WusPus
 <div class="card">
   <div class="card-header">
     <h4>Data WusPus</h4>
-    <button class="btn btn-app btn-block"  type="button" onclick="location.href='{{ url('/register-wuspus/tambah') }}'" style="width: 100px; float:right;">Tambah</button>
+    <button class="btn btn-app btn-block"  type="button" onclick="location.href='{{ route('pages.add.wuspus') }}'" style="width: 100px; float:right;">Tambah</button>
   </div>
 
   <div class="card-block">

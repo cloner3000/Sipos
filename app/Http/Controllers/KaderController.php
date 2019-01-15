@@ -32,7 +32,7 @@ class KaderController extends Controller
 
     public function registerWuspusPage()
     {
-      return view('pages.register-wuspus');
+      return view('pages.wuspus');
     }
 
     public function addRegisterWuspus()
@@ -122,12 +122,12 @@ class KaderController extends Controller
 
     public function registerIbuHamilPage()
     {
-      return view('pages.register-ibu-hamil');
+      return view('pages.ibu-hamil');
     }
 
     public function registerIbuHamilDataPage()
     {
-      return view('pages.register-ibu-hamil-data');
+      return view('pages.ibu-hamil-data');
     }
 
     public function listPasangan()

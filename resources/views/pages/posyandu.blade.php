@@ -12,7 +12,7 @@ Daftar Anak
 <div class="card">
   <div class="card-header">
     <h4>Daftar Posyandu</h4>
-    <button class="btn btn-app btn-block"  type="button" onclick="location.href='{{ route('add.posyandu') }}'" style="width: 100px; float:right;">Tambah</button>
+    <button class="btn btn-app btn-block"  type="button" onclick="location.href='{{ route('pages.add.posyandu') }}'" style="width: 100px; float:right;">Tambah</button>
   </div>
 
   <div class="card-block">

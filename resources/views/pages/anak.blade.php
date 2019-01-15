@@ -12,7 +12,7 @@ Daftar Anak
 <div class="card">
   <div class="card-header">
     <h4>Daftar Anak</h4>
-    <a class="btn btn-app btn-block"  type="button" href="{{ route('get.page.add-anak') }}" style="width: 100px; float:right;">Tambah</a>
+    <a class="btn btn-app btn-block"  type="button" href="{{ route('pages.add.anak') }}" style="width: 100px; float:right;">Tambah</a>
   </div>
 
   <div class="card-block">

@@ -13,11 +13,12 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/regtoken', 'HomeController@regToken');
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 Auth::routes();
 
 Route::name('pages.')->group(function(){
+  Route::get('/home', 'HomeController@index')->name('home');
   Route::get('/anak', 'KaderController@listAnak')->name('anak');
   Route::get('/anak/tambah', 'KaderController@addListAnak')->name('add.anak');
   Route::get('/anak/{id}', 'KaderController@anakDetail')->name('detail.anak');
@@ -41,14 +42,14 @@ Route::name('pages.')->group(function(){
   Route::get('/register-bayi/48-59/{tahun}', 'KaderController@registerBayi4859Tahun')->name('register.4859.thn');
   Route::get('/register-bayi/data/{id_bayi}', 'KaderController@registerBayiDataPage');
 
-  Route::get('/register-ibu-hamil', 'KaderController@registerIbuHamilPage');
-  Route::get('/register-ibu-hamil/tambah', 'KaderController@addRegisterIbuHamil');
+  Route::get('/register-ibu-hamil', 'KaderController@registerIbuHamilPage')->name('ibu-hamil');
+  Route::get('/register-ibu-hamil/tambah', 'KaderController@addRegisterIbuHamil')->name('add.ibu-hamil');
   Route::get('/register-ibu-hamil/data/{id}', 'KaderController@registerIbuHamilDataPage');
   Route::get('/register-ibu-hamil/data/{id}/tambah', 'KaderController@addRegisterIbuHamilData');
 
-  Route::get('/list-posyandu', 'KaderController@listPosyandu');
+  Route::get('/list-posyandu', 'KaderController@listPosyandu')->name('posyandu');
   Route::get('/list-posyandu/tambah', 'KaderController@addListPosyandu')->name('add.posyandu');
-  Route::get('/list-desa', 'KaderController@listDesa');
+  Route::get('/list-desa', 'KaderController@listDesa')->name('desa');
   Route::get('/list-desa/tambah', 'KaderController@addListDesa')->name('add.desa');
 
   Route::get('/wuspus', 'KaderController@registerWuspusPage')->name('wuspus');

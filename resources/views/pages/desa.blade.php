@@ -12,7 +12,7 @@ Daftar Desa
 <div class="card">
     <div class="card-header">
         <h4>Daftar Desa</h4>
-        <button class="btn btn-app btn-block" type="button" onclick="location.href='{{ route('add.desa') }}'" style="width: 100px; float:right;">Tambah</button>
+        <button class="btn btn-app btn-block" type="button" onclick="location.href='{{ route('pages.add.desa') }}'" style="width: 100px; float:right;">Tambah</button>
     </div>
 
     <div class="card-block">
