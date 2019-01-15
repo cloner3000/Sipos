@@ -37,13 +37,13 @@ class KaderController extends Controller
 
     public function addRegisterWuspus()
     {
-      return view('pages.add.add_register-wuspus');
+      return view('pages.add.wuspus');
     }
 
     public function registerBayi011()
     {
       $tahun = date("Y");
-      return redirect()->route('register.011.thn', compact('tahun'));
+      return redirect()->route('pages.register.011.thn', compact('tahun'));
     }
 
     public function registerBayi011Tahun($tahun)
@@ -58,7 +58,7 @@ class KaderController extends Controller
     public function registerBayi1223()
     {
       $tahun = date("Y");
-      return redirect()->route('register.1223.thn', compact('tahun'));
+      return redirect()->route('pages.register.1223.thn', compact('tahun'));
     }
 
     public function registerBayi1223Tahun($tahun)
@@ -73,7 +73,7 @@ class KaderController extends Controller
     public function registerBayi2435()
     {
       $tahun = date("Y");
-      return redirect()->route('register.2435.thn', compact('tahun'));
+      return redirect()->route('pages.register.2435.thn', compact('tahun'));
     }
 
     public function registerBayi2435Tahun($tahun)
@@ -88,7 +88,7 @@ class KaderController extends Controller
     public function registerBayi3647()
     {
       $tahun = date("Y");
-      return redirect()->route('register.3647.thn', compact('tahun'));
+      return redirect()->route('pages.register.3647.thn', compact('tahun'));
     }
 
     public function registerBayi3647Tahun($tahun)
@@ -103,7 +103,7 @@ class KaderController extends Controller
     public function registerBayi4859()
     {
       $tahun = date("Y");
-      return redirect()->route('register.4859.thn', compact('tahun'));
+      return redirect()->route('pages.register.4859.thn', compact('tahun'));
     }
 
     public function registerBayi4859Tahun($tahun)
@@ -132,7 +132,7 @@ class KaderController extends Controller
 
     public function listPasangan()
     {
-      return view('pages.list-pasangan');
+      return view('pages.pasangan');
     }
 
     public function detailPasangan($id)
@@ -145,7 +145,7 @@ class KaderController extends Controller
       $agamas = Agama::get();
       $pendidikans = Pendidikan::get();
       $desas = Desa::get();
-      return view('pages.add.add_list-pasangan', compact('agamas', 'pendidikans', 'desas'));
+      return view('pages.add.pasangan', compact('agamas', 'pendidikans', 'desas'));
     }
 
     public function editPasangan($id)
@@ -165,23 +165,23 @@ class KaderController extends Controller
     public function listAnak()
     {
       $key = Auth::user()->token_key;
-      return view('pages.list-anak', compact('key'));
+      return view('pages.anak', compact('key'));
     }
 
     public function addListAnak()
     {
       $agamas = Agama::get();
       $pasangans = Pasangan::with('ortus')->select('id')->get();
-      return view('pages.add.add_list-anak', compact('agamas', 'pasangans'));
+      return view('pages.add.anak', compact('agamas', 'pasangans'));
     }
 
     public function anakDetail($id)
     {
       $anak = Anak::find($id);
       if($anak == NULL){
-        return redirect()->route('get.page.list-anak');
+        return redirect()->route('pages.anak')->with('error', 'Data Not Found');
       }
-      return view('pages.detail.detail_anak');
+      return view('pages.detail.anak');
     }
 
     public function anakEdit($id)
@@ -189,7 +189,7 @@ class KaderController extends Controller
       $anak = Anak::find($id);
       $agamas = Agama::get();
       if($anak == NULL){
-        return redirect()->route('get.page.list-anak');
+        return redirect()->route('pages.anak')->with('error', 'Data Not Found');
       }
       $anak->tanggal_lahir = DateHelper::YMDtoDMY($anak->tanggal_lahir);
       return view('pages.edit.anak', compact('anak', 'agamas'));
@@ -197,22 +197,22 @@ class KaderController extends Controller
 
     public function listPosyandu()
     {
-      return view('pages.list-posyandu');
+      return view('pages.posyandu');
     }
 
     public function addListPosyandu()
     {
-      return view('pages.add.add_list-posyandu');
+      return view('pages.add.posyandu');
     }
 
     public function listDesa()
     {
-      return view('pages.list-desa');
+      return view('pages.desa');
     }
 
     public function addListDesa()
     {
-      return view('pages.add.add_list-desa');
+      return view('pages.add.desa');
     }
 
 
@@ -233,7 +233,7 @@ class KaderController extends Controller
       $data->anak->tanggal_lahir = date('d/m/Y', strtotime($data->anak->tanggal_lahir));
 
       // $data;
-      return view('pages.edit.edit_catatan', compact('data', 'key'));
+      return view('pages.edit.catatan', compact('data', 'key'));
     }
 
 }

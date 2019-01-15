@@ -29,7 +29,7 @@ class CrudController extends Controller
 
       $data->save();
 
-      return redirect()->route('catatan');
+      return redirect()->route('pages.catatan')->with('success', 'Update Successfully');
     }
 
     public function addPasangan(Request $request)
@@ -73,7 +73,7 @@ class CrudController extends Controller
         'id_user' => Auth::user()->id
       ]);
 
-      return redirect()->route('pages.list.pasangan');
+      return redirect()->route('pages.pasangan')->with('success', 'Add Successfully');
     }
 
     public function editPasangan(Request $request)
@@ -131,7 +131,7 @@ class CrudController extends Controller
         return redirect()->back()->with('error', 'Update Failed');
       }
 
-      return redirect()->route('pages.list.pasangan')->with('success', 'Update Successfully');
+      return redirect()->route('pages.pasangan')->with('success', 'Update Successfully');
     }
 
     public function addAnak(Request $request)
@@ -157,25 +157,25 @@ class CrudController extends Controller
         "id_user" => Auth::user()->id
       ]);
 
-      return redirect()->route('get.page.list-anak');
+      return redirect()->route('pages.anak')->with('success', 'Add Successfully');
     }
 
     public function deleteAnak(Request $request)
     {
       $data = Anak::find($request->id);
       if($data == NULL){
-        return redirect()->route('get.page.list-anak')->with('Error', 'Data Not Found');
+        return redirect()->route('pages.anak')->with('Error', 'Data Not Found');
       }
       $catatan = Catatan::where('id_anak', $request->id)->get()->first()->delete();
       $data->delete();
-      return redirect()->route('get.page.list-anak');
+      return redirect()->route('pages.anak')->with('success', 'Delete Successfully');
     }
 
     public function editAnak(Request $request)
     {
       $data = Anak::find($request->id);
       if($data == NULL){
-        return redirect()->route('get.page.list-anak')->with('Error', 'Data Not Found');
+        return redirect()->route('pages.anak')->with('Error', 'Data Not Found');
       }
 
       $b = $data;
@@ -191,11 +191,10 @@ class CrudController extends Controller
         "id_user" => Auth::user()->id
       ]);
 
-      if($update != 0){
-        return redirect()->route('get.page.list-anak')->with('success', 'Update Successfully');
+      if($update == 0){
+        return redirect()->back()->with('error', 'Update Error');
       }
-
-      return redirect()->back()->with('error', 'Update Error');
+      return redirect()->route('pages.anak')->with('success', 'Update Successfully');
     }
 
 
