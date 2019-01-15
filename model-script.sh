@@ -6,6 +6,7 @@ php artisan krlove:generate:model Kabupaten --table-name=kabupaten
 php artisan krlove:generate:model Kecamatan --table-name=kecamatan
 php artisan krlove:generate:model OrangTua --table-name=ortu
 php artisan krlove:generate:model Pasangan --table-name=pasangan
+php artisan krlove:generate:model Pendidikan --table-name=pendidikan
 php artisan krlove:generate:model PemberianAsi --table-name=pemberian_asi
 php artisan krlove:generate:model PemberianImunisasi --table-name=pemberian_imunisasi
 php artisan krlove:generate:model PemberianVitaminA --table-name=pemberian_vit_a

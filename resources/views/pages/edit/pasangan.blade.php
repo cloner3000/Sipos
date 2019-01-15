@@ -12,17 +12,22 @@ Tambah Data Pasangan
 <div class="card">
 
     <div class="card-header bg-purple bg-inverse">
-        <h4>Tambah Data Pasangan</h4>
+        <h4>Edit Data Pasangan</h4>
     </div>
 
     <div class="card-block">
-        <form class="form-horizontal m-t-sm" action="{{ route('crud.add.pasangan', ['key' => Auth::user()->token_key]) }}" method="post">
+        <form class="form-horizontal m-t-sm" action="{{ route('crud.edit.pasangan', ['key' => Auth::user()->token_key]) }}" method="post">
           @csrf
+
+          <input type="hidden" name="id_suami" value="{{ $data->ayah->id }}">
+          <input type="hidden" name="id_istri" value="{{ $data->ibu->id }}">
+          <input type="hidden" name="id_pasangan" value="{{ $data->id }}">
+
             <div class="col-md-6">
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="form-material">
-                            <input class="form-control" type="text" id="register2-username" name="nama_suami" placeholder="" required value="{{ old('nama_suami') }}"/>
+                            <input class="form-control" type="text" id="register2-username" name="nama_suami" placeholder="" required value="{{ $data->ayah->nama }}"/>
                             <label for="register2-username">Nama Suami</label>
                         </div>
                     </div>
@@ -31,7 +36,7 @@ Tambah Data Pasangan
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="form-material">
-                            <input class="form-control" type="number" id="register2-username" name="nik_suami" placeholder="" required value="{{ old('nik_suami') }}" min="0"/>
+                          <input class="form-control" type="number" id="register2-username" name="nik_suami" placeholder="" required value="{{ $data->ayah->nik }}"/>
                             <label for="register2-username">NIK Suami</label>
                         </div>
                     </div>
@@ -40,7 +45,7 @@ Tambah Data Pasangan
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="form-material">
-                            <input class="form-control" type="text" id="register2-username" name="tempat_lahir_suami" placeholder="" required value="{{ old('tempat_lahir_suami') }}"/>
+                            <input class="form-control" type="text" id="register2-username" name="tempat_lahir_suami" placeholder="" required value="{{ $data->ayah->tempat_lahir }}"/>
                             <label for="register2-username">Tempat Lahir Suami</label>
                         </div>
                     </div>
@@ -49,7 +54,7 @@ Tambah Data Pasangan
                 <div class="form-group">
                     <div class="col-md-12">
                         <div class="form-material">
-                            <input class="js-datepicker form-control" type="text" id="example-datepicker4" name="tanggal_lahir_suami" data-date-format="dd/mm/yyyy" placeholder="" required value="{{ old('tanggal_lahir_suami') }}">
+                            <input class="js-datepicker form-control" type="text" id="example-datepicker4" name="tanggal_lahir_suami" data-date-format="dd/mm/yyyy" placeholder="" required value="{{ $data->ayah->tanggal_lahir }}">
                             <label for="example-datepicker4">Tanggal Lahir Suami</label>
                         </div>
                     </div>
@@ -61,7 +66,7 @@ Tambah Data Pasangan
                             <select class="js-select2 form-control" id="example2-select2" name="agama_suami" style="width: 100%;" data-placeholder="" required>
                                 <option></option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
                                 @foreach($agamas as $agama)
-                                <option value="{{$agama->id}}" {{ old('agama_suami') == $agama->id ? 'selected' : '' }}>{{ $agama->nama_agama }}</option>
+                                <option value="{{$agama->id}}" {{ $data->ayah->id_agama == $agama->id ? 'selected' : ''}}>{{ $agama->nama_agama }}</option>
                                 @endforeach
                             </select>
                             <label for="example2-select2">Agama Suami</label>
@@ -74,8 +79,8 @@ Tambah Data Pasangan
                         <div class="form-material">
                             <select class="js-select2 form-control" id="example2-select2" name="pendidikan_terakhir_suami" style="width: 100%;" data-placeholder="" required>
                                 <option></option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
-                                @foreach($pendidikans as $pendidikan)
-                                <option value="{{ $pendidikan->id }}" {{ old('pendidikan_terakhir_suami') == $pendidikan->id ? 'selected' : '' }}>{{ $pendidikan->nama_pendidikan }}</option>
+                                @foreach ($pendidikans as $pendidikan)
+                                <option value="{{ $pendidikan->id }}" {{ $data->ayah->id_pendidikan_terakhir == $pendidikan->id ? 'selected' : '' }}>{{ $pendidikan->nama_pendidikan }}</option>
                                 @endforeach
                             </select>
                             <label for="example2-select2">Pendidikan Terakhir Suami</label>
@@ -86,7 +91,7 @@ Tambah Data Pasangan
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="form-material">
-                            <input class="form-control" type="text" id="register2-username" name="pekerjaan_suami" placeholder="" required value="{{ old('pekerjaan_suami') }}"/>
+                            <input class="form-control" type="text" id="register2-username" name="pekerjaan_suami" placeholder="" required value="{{ $data->ayah->pekerjaan }}"/>
                             <label for="register2-username">Pekerjaan Suami</label>
                         </div>
                     </div>
@@ -99,7 +104,7 @@ Tambah Data Pasangan
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="form-material">
-                            <input class="form-control" type="text" id="register2-username" name="nama_istri" placeholder="" required value="{{ old('nama_istri') }}"/>
+                            <input class="form-control" type="text" id="register2-username" name="nama_istri" placeholder="" required value="{{ $data->ibu->nama }}"/>
                             <label for="register2-username">Nama Istri</label>
                         </div>
                     </div>
@@ -108,7 +113,7 @@ Tambah Data Pasangan
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="form-material">
-                            <input class="form-control" type="number" id="register2-username" name="nik_istri" placeholder="" required value="{{ old('nik_istri') }}" min="0"/>
+                            <input class="form-control" type="number" id="register2-username" name="nik_istri" placeholder="" required value="{{ $data->ibu->nik }}"/>
                             <label for="register2-username">NIK Istri</label>
                         </div>
                     </div>
@@ -117,7 +122,7 @@ Tambah Data Pasangan
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="form-material">
-                            <input class="form-control" type="text" id="register2-username" name="tempat_lahir_istri" placeholder="" required value="{{ old('tempat_lahir_istri') }}"/>
+                            <input class="form-control" type="text" id="register2-username" name="tempat_lahir_istri" placeholder="" required value="{{ $data->ibu->tempat_lahir }}"/>
                             <label for="register2-username">Tempat Lahir Istri</label>
                         </div>
                     </div>
@@ -126,7 +131,7 @@ Tambah Data Pasangan
                 <div class="form-group">
                     <div class="col-md-12">
                         <div class="form-material">
-                            <input class="js-datepicker form-control" type="text" id="example-datepicker4" name="tanggal_lahir_istri" data-date-format="dd/mm/yyyy" placeholder="" required value="{{ old('tanggal_lahir_istri') }}">
+                            <input class="js-datepicker form-control" type="text" id="example-datepicker4" name="tanggal_lahir_istri" data-date-format="dd/mm/yyyy" placeholder="" required value="{{ $data->ibu->tanggal_lahir }}">
                             <label for="example-datepicker4">Tanggal Lahir Istri</label>
                         </div>
                     </div>
@@ -138,7 +143,7 @@ Tambah Data Pasangan
                             <select class="js-select2 form-control" id="example2-select2" name="agama_istri" style="width: 100%;" data-placeholder="" required>
                                 <option></option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
                                 @foreach($agamas as $agama)
-                                <option value="{{$agama->id}}" {{ old('agama_istri') == $agama->id ? 'selected' : '' }}>{{ $agama->nama_agama }}</option>
+                                <option value="{{$agama->id}}" {{ $data->ibu->id_agama == $agama->id ? 'selected' : '' }}>{{ $agama->nama_agama }}</option>
                                 @endforeach
                             </select>
                             <label for="example2-select2">Agama Istri</label>
@@ -151,8 +156,8 @@ Tambah Data Pasangan
                         <div class="form-material">
                             <select class="js-select2 form-control" id="example2-select2" name="pendidikan_terakhir_istri" style="width: 100%;" data-placeholder="" required>
                                 <option></option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
-                                @foreach($pendidikans as $pendidikan)
-                                <option value="{{ $pendidikan->id }}" {{ old('pendidikan_terakhir_istri') == $pendidikan->id ? 'selected' : '' }}>{{ $pendidikan->nama_pendidikan }}</option>
+                                @foreach ($pendidikans as $pendidikan)
+                                <option value="{{ $pendidikan->id }}" {{ $data->ibu->id_pendidikan_terakhir == $pendidikan->id ? 'selected' : '' }}>{{ $pendidikan->nama_pendidikan }}</option>
                                 @endforeach
                             </select>
                             <label for="example2-select2">Pendidikan Terakhir Istri</label>
@@ -163,7 +168,7 @@ Tambah Data Pasangan
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="form-material">
-                            <input class="form-control" type="text" id="register2-username" name="pekerjaan_istri" placeholder="" required value="{{ old('pekerjaan_istri') }}"/>
+                            <input class="form-control" type="text" id="register2-username" name="pekerjaan_istri" placeholder="" required value="{{ $data->ibu->pekerjaan }}"/>
                             <label for="register2-username">Pekerjaan Istri</label>
                         </div>
                     </div>
@@ -174,7 +179,7 @@ Tambah Data Pasangan
                 <div class="form-group">
                     <div class="col-md-12">
                         <div class="form-material">
-                            <input class="js-datepicker form-control" type="text" id="example-datepicker4" name="tanggal_menikah" data-date-format="dd/mm/yyyy" placeholder="" required value="{{ old('tanggal_menikah') }}">
+                            <input class="js-datepicker form-control" type="text" id="example-datepicker4" name="tanggal_menikah" data-date-format="dd/mm/yyyy" placeholder="" required value="{{ $data->tanggal_menikah }}">
                             <label for="example-datepicker4">Tanggal Menikah</label>
                         </div>
                     </div>
@@ -184,7 +189,7 @@ Tambah Data Pasangan
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="form-material">
-                            <input class="form-control" type="text" id="register2-username" name="alamat_pasangan" placeholder="" required value="{{ old('alamat_pasangan') }}"/>
+                            <input class="form-control" type="text" id="register2-username" name="alamat_pasangan" placeholder="" required value="{{ $data->alamat }}"/>
                             <label for="register2-username">Alamat Pasangan</label>
                         </div>
                     </div>
@@ -196,7 +201,7 @@ Tambah Data Pasangan
                             <select class="js-select2 form-control" id="example2-select2" name="desa_pasangan" style="width: 100%;" data-placeholder="" required>
                                 <option></option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
                                 @foreach($desas as $desa)
-                                <option value="{{$desa->id}}" {{ old('desa_pasangan') == $desa->id ? 'selected' : '' }}>{{ $desa->nama_desa }}</option>
+                                <option value="{{$desa->id}}" {{ $data->id_desa == $desa->id ? 'selected' : ''}}>{{ $desa->nama_desa }}</option>
                                 @endforeach
                             </select>
                             <label for="example2-select2">Desa</label>

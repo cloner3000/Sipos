@@ -21,7 +21,7 @@ class CreateOrtuTable extends Migration {
 			$table->string('tempat_lahir', 32);
 			$table->date('tanggal_lahir');
 			$table->integer('id_agama')->index('agama');
-			$table->string('pendidikan_terakhir', 32);
+			$table->integer('id_pendidikan_terakhir')->index('id_pendidikan_terakhir');
 			$table->string('pekerjaan', 32)->nullable();
 			$table->boolean('status')->default(1);
 			$table->integer('id_pasangan')->nullable()->index('id_pasangan');

@@ -9,8 +9,10 @@ use App\Catatan;
 use App\Pasangan;
 use App\OrangTua;
 use App\Agama;
+use App\Pendidikan;
 use App\Anak;
 use App\User;
+use App\Desa;
 use Auth;
 
 class KaderController extends Controller
@@ -140,8 +142,24 @@ class KaderController extends Controller
 
     public function addPasangan()
     {
-      // $agamas = Agama::get();
-      return view('pages.add.add_list-pasangan', compact('agamas'));
+      $agamas = Agama::get();
+      $pendidikans = Pendidikan::get();
+      $desas = Desa::get();
+      return view('pages.add.add_list-pasangan', compact('agamas', 'pendidikans', 'desas'));
+    }
+
+    public function editPasangan($id)
+    {
+      $agamas = Agama::get();
+      $pendidikans = Pendidikan::get();
+      $desas = Desa::get();
+      $data = Pasangan::with('ortus')->find($id);
+      $data->ibu = $data->ortus[0]->jenis_kelamin == 'Perempuan' ? $data->ortus[0] : $data->ortus[1];
+      $data->ayah = $data->ortus[0]->jenis_kelamin == 'Laki-Laki' ? $data->ortus[0] : $data->ortus[1];
+      $data->ayah->tanggal_lahir = DateHelper::YMDtoDMY($data->ayah->tanggal_lahir);
+      $data->ibu->tanggal_lahir = DateHelper::YMDtoDMY($data->ibu->tanggal_lahir);
+      $data->tanggal_menikah = DateHelper::YMDtoDMY($data->tanggal_menikah);
+      return view('pages.edit.pasangan', compact('data', 'agamas', 'pendidikans', 'desas'));
     }
 
     public function listAnak()
