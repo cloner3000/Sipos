@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Helpers\KeyHelper;
+use App\Helpers\DateHelper;
 use App\Catatan;
 use App\Pasangan;
 use App\OrangTua;
@@ -17,7 +18,7 @@ class KaderController extends Controller
 
     public $bulan = array(1 => 'Jan', 2 => 'Feb', 3 => 'Mar', 4 => 'Apr', 5 => 'Mei', 6 => 'Jun', 7 => 'Jul', 8 => 'Agu', 9 => 'Sept', 10 => 'Okt', 11 => 'Nov', 12 => 'Des');
 
-    public function getCatatanPage()
+    public function catatanPage()
     {
       return view('pages.catatan');
     }
@@ -27,7 +28,7 @@ class KaderController extends Controller
       return view('pages.add.add_catatan');
     }
 
-    public function getRegisterWuspusPage()
+    public function registerWuspusPage()
     {
       return view('pages.register-wuspus');
     }
@@ -37,113 +38,113 @@ class KaderController extends Controller
       return view('pages.add.add_register-wuspus');
     }
 
-    public function getRegisterBayi011()
+    public function registerBayi011()
     {
       $tahun = date("Y");
       return redirect()->route('register.011.thn', compact('tahun'));
     }
 
-    public function getRegisterBayi011Tahun($tahun)
+    public function registerBayi011Tahun($tahun)
     {
       if(!is_numeric($tahun)){
-        return $this->getRegisterBayi011();
+        return $this->registerBayi011();
       }
       $bulan = $this->bulan;
       return view('pages.register-bayi-011', compact('bulan', 'tahun'));
     }
 
-    public function getRegisterBayi1223()
+    public function registerBayi1223()
     {
       $tahun = date("Y");
       return redirect()->route('register.1223.thn', compact('tahun'));
     }
 
-    public function getRegisterBayi1223Tahun($tahun)
+    public function registerBayi1223Tahun($tahun)
     {
       if(!is_numeric($tahun)){
-        return $this->getRegisterBayi1223();
+        return $this->registerBayi1223();
       }
       $bulan = $this->bulan;
       return view('pages.register-bayi-1223', compact('bulan', 'tahun'));
     }
 
-    public function getRegisterBayi2435()
+    public function registerBayi2435()
     {
       $tahun = date("Y");
       return redirect()->route('register.2435.thn', compact('tahun'));
     }
 
-    public function getRegisterBayi2435Tahun($tahun)
+    public function registerBayi2435Tahun($tahun)
     {
       if(!is_numeric($tahun)){
-        return $this->getRegisterBayi2435();
+        return $this->registerBayi2435();
       }
       $bulan = $this->bulan;
       return view('pages.register-bayi-2435', compact('bulan', 'tahun'));
     }
 
-    public function getRegisterBayi3647()
+    public function registerBayi3647()
     {
       $tahun = date("Y");
       return redirect()->route('register.3647.thn', compact('tahun'));
     }
 
-    public function getRegisterBayi3647Tahun($tahun)
+    public function registerBayi3647Tahun($tahun)
     {
       if(!is_numeric($tahun)){
-        return $this->getRegisterBayi3647();
+        return $this->registerBayi3647();
       }
       $bulan = $this->bulan;
       return view('pages.register-bayi-3647', compact('bulan', 'tahun'));
     }
 
-    public function getRegisterBayi4859()
+    public function registerBayi4859()
     {
       $tahun = date("Y");
       return redirect()->route('register.4859.thn', compact('tahun'));
     }
 
-    public function getRegisterBayi4859Tahun($tahun)
+    public function registerBayi4859Tahun($tahun)
     {
       if(!is_numeric($tahun)){
-        return $this->getRegisterBayi4859();
+        return $this->registerBayi4859();
       }
       $bulan = $this->bulan;
       return view('pages.register-bayi-4859', compact('bulan', 'tahun'));
     }
 
-    public function getRegisterBayiDataPage($id_bayi)
+    public function registerBayiDataPage($id_bayi)
     {
       return view('pages.register-bayi-data');
     }
 
-    public function getRegisterIbuHamilPage()
+    public function registerIbuHamilPage()
     {
       return view('pages.register-ibu-hamil');
     }
 
-    public function getRegisterIbuHamilDataPage()
+    public function registerIbuHamilDataPage()
     {
       return view('pages.register-ibu-hamil-data');
     }
 
-    public function getListPasangan()
+    public function listPasangan()
     {
       return view('pages.list-pasangan');
     }
 
-    public function getDetailPasangan($id)
+    public function detailPasangan($id)
     {
       return $id;
     }
 
-    public function addListPasangan()
+    public function addPasangan()
     {
       // $agamas = Agama::get();
       return view('pages.add.add_list-pasangan', compact('agamas'));
     }
 
-    public function getListAnak()
+    public function listAnak()
     {
       $key = Auth::user()->token_key;
       return view('pages.list-anak', compact('key'));
@@ -156,7 +157,7 @@ class KaderController extends Controller
       return view('pages.add.add_list-anak', compact('agamas', 'pasangans'));
     }
 
-    public function getAnakDetail($id)
+    public function anakDetail($id)
     {
       $anak = Anak::find($id);
       if($anak == NULL){
@@ -165,7 +166,18 @@ class KaderController extends Controller
       return view('pages.detail.detail_anak');
     }
 
-    public function getListPosyandu()
+    public function anakEdit($id)
+    {
+      $anak = Anak::find($id);
+      $agamas = Agama::get();
+      if($anak == NULL){
+        return redirect()->route('get.page.list-anak');
+      }
+      $anak->tanggal_lahir = DateHelper::YMDtoDMY($anak->tanggal_lahir);
+      return view('pages.edit.anak', compact('anak', 'agamas'));
+    }
+
+    public function listPosyandu()
     {
       return view('pages.list-posyandu');
     }
@@ -175,7 +187,7 @@ class KaderController extends Controller
       return view('pages.add.add_list-posyandu');
     }
 
-    public function getListDesa()
+    public function listDesa()
     {
       return view('pages.list-desa');
     }
@@ -188,7 +200,7 @@ class KaderController extends Controller
 
 
 
-    public function getEditCatatan($id)
+    public function editCatatan($id)
     {
       $key = Auth::user()->token_key;
       $data = Catatan::with(['anak.pasangan.ortus', 'anak'])->find($id);

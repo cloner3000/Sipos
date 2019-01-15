@@ -73,4 +73,31 @@ class CrudController extends Controller
       $data->delete();
       return redirect()->route('get.page.list-anak');
     }
+
+    public function editAnak(Request $request)
+    {
+      $data = Anak::find($request->id);
+      if($data == NULL){
+        return redirect()->route('get.page.list-anak')->with('Error', 'Data Not Found');
+      }
+
+      $b = $data;
+
+      $update = $data->update([
+        "nama_anak" => $request->nama,
+        "tempat_lahir" => $request->tempat_lahir,
+        "tanggal_lahir" => DateHelper::DMYtoYMD($request->tanggal_lahir),
+        "jenis_kelamin" => $request->jenis_kelamin,
+        "berat_bayi_lahir" => $request->berat_lahir,
+        "id_agama" => $request->agama,
+        "status" => 1,
+        "id_user" => Auth::user()->id
+      ]);
+
+      if($update != 0){
+        return redirect()->route('get.page.list-anak')->with('success', 'Update Successfully');
+      }
+
+      return redirect()->back()->with('error', 'Update Error');
+    }
 }

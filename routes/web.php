@@ -16,45 +16,47 @@ Route::get('/regtoken', 'HomeController@regToken');
 
 Auth::routes();
 
+Route::name('pages.')->group(function(){
+
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/catatan', 'KaderController@getCatatanPage')->name('catatan');
-Route::get('/catatan/{id}/edit', 'KaderController@getEditCatatan')->name('edit.catatan');
-// Route::get('/catatan/tambah', 'KaderController@addCatatan');
+Route::get('/catatan', 'KaderController@catatanPage')->name('catatan');
+Route::get('/catatan/{id}/edit', 'KaderController@editCatatan')->name('edit.catatan');
 
-Route::get('/register-bayi/0-11', 'KaderController@getRegisterBayi011')->name('register.011');
-Route::get('/register-bayi/12-23', 'KaderController@getRegisterBayi1223')->name('register.1223');
-Route::get('/register-bayi/24-35', 'KaderController@getRegisterBayi2435')->name('register.2435');
-Route::get('/register-bayi/36-47', 'KaderController@getRegisterBayi3647')->name('register.3647');
-Route::get('/register-bayi/48-59', 'KaderController@getRegisterBayi4859')->name('register.4859');
-Route::get('/register-bayi/0-11/{tahun}', 'KaderController@getRegisterBayi011Tahun')->name('register.011.thn');
-Route::get('/register-bayi/12-23/{tahun}', 'KaderController@getRegisterBayi1223Tahun')->name('register.1223.thn');
-Route::get('/register-bayi/24-35/{tahun}', 'KaderController@getRegisterBayi2435Tahun')->name('register.2435.thn');
-Route::get('/register-bayi/36-47/{tahun}', 'KaderController@getRegisterBayi3647Tahun')->name('register.3647.thn');
-Route::get('/register-bayi/48-59/{tahun}', 'KaderController@getRegisterBayi4859Tahun')->name('register.4859.thn');
+Route::get('/register-bayi/0-11', 'KaderController@registerBayi011')->name('register.011');
+Route::get('/register-bayi/12-23', 'KaderController@registerBayi1223')->name('register.1223');
+Route::get('/register-bayi/24-35', 'KaderController@registerBayi2435')->name('register.2435');
+Route::get('/register-bayi/36-47', 'KaderController@registerBayi3647')->name('register.3647');
+Route::get('/register-bayi/48-59', 'KaderController@registerBayi4859')->name('register.4859');
+Route::get('/register-bayi/0-11/{tahun}', 'KaderController@registerBayi011Tahun')->name('register.011.thn');
+Route::get('/register-bayi/12-23/{tahun}', 'KaderController@registerBayi1223Tahun')->name('register.1223.thn');
+Route::get('/register-bayi/24-35/{tahun}', 'KaderController@registerBayi2435Tahun')->name('register.2435.thn');
+Route::get('/register-bayi/36-47/{tahun}', 'KaderController@registerBayi3647Tahun')->name('register.3647.thn');
+Route::get('/register-bayi/48-59/{tahun}', 'KaderController@registerBayi4859Tahun')->name('register.4859.thn');
 
-Route::get('/register-bayi/data/{id_bayi}', 'KaderController@getRegisterBayiDataPage');
+Route::get('/register-bayi/data/{id_bayi}', 'KaderController@registerBayiDataPage');
 
-Route::get('/register-wuspus', 'KaderController@getRegisterWuspusPage');
-Route::get('/register-wuspus/tambah', 'KaderController@addRegisterWuspus');
+Route::get('/wuspus', 'KaderController@registerWuspusPage');
+Route::get('/wuspus/tambah', 'KaderController@addRegisterWuspus');
 
-Route::get('/register-ibu-hamil', 'KaderController@getRegisterIbuHamilPage');
+Route::get('/register-ibu-hamil', 'KaderController@registerIbuHamilPage');
 Route::get('/register-ibu-hamil/tambah', 'KaderController@addRegisterIbuHamil');
-Route::get('/register-ibu-hamil/data/{id}', 'KaderController@getRegisterIbuHamilDataPage');
+Route::get('/register-ibu-hamil/data/{id}', 'KaderController@registerIbuHamilDataPage');
 Route::get('/register-ibu-hamil/data/{id}/tambah', 'KaderController@addRegisterIbuHamilData');
 
-Route::get('/pasangan', 'KaderController@getListPasangan');
-Route::get('/pasangan/tambah', 'KaderController@addListPasangan')->name('add.pasangan');
-Route::get('/anak', 'KaderController@getListAnak')->name('get.page.list-anak');
+Route::get('/pasangan', 'KaderController@listPasangan');
+Route::get('/pasangan/tambah', 'KaderController@ListPasangan')->name('add.pasangan');
+Route::get('/pasangan/{id}/edit', 'KaderController@editPasangan')->name('edit.pasangan');
+Route::get('/anak', 'KaderController@listAnak')->name('get.page.list-anak');
 Route::get('/anak/tambah', 'KaderController@addListAnak')->name('get.page.add-anak');
-Route::get('/anak/{id}', 'KaderController@getAnakDetail')->name('get.page.detail-anak');
-Route::get('/list-posyandu', 'KaderController@getListPosyandu');
+Route::get('/anak/{id}', 'KaderController@anakDetail')->name('get.page.detail-anak');
+Route::get('/anak/{id}/edit', 'KaderController@anakEdit')->name('get.page.edit-anak');
+Route::get('/list-posyandu', 'KaderController@listPosyandu');
 Route::get('/list-posyandu/tambah', 'KaderController@addListPosyandu')->name('add.posyandu');
-Route::get('/list-desa', 'KaderController@getListDesa');
+Route::get('/list-desa', 'KaderController@listDesa');
 Route::get('/list-desa/tambah', 'KaderController@addListDesa')->name('add.desa');
-
-
-
-Route::get('/pasangan/{id}', 'KaderController@getDetailPasangan');
+Route::get('/pasangan/{id}', 'KaderController@detailPasangan');
 
 Route::name('ajax.')->group(function (){
   Route::get('/ajax/{key}/catatan', 'AjaxController@getCatatanApi')->name('catatan');
@@ -67,6 +69,7 @@ Route::name('crud.')->group(function(){
   Route::post('/crud/{key}/add_pasangan', 'CrudController@addPasangan')->name('add.pasangan');
   Route::post('/crud/{key}/add_anak', 'CrudController@addAnak')->name('add.anak');
   Route::post('/crud/{key}/delete_anak', 'CrudController@deleteAnak')->name('delete.anak');
+  Route::post('/crud/{key}/edit_anak', 'CrudController@editAnak')->name('edit.anak');
 });
 
 
