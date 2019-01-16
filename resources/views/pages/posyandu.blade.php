@@ -73,4 +73,36 @@ Daftar Anak
 
 @section('scripts')
 @include('assets.js-datatable')
+<!-- <script>
+  $(document).ready(function (){
+    $('#list-pasangan-table').DataTable({
+      processing: true,
+      serverSide: true,
+      responsive: true,
+      dom : 'lf<"table-responsive"t>ip',
+      ajax: '{{ route("ajax.list-pasangan", ["key" => Auth::user()->token_key]) }}',
+      columns: [
+        { data: 'no', name: 'no' },
+        { data: 'ayah.nama', name: 'nama_ayah' },
+        { data: 'ibu.nama', name: 'nama_ibu' },
+        { data: 'tanggal_menikah', name: 'tanggal_menikah' },
+        { data: 'alamat', name: 'alamat' },
+        { data: 'desa.nama_desa', name: 'nama_desa' },
+        { data: 'desa.kecamatan.nama_kecamatan', name: 'nama_kecamatan' },
+        { data: 'jumlah_anak', name: 'jumlah_anak' },
+        {
+          data: 'id',
+          render: function(data, type, row){
+            return '<td class="text-center">' +
+              '<div class="btn-group">' +
+                '<a href="/pasangan/'+data+'/"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Detail"><i class="ion-ios-information-outline"></i></button></a>' +
+                '<a href="/pasangan/'+data+'/edit"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button></a>' +
+                '<a href="/pasangan/'+data+'/delete"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Delete"><i class="ion-close"></i></button></a>' +
+              '</div></td>';
+          }
+        }
+      ]
+    });
+  });
+</script> -->
 @endsection

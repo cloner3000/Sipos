@@ -60,15 +60,17 @@ Route::name('ajax.')->group(function (){
   Route::get('/ajax/{key}/catatan', 'AjaxController@getCatatanApi')->name('catatan');
   Route::get('/ajax/{key}/list-pasangan', 'AjaxController@getPasanganApi')->name('list-pasangan');
   Route::get('/ajax/{key}/list-anak', 'AjaxController@getAnakApi')->name('list-anak');
+  Route::get('/ajax/{key}/list-desa', 'AjaxController@getDesaApi')->name('list-desa');
 });
 
 Route::name('crud.')->group(function(){
   Route::post('/crud/{key}/edit_catatan', 'CrudController@editCatatan')->name('edit.catatan');
   Route::post('/crud/{key}/add_pasangan', 'CrudController@addPasangan')->name('add.pasangan');
   Route::post('/crud/{key}/edit_pasangan', 'CrudController@editPasangan')->name('edit.pasangan');
+  Route::post('/crud/{key}/delete_pasangan', 'CrudController@deletePasangan')->name('delete.pasangan');
   Route::post('/crud/{key}/add_anak', 'CrudController@addAnak')->name('add.anak');
-  Route::post('/crud/{key}/delete_anak', 'CrudController@deleteAnak')->name('delete.anak');
   Route::post('/crud/{key}/edit_anak', 'CrudController@editAnak')->name('edit.anak');
+  Route::post('/crud/{key}/delete_anak', 'CrudController@deleteAnak')->name('delete.anak');
 });
 
 

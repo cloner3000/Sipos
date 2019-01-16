@@ -20,6 +20,7 @@ class CreatePasanganTable extends Migration {
 			$table->integer('id_desa')->index('id_desa');
 			$table->integer('id_user')->unsigned()->index('id_user');
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

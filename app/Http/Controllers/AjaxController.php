@@ -10,6 +10,7 @@ use App\Pasangan;
 use App\OrangTua;
 use App\Anak;
 use App\User;
+use App\Desa;
 use Auth;
 use DataTables;
 
@@ -55,7 +56,7 @@ class AjaxController extends Controller
 
     public function getPasanganApi($key)
     {
-      // return KeyHelper::checkKey(Auth::user()->id, $key) . '';
+        // return KeyHelper::checkKey(Auth::user()->id, $key) . '';
         if (KeyHelper::checkKey(Auth::user()->id, $key)) {
             $data = Pasangan::with('ortus', 'anaks', 'desa', 'desa.kecamatan')->get();
             $i = 1;
@@ -75,16 +76,14 @@ class AjaxController extends Controller
 
     public function getAnakApi($key)
     {
-      // return KeyHelper::checkKey(Auth::user()->id, $key) . '';
         if (KeyHelper::checkKey(Auth::user()->id, $key)) {
             $data = Anak::with('pasangan.ortus', 'agama')->get();
             $i = 1;
-            foreach($data as $d){
-              $d->no = $i++;
-              $d->ayah = $d->pasangan->ortus[0]->jenis_kelamin == 'Laki-Laki' ? $d->pasangan->ortus[0] : $d->pasangan->ortus[1];
-              $d->ibu = $d->pasangan->ortus[0]->jenis_kelamin == 'Perempuan' ? $d->pasangan->ortus[0] : $d->pasangan->ortus[1];
-              $d->status_hidup = $d->status == 1 ? 'Hidup' : 'Mati';
-
+            foreach ($data as $d) {
+                $d->no = $i++;
+                $d->ayah = $d->pasangan->ortus[0]->jenis_kelamin == 'Laki-Laki' ? $d->pasangan->ortus[0] : $d->pasangan->ortus[1];
+                $d->ibu = $d->pasangan->ortus[0]->jenis_kelamin == 'Perempuan' ? $d->pasangan->ortus[0] : $d->pasangan->ortus[1];
+                $d->status_hidup = $d->status == 1 ? 'Hidup' : 'Mati';
             }
 
             return DataTables::of($data)->make(true);
@@ -93,4 +92,17 @@ class AjaxController extends Controller
         return 'lo cp?';
     }
 
+    public function getDesaApi($key)
+    {
+        if (KeyHelper::checkKey(Auth::user()->id, $key)) {
+            $data = Desa::with('kecamatan', 'kecamatan.kabupaten')->get();
+            $i = 1;
+            foreach ($data as $d) {
+                $d->no = $i++;
+            }
+            return DataTables::of($data)->make(true);
+        }
+
+        return 'lo cp?';
+    }
 }

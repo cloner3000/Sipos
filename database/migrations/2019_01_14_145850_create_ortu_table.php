@@ -27,6 +27,7 @@ class CreateOrtuTable extends Migration {
 			$table->integer('id_pasangan')->nullable()->index('id_pasangan');
 			$table->integer('id_user')->unsigned()->index('id_user');
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

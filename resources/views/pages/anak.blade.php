@@ -53,6 +53,7 @@ Daftar Anak
     document.getElementsByName('id')[0].value = id;
     document.getElementById('delete-form').submit();
   }
+
   $(document).ready(function (){
     $('#list-anak-table').DataTable({
       processing: true,

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property int $id
@@ -19,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Pasangan extends Model
 {
+    use SoftDeletes;
     /**
      * The table associated with the model.
      *
@@ -30,6 +32,7 @@ class Pasangan extends Model
      * @var array
      */
     protected $fillable = ['id_desa', 'id_user', 'tanggal_menikah', 'alamat', 'created_at', 'updated_at'];
+    protected $dates = ['deleted_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

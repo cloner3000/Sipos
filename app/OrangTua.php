@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property int $id
@@ -26,6 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class OrangTua extends Model
 {
+    use SoftDeletes;
     /**
      * The table associated with the model.
      *
@@ -37,6 +39,7 @@ class OrangTua extends Model
      * @var array
      */
     protected $fillable = ['id_agama', 'id_pendidikan_terakhir', 'id_pasangan', 'id_user', 'nama', 'nik', 'jenis_kelamin', 'tempat_lahir', 'tanggal_lahir', 'pekerjaan', 'status', 'created_at', 'updated_at'];
+    protected $dates = ['deleted_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

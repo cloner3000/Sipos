@@ -134,6 +134,29 @@ class CrudController extends Controller
       return redirect()->route('pages.pasangan')->with('success', 'Update Successfully');
     }
 
+    public function deletePasangan(Request $request)
+    {
+      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
+        return 'Token Failed';
+      }
+      $pasangan = Pasangan::with('anaks', 'ortus')->find($request->id);
+
+      if($pasangan == NULL){
+        return redirect()->back()->with('error', 'Data Not Found');
+      }
+
+      foreach($pasangan->anaks as $anak){
+        Anak::find($anak->id)->delete();
+        Catatan::where('id_anak', $anak->id)->get()->first()->delete();
+      }
+      foreach($pasangan->ortus as $ortu){
+        OrangTua::find($ortu->id)->delete();
+      }
+
+      $pasangan->delete();
+      return redirect()->route('pages.pasangan')->with('success', 'Delete Successfully');
+    }
+
     public function addAnak(Request $request)
     {
       if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
