@@ -37,7 +37,7 @@ Daftar Anak
     </div>
   </div>
 
-  <form class="" action="{{ route('crud.delete.anak', compact('key')) }}" method="post" style="display: none;" id="delete-form">
+  <form class="" action="{{ route('crud.delete.anak', ['key' => Auth::user()->token_key]) }}" method="post" style="display: none;" id="delete-form">
     @csrf
     <input type="hidden" name="id" value="-1">
   </form>
@@ -49,7 +49,7 @@ Daftar Anak
 @include('assets.js-datatable')
 <script>
 
-  function deleteAnak(id){
+  function deleteData(id){
     document.getElementsByName('id')[0].value = id;
     document.getElementById('delete-form').submit();
   }
@@ -78,7 +78,7 @@ Daftar Anak
               '<div class="btn-group">' +
                 '<a href="/anak/'+data+'/"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Detail"><i class="ion-ios-information-outline"></i></button></a>' +
                 '<a href="/anak/'+data+'/edit"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button></a>' +
-                '<button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Delete" onclick="deleteAnak('+data+')"><i class="ion-close"></i></button>' +
+                '<button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Delete" onclick="deleteData('+data+')"><i class="ion-close"></i></button>' +
               '</div></td>';
           }
         }

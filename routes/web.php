@@ -49,8 +49,9 @@ Route::name('pages.')->group(function(){
 
   Route::get('/list-posyandu', 'KaderController@listPosyandu')->name('posyandu');
   Route::get('/list-posyandu/tambah', 'KaderController@addListPosyandu')->name('add.posyandu');
-  Route::get('/list-desa', 'KaderController@listDesa')->name('desa');
-  Route::get('/list-desa/tambah', 'KaderController@addListDesa')->name('add.desa');
+  Route::get('/desa', 'KaderController@listDesa')->name('desa');
+  Route::get('/desa/tambah', 'KaderController@addDesa')->name('add.desa');
+  Route::get('/desa/{id}/edit', 'KaderController@editDesa')->name('edit.desa');
 
   Route::get('/wuspus', 'KaderController@registerWuspusPage')->name('wuspus');
   Route::get('/wuspus/tambah', 'KaderController@addRegisterWuspus')->name('add.wuspus');
@@ -71,6 +72,9 @@ Route::name('crud.')->group(function(){
   Route::post('/crud/{key}/add_anak', 'CrudController@addAnak')->name('add.anak');
   Route::post('/crud/{key}/edit_anak', 'CrudController@editAnak')->name('edit.anak');
   Route::post('/crud/{key}/delete_anak', 'CrudController@deleteAnak')->name('delete.anak');
+  Route::post('/crud/{key}/add_desa', 'CrudController@addDesa')->name('add.desa');
+  Route::post('/crud/{key}/edit_desa', 'CrudController@editDesa')->name('edit.desa');
+  Route::post('/crud/{key}/delete_desa', 'CrudController@deleteDesa')->name('delete.desa');
 });
 
 

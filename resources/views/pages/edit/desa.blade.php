@@ -1,7 +1,7 @@
 @extends('layouts.base_dashboard')
 
 @section('title')
-Tambah Data Desa
+Edit Data Desa
 @endsection
 
 @section('stylesheets')
@@ -12,16 +12,18 @@ Tambah Data Desa
 <div class="card">
 
   <div class="card-header bg-purple bg-inverse">
-    <h4>Tambah Data Desa</h4>
+    <h4>Edit Data Desa</h4>
   </div>
 
   <div class="card-block">
-    <form class="form-horizontal m-t-sm" action="{{ route('crud.add.desa', ['key' => Auth::user()->token_key ])}}" method="post">
+    <form class="form-horizontal m-t-sm" action="{{ route('crud.edit.desa', ['key' => Auth::user()->token_key ])}}" method="post">
       @csrf
+
+      <input type="hidden" name="id" value="{{ $desa->id }}">
       <div class="form-group">
         <div class="col-xs-12">
           <div class="form-material">
-            <input class="form-control" type="text" id="register2-username" name="nama_desa" placeholder="Masukkan Nama Desa" value="{{ old('nama_desa') }}" required/>
+            <input class="form-control" type="text" id="register2-username" name="nama_desa" placeholder="Masukkan Nama Desa" value="{{ $desa->nama_desa }}" required/>
             <label for="register2-username">Nama Desa</label>
           </div>
         </div>
@@ -33,7 +35,7 @@ Tambah Data Desa
             <select class="js-select2 form-control" id="example2-select2" name="kecamatan" style="width: 100%;" data-placeholder="pilih satu.." required>
               <option></option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
               @foreach($kecamatans as $kecamatan)
-              <option value="{{ $kecamatan->id }}">{{ $kecamatan->nama_kecamatan }}</option>
+              <option value="{{ $kecamatan->id }}" {{ $desa->id_kecamatan == $kecamatan->id ? 'selected' : '' }}>{{ $kecamatan->nama_kecamatan }}</option>
               @endforeach
             </select>
             <label for="example2-select2">Pilih Kecamatan</label>

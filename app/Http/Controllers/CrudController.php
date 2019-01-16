@@ -10,6 +10,8 @@ use App\Pasangan;
 use App\OrangTua;
 use App\Anak;
 use App\User;
+use App\Kecamatan;
+use App\Desa;
 use Auth;
 
 class CrudController extends Controller
@@ -20,16 +22,21 @@ class CrudController extends Controller
         return 'Token Failed';
       }
 
-      // return DateHelper::convertDate($request->tanggal_meninggal);
+      $catatan = Catatan::find($request->id);
 
-      $data = Catatan::find($request->id);
-      $data->meninggal = $request->meninggal;
-      $data->tanggal_meninggal = DateHelper::DMYtoYMD($request->tanggal_meninggal);
-      $data->penyebab_meninggal = $request->penyebab_meninggal;
+      if($catatan == NULL){
+        return redirect()->back()->with('error', 'Catatan not found')->withInput();
+      }
 
-      $data->save();
+      return $request;
 
-      return redirect()->route('pages.catatan')->with('success', 'Update Successfully');
+      $catatan->update([
+        'meninggal' => $request->meninggal,
+        'tanggal_meninggal' => DateHelper::DMYtoYMD($request->tanggal_meninggal),
+        'penyebab_meninggal' => $request->penyebab_meninggal
+      ]);
+
+      return redirect()->route('pages.catatan')->with('success', 'Update Catatan Successfully');
     }
 
     public function addPasangan(Request $request)
@@ -139,6 +146,7 @@ class CrudController extends Controller
       if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
         return 'Token Failed';
       }
+
       $pasangan = Pasangan::with('anaks', 'ortus')->find($request->id);
 
       if($pasangan == NULL){
@@ -185,6 +193,10 @@ class CrudController extends Controller
 
     public function deleteAnak(Request $request)
     {
+      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
+        return 'Token Failed';
+      }
+
       $data = Anak::find($request->id);
       if($data == NULL){
         return redirect()->route('pages.anak')->with('Error', 'Data Not Found');
@@ -196,6 +208,10 @@ class CrudController extends Controller
 
     public function editAnak(Request $request)
     {
+      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
+        return 'Token Failed';
+      }
+
       $data = Anak::find($request->id);
       if($data == NULL){
         return redirect()->route('pages.anak')->with('Error', 'Data Not Found');
@@ -220,5 +236,65 @@ class CrudController extends Controller
       return redirect()->route('pages.anak')->with('success', 'Update Successfully');
     }
 
+    public function addDesa(Request $request)
+    {
+      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
+        return 'Token Failed';
+      }
+
+      if(Kecamatan::find($request->kecamatan) == NULL){
+        return redirect()->back()->with('error', 'Kecamatan Not Found')->withInput();
+      }
+
+      Desa::create([
+        'nama_desa' => $request->nama_desa,
+        'id_kecamatan' => $request->kecamatan,
+        'id_user' => Auth::user()->id
+      ]);
+
+      return redirect()->route('pages.desa')->with('success', 'Data has been successfully added');
+    }
+
+    public function editDesa(Request $request)
+    {
+      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
+        return 'Token Failed';
+      }
+
+      $desa = Desa::find($request->id);
+      if($desa == NULL){
+        return redirect()->route('pages.desa')->with('error', 'Data not found');
+      }
+
+      if(Kecamatan::find($request->kecamatan) == NULL){
+        return redirect()->back()->with('error', 'Kecamatan not found');
+      }
+
+      $desa->update([
+        'nama_desa' => $request->nama_desa,
+        'id_kecamatan' => $request->kecamatan,
+      ]);
+
+      return redirect()->route('pages.desa')->with('success', 'Update successfully');
+    }
+
+    public function deleteDesa(Request $request)
+    {
+      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
+        return 'Token Failed';
+      }
+
+      $desa = Desa::with('posyandus')->find($request->id);
+      if($desa == NULL){
+        return redirect()->route('pages.desa')->with('error', 'Data not found');
+      }
+
+      if(count($desa->posyandus) > 0){
+        return redirect()->route('pages.desa')->with('error', 'Desa has relation with posyandu');
+      }
+
+      $desa->delete();
+      return redirect()->route('pages.desa')->with('success', 'Delete successfully');
+    }
 
 }

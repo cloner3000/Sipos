@@ -1,7 +1,7 @@
 @extends('layouts.base_dashboard')
 
 @section('title')
-Tambah Data Anak
+Edit Data Anak
 @endsection
 
 @section('stylesheets')
@@ -12,7 +12,7 @@ Tambah Data Anak
 <div class="card">
 
   <div class="card-header bg-purple bg-inverse">
-    <h4>Tambah Data Anak Baru</h4>
+    <h4>Edit Data Anak</h4>
   </div>
 
   <div class="card-block">

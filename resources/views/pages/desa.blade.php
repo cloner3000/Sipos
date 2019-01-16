@@ -27,55 +27,14 @@ Daftar Desa
                         <th>Action</th>
                     </tr>
                 </thead>
-
-                <tbody>
-                    <!-- Body Data -->
-                    <tr>
-                        <td>1</td>
-                        <td>Ambulu</td>
-                        <td>Ambulu</td>
-                        <td>Jember</td>
-                        <td class="text-center">
-                            <div class="btn-group">
-                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Detail"><i class="ion-ios-information-outline" onclick="location.href='{{ url('/register-ibu-hamil/data/1') }}'"></i></button>
-                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button>
-                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Delete"><i class="ion-close"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>2</td>
-                        <td>Sumberan</td>
-                        <td>Ambulu</td>
-                        <td>Jember</td>
-                        <td class="text-center">
-                            <div class="btn-group">
-                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Detail"><i class="ion-ios-information-outline" onclick="location.href='{{ url('/register-ibu-hamil/data/1') }}'"></i></button>
-                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button>
-                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Delete"><i class="ion-close"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>3</td>
-                        <td>Umbulsari</td>
-                        <td>Mumbulsari</td>
-                        <td>Jember</td>
-                        <td class="text-center">
-                            <div class="btn-group">
-                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Detail"><i class="ion-ios-information-outline" onclick="location.href='{{ url('/register-ibu-hamil/data/1') }}'"></i></button>
-                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button>
-                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Delete"><i class="ion-close"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <!-- End of Body Data -->
-                </tbody>
             </table>
         </div>
     </div>
+
+    <form class="" action="{{ route('crud.delete.desa', ['key' => Auth::user()->token_key]) }}" method="post" style="display: none;" id="delete-form">
+      @csrf
+      <input type="hidden" name="id" value="-1">
+    </form>
 
 </div>
 @endsection
@@ -83,6 +42,11 @@ Daftar Desa
 @section('scripts')
 @include('assets.js-datatable')
 <script>
+  function deleteData(id){
+    document.getElementsByName('id')[0].value = id;
+    document.getElementById('delete-form').submit();
+  }
+
   $(document).ready(function (){
     $('#list-desa-table').DataTable({
       processing: true,
@@ -101,7 +65,7 @@ Daftar Desa
             return '<td class="text-center">' +
               '<div class="btn-group">' +
                 '<a href="/desa/'+data+'/edit"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="ion-edit"></i></button></a>' +
-                '<a href="/desa/'+data+'/delete"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Delete"><i class="ion-close"></i></button></a>' +
+                '<button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Delete" onclick="deleteData('+data+')"><i class="ion-close"></i></button>' +
               '</div></td>';
           }
         }

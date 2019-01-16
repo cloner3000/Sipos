@@ -1,7 +1,7 @@
 @extends('layouts.base_dashboard')
 
 @section('title')
-Tambah Data Pasangan
+Edit Data Pasangan
 @endsection
 
 @section('stylesheets')

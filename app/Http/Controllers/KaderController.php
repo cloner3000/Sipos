@@ -9,6 +9,7 @@ use App\Catatan;
 use App\Pasangan;
 use App\OrangTua;
 use App\Agama;
+use App\Kecamatan;
 use App\Pendidikan;
 use App\Anak;
 use App\User;
@@ -150,10 +151,15 @@ class KaderController extends Controller
 
     public function editPasangan($id)
     {
+      $data = Pasangan::with('ortus')->find($id);
+
+      if($data == NULL){
+        return redirect()->route('pages.pasangan')->with('error', 'Data not found');
+      }
+
       $agamas = Agama::get();
       $pendidikans = Pendidikan::get();
       $desas = Desa::get();
-      $data = Pasangan::with('ortus')->find($id);
       $data->ibu = $data->ortus[0]->jenis_kelamin == 'Perempuan' ? $data->ortus[0] : $data->ortus[1];
       $data->ayah = $data->ortus[0]->jenis_kelamin == 'Laki-Laki' ? $data->ortus[0] : $data->ortus[1];
       $data->ayah->tanggal_lahir = DateHelper::YMDtoDMY($data->ayah->tanggal_lahir);
@@ -179,7 +185,7 @@ class KaderController extends Controller
     {
       $anak = Anak::find($id);
       if($anak == NULL){
-        return redirect()->route('pages.anak')->with('error', 'Data Not Found');
+        return redirect()->route('pages.anak')->with('error', 'Data not found');
       }
       return view('pages.detail.anak');
     }
@@ -189,7 +195,7 @@ class KaderController extends Controller
       $anak = Anak::find($id);
       $agamas = Agama::get();
       if($anak == NULL){
-        return redirect()->route('pages.anak')->with('error', 'Data Not Found');
+        return redirect()->route('pages.anak')->with('error', 'Data not found');
       }
       $anak->tanggal_lahir = DateHelper::YMDtoDMY($anak->tanggal_lahir);
       return view('pages.edit.anak', compact('anak', 'agamas'));
@@ -210,29 +216,38 @@ class KaderController extends Controller
       return view('pages.desa');
     }
 
-    public function addListDesa()
+    public function addDesa()
     {
-      return view('pages.add.desa');
+      $kecamatans = Kecamatan::get();
+      return view('pages.add.desa', compact('kecamatans'));
     }
 
-
-
+    public function editDesa($id)
+    {
+      $desa = Desa::find($id);
+      if($desa == NULL){
+        return redirect()->route('pages.desa')->with('error', 'Data not found');
+      }
+      $kecamatans = Kecamatan::get();
+      return view('pages.edit.desa', compact('kecamatans', 'desa'));
+    }
 
     public function editCatatan($id)
     {
-      $key = Auth::user()->token_key;
       $data = Catatan::with(['anak.pasangan.ortus', 'anak'])->find($id);
+
+      if($data == NULL){
+        return redirect()->route('pages.catatan')->with('error', 'Data not found');
+      }
 
       $data->ibu = $data->anak->pasangan->ortus[0]->jenis_kelamin == 'Perempuan' ? $data->anak->pasangan->ortus[0] : $data->anak->pasangan->ortus[1];
       $data->ayah = $data->anak->pasangan->ortus[0]->jenis_kelamin == 'Laki-Laki' ? $data->anak->pasangan->ortus[0] : $data->anak->pasangan->ortus[1];
 
       if($data->tanggal_meninggal != NULL){
-        $data->tanggal_meninggal = date('d/m/Y', strtotime($data->tanggal_meninggal));
+        $data->tanggal_meninggal = DateHelper::YMDtoDMY($data->tanggal_meninggal);
       }
 
-      $data->anak->tanggal_lahir = date('d/m/Y', strtotime($data->anak->tanggal_lahir));
-
-      // $data;
+      $data->anak->tanggal_lahir = DateHelper::YMDtoDMY($data->anak->tanggal_lahir);
       return view('pages.edit.catatan', compact('data', 'key'));
     }
 

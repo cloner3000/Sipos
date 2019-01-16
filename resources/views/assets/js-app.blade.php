@@ -8,17 +8,45 @@
 <script src="{{ asset('js/toastr.min.js') }}"></script>
 
 <script>
+
     @if (Session::has('info'))
-        toastr["info"](`{{ str_replace('`', '\`', session('info')) }}`, "Info")
+        @php
+          $messages = explode('|', session('info'));
+        @endphp
+
+        @foreach($messages as $message)
+          toastr["info"]("{{ $message }}", "Info")
+        @endforeach
     @endif
+
     @if (Session::has('error'))
-        toastr["error"](`{{str_replace('`', '\`', session('error')) }}`, "Error")
+        @php
+          $messages = explode('|', session('error'));
+        @endphp
+
+        @foreach($messages as $message)
+          toastr["error"]("{{ $message }}", "Error")
+        @endforeach
     @endif
+
     @if (Session::has('warning'))
-        toastr["warning"](`{{ str_replace('`', '\`', session('warning')) }}`, "Warning")
+        @php
+          $messages = explode('|', session('warning'));
+        @endphp
+
+        @foreach($messages as $message)
+          toastr["warning"]("{{ $message }}", "Warning")
+        @endforeach
     @endif
+
     @if (Session::has('success'))
-        toastr["success"](`{{ str_replace('`', '\`', session('success')) }}`, "Success")
+        @php
+          $messages = explode('|', session('success'));
+        @endphp
+
+        @foreach($messages as $message)
+          toastr["success"]("{{ $message }}", "Success")
+        @endforeach
     @endif
 
     @if (count($errors) > 0)
