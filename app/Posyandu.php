@@ -19,7 +19,7 @@ class Posyandu extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'posyandu';
@@ -27,7 +27,7 @@ class Posyandu extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_desa', 'id_user', 'no_posyandu', 'nama_posyandu', 'timestamps'];
+    protected $fillable = ['id_desa', 'id_user', 'no_posyandu', 'nama_posyandu', 'alamat', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

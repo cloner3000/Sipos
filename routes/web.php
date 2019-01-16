@@ -47,8 +47,9 @@ Route::name('pages.')->group(function(){
   Route::get('/register-ibu-hamil/data/{id}', 'KaderController@registerIbuHamilDataPage');
   Route::get('/register-ibu-hamil/data/{id}/tambah', 'KaderController@addRegisterIbuHamilData');
 
-  Route::get('/list-posyandu', 'KaderController@listPosyandu')->name('posyandu');
-  Route::get('/list-posyandu/tambah', 'KaderController@addListPosyandu')->name('add.posyandu');
+  Route::get('/posyandu', 'KaderController@posyandu')->name('posyandu');
+  Route::get('/posyandu/tambah', 'KaderController@addPosyandu')->name('add.posyandu');
+  Route::get('/posyandu/{id}/edit', 'KaderController@editPosyandu')->name('edit.posyandu');
   Route::get('/desa', 'KaderController@listDesa')->name('desa');
   Route::get('/desa/tambah', 'KaderController@addDesa')->name('add.desa');
   Route::get('/desa/{id}/edit', 'KaderController@editDesa')->name('edit.desa');
@@ -62,6 +63,7 @@ Route::name('ajax.')->group(function (){
   Route::get('/ajax/{key}/list-pasangan', 'AjaxController@getPasanganApi')->name('list-pasangan');
   Route::get('/ajax/{key}/list-anak', 'AjaxController@getAnakApi')->name('list-anak');
   Route::get('/ajax/{key}/list-desa', 'AjaxController@getDesaApi')->name('list-desa');
+  Route::get('/ajax/{key}/list-posyandu', 'AjaxController@getPosyanduApi')->name('list-posyandu');
 });
 
 Route::name('crud.')->group(function(){
@@ -75,10 +77,7 @@ Route::name('crud.')->group(function(){
   Route::post('/crud/{key}/add_desa', 'CrudController@addDesa')->name('add.desa');
   Route::post('/crud/{key}/edit_desa', 'CrudController@editDesa')->name('edit.desa');
   Route::post('/crud/{key}/delete_desa', 'CrudController@deleteDesa')->name('delete.desa');
-});
-
-
-
-Route::get('/test', function(){
-  return App\Helpers\KeyHelper::generateKey(1);
+  Route::post('/crud/{key}/add_posyandu', 'CrudController@addPosyandu')->name('add.posyandu');
+  Route::post('/crud/{key}/edit_posyandu', 'CrudController@editPosyandu')->name('edit.posyandu');
+  Route::post('/crud/{key}/delete_posyandu', 'CrudController@deletePosyandu')->name('delete.posyandu');
 });

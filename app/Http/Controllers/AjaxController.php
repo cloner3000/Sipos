@@ -11,6 +11,7 @@ use App\OrangTua;
 use App\Anak;
 use App\User;
 use App\Desa;
+use App\Posyandu;
 use Auth;
 use DataTables;
 
@@ -56,7 +57,6 @@ class AjaxController extends Controller
 
     public function getPasanganApi($key)
     {
-        // return KeyHelper::checkKey(Auth::user()->id, $key) . '';
         if (KeyHelper::checkKey(Auth::user()->id, $key)) {
             $data = Pasangan::with('ortus', 'anaks', 'desa', 'desa.kecamatan')->get();
             $i = 1;
@@ -101,6 +101,20 @@ class AjaxController extends Controller
                 $d->no = $i++;
             }
             return DataTables::of($data)->make(true);
+        }
+
+        return 'lo cp?';
+    }
+
+    public function getPosyanduApi($key)
+    {
+        if (KeyHelper::checkKey(Auth::user()->id, $key)) {
+            $posyandus = Posyandu::with('desa', 'desa.kecamatan')->get();
+            $i = 1;
+            foreach ($posyandus as $posyandu) {
+                $posyandu->no = $i++;
+            }
+            return DataTables::of($posyandus)->make(true);
         }
 
         return 'lo cp?';

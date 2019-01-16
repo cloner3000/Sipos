@@ -12,6 +12,7 @@ use App\Anak;
 use App\User;
 use App\Kecamatan;
 use App\Desa;
+use App\Posyandu;
 use Auth;
 
 class CrudController extends Controller
@@ -80,7 +81,7 @@ class CrudController extends Controller
         'id_user' => Auth::user()->id
       ]);
 
-      return redirect()->route('pages.pasangan')->with('success', 'Add Successfully');
+      return redirect()->route('pages.pasangan')->with('success', 'Data has been successfully addedccessfully');
     }
 
     public function editPasangan(Request $request)
@@ -188,7 +189,7 @@ class CrudController extends Controller
         "id_user" => Auth::user()->id
       ]);
 
-      return redirect()->route('pages.anak')->with('success', 'Add Successfully');
+      return redirect()->route('pages.anak')->with('success', 'Data has been successfully addedccessfully');
     }
 
     public function deleteAnak(Request $request)
@@ -267,7 +268,7 @@ class CrudController extends Controller
       }
 
       if(Kecamatan::find($request->kecamatan) == NULL){
-        return redirect()->back()->with('error', 'Kecamatan not found');
+        return redirect()->back()->with('error', 'Kecamatan not found')->withInput();
       }
 
       $desa->update([
@@ -295,6 +296,71 @@ class CrudController extends Controller
 
       $desa->delete();
       return redirect()->route('pages.desa')->with('success', 'Delete successfully');
+    }
+
+    public function addPosyandu(Request $request)
+    {
+      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
+        return 'Token Failed';
+      }
+
+      if(Desa::find($request->desa) == NULL){
+        return redirect()->back()->with('error', 'Desa not found')->withInput();
+      }
+
+      $p = Posyandu::create([
+        'no_posyandu' => $request->no_posyandu,
+        'nama_posyandu' => $request->nama_posyandu,
+        'alamat' => $request->alamat_posyandu,
+        'id_desa' => $request->desa,
+        'id_user' => Auth::user()->id
+      ]);
+
+      return redirect()->route('pages.posyandu')->with('success', 'Data has been successfully added');
+    }
+
+    public function editPosyandu(Request $request)
+    {
+      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
+        return 'Token Failed';
+      }
+
+      if(Desa::find($request->desa) == NULL){
+        return redirect()->back()->with('error', 'Desa not found')->withInput();
+      }
+
+      $posyandu = Posyandu::find($request->id);
+
+      if($posyandu == NULL){
+        return redirect()->back()->with('error', 'Posyandu not found')->withInput();
+      }
+
+      $posyandu->update([
+        'no_posyandu' => $request->no_posyandu,
+        'nama_posyandu' => $request->nama_posyandu,
+        'alamat' => $request->alamat_posyandu,
+        'id_desa' => $request->desa,
+        'id_user' => Auth::user()->id
+      ]);
+
+      return redirect()->route('pages.posyandu')->with('success', 'Update successfully');
+    }
+
+    public function deletePosyandu(Request $request)
+    {
+      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
+        return 'Token Failed';
+      }
+
+      $posyandu = Posyandu::find($request->id);
+
+      if($posyandu == NULL){
+        return redirect()->route('pages.posyandu')->with('error', 'Posyandu not found');
+      }
+
+      $posyandu->delete();
+
+      return redirect()->route('pages.posyandu')->with('success', 'Delete successfully');
     }
 
 }

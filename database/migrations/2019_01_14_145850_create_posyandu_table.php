@@ -17,9 +17,10 @@ class CreatePosyanduTable extends Migration {
 			$table->integer('id', true);
 			$table->string('no_posyandu', 32);
 			$table->string('nama_posyandu', 32);
+			$table->string('alamat', 64);
 			$table->integer('id_desa')->index('id_desa');
 			$table->integer('id_user')->unsigned()->index('id_user');
-			$table->timestamp('timestamps')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamps();
 		});
 	}
 

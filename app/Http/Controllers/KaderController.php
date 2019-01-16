@@ -14,6 +14,7 @@ use App\Pendidikan;
 use App\Anak;
 use App\User;
 use App\Desa;
+use App\Posyandu;
 use Auth;
 
 class KaderController extends Controller
@@ -201,14 +202,22 @@ class KaderController extends Controller
       return view('pages.edit.anak', compact('anak', 'agamas'));
     }
 
-    public function listPosyandu()
+    public function posyandu()
     {
       return view('pages.posyandu');
     }
 
-    public function addListPosyandu()
+    public function addPosyandu()
     {
-      return view('pages.add.posyandu');
+      $desas = Desa::get();
+      return view('pages.add.posyandu', compact('desas'));
+    }
+
+    public function editPosyandu($id)
+    {
+      $desas = Desa::get();
+      $posyandu = Posyandu::find($id);
+      return view('pages.edit.posyandu', compact('desas', 'posyandu'));
     }
 
     public function listDesa()

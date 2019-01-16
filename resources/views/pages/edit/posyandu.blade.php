@@ -1,7 +1,7 @@
 @extends('layouts.base_dashboard')
 
 @section('title')
-Tambah Data Posyandu
+Edit Data Posyandu
 @endsection
 
 @section('stylesheets')
@@ -12,17 +12,17 @@ Tambah Data Posyandu
 <div class="card">
 
   <div class="card-header bg-purple bg-inverse">
-    <h4>Tambah Data Posyandu</h4>
+    <h4>Edit Data Posyandu</h4>
   </div>
 
   <div class="card-block">
-    <form class="form-horizontal m-t-sm" action="{{ route('crud.add.posyandu', ['key' => Auth::user()->token_key]) }}" method="post">
+    <form class="form-horizontal m-t-sm" action="{{ route('crud.edit.posyandu', ['key' => Auth::user()->token_key]) }}" method="post">
       @csrf
-
+      <input type="hidden" name="id" value="{{ $posyandu->id }}">
       <div class="form-group">
         <div class="col-xs-12">
           <div class="form-material">
-            <input class="form-control" type="number" id="register2-username" name="no_posyandu" placeholder="Masukkan Nama Posyandu" value="{{ old('no_posyandu') }}" required min="0"/>
+            <input class="form-control" type="number" id="register2-username" name="no_posyandu" placeholder="Masukkan Nama Posyandu" value="{{ $posyandu->no_posyandu }}" required min="0"/>
             <label for="register2-username">Nomor Posyandu</label>
           </div>
         </div>
@@ -31,7 +31,7 @@ Tambah Data Posyandu
       <div class="form-group">
         <div class="col-xs-12">
           <div class="form-material">
-            <input class="form-control" type="text" id="register2-username" name="nama_posyandu" placeholder="Masukkan Nama Posyandu" value="{{ old('nama_posyandu') }}" required/>
+            <input class="form-control" type="text" id="register2-username" name="nama_posyandu" placeholder="Masukkan Nama Posyandu" value="{{ $posyandu->nama_posyandu }}" required/>
             <label for="register2-username">Nama Posyandu</label>
           </div>
         </div>
@@ -40,7 +40,7 @@ Tambah Data Posyandu
       <div class="form-group">
         <div class="col-xs-12">
           <div class="form-material">
-            <input class="form-control" type="text" id="register2-username" name="alamat_posyandu" placeholder="Masukkan Alamat" value="{{ old('alamat_posyandu') }}" required/>
+            <input class="form-control" type="text" id="register2-username" name="alamat_posyandu" placeholder="Masukkan Alamat" value="{{ $posyandu->alamat }}" required/>
             <label for="register2-username">Alamat Posyandu</label>
           </div>
         </div>
@@ -52,7 +52,7 @@ Tambah Data Posyandu
             <select class="js-select2 form-control" id="example2-select2" name="desa" style="width: 100%;" data-placeholder="pilih satu.." required>
               <option></option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
               @foreach($desas as $desa)
-              <option value="{{ $desa->id }}" {{ old('desa') == $desa->id ? 'selected' : ''}}>{{ $desa->nama_desa }}</option>
+              <option value="{{ $desa->id }}" {{ $posyandu->id_desa == $desa->id ? 'selected' : ''}}>{{ $desa->nama_desa }}</option>
               @endforeach
             </select>
             <label for="example2-select2">Pilih Desa</label>
