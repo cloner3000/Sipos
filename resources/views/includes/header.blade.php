@@ -33,18 +33,14 @@
 
           <li class="dropdown dropdown-profile">
             <a href="javascript:void(0)" data-toggle="dropdown">
-              <span class="m-r-sm">John Doe <span class="caret"></span></span>
+              <span class="m-r-sm">{{ Auth::user()->name }}<span class="caret"></span></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-right">
               <li class="dropdown-header">
                 Sipos
               </li>
               <li>
-                <a href="base_pages_profile.html"><span class="badge badge-success pull-right">3</span> Blog</a>
-              </li>
-              <li>
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
