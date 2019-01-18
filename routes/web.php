@@ -33,19 +33,20 @@ Route::name('pages.')->group(function(){
   Route::get('/register-bayi/0-11', 'KaderController@registerBayi011')->name('register.011');
   Route::get('/register-bayi/12-23', 'KaderController@registerBayi1223')->name('register.1223');
   Route::get('/register-bayi/24-35', 'KaderController@registerBayi2435')->name('register.2435');
-  Route::get('/register-bayi/36-47', 'KaderController@registerBayi3647')->name('register.3647');
   Route::get('/register-bayi/48-59', 'KaderController@registerBayi4859')->name('register.4859');
+  Route::get('/register-bayi/36-47', 'KaderController@registerBayi3647')->name('register.3647');
   Route::get('/register-bayi/0-11/{tahun}', 'KaderController@registerBayi011Tahun')->name('register.011.thn');
   Route::get('/register-bayi/12-23/{tahun}', 'KaderController@registerBayi1223Tahun')->name('register.1223.thn');
   Route::get('/register-bayi/24-35/{tahun}', 'KaderController@registerBayi2435Tahun')->name('register.2435.thn');
   Route::get('/register-bayi/36-47/{tahun}', 'KaderController@registerBayi3647Tahun')->name('register.3647.thn');
   Route::get('/register-bayi/48-59/{tahun}', 'KaderController@registerBayi4859Tahun')->name('register.4859.thn');
   Route::get('/register-bayi/data/{id_bayi}', 'KaderController@registerBayiDataPage');
+  Route::get('/register-bayi/tambah-data', 'KaderController@addRegisterBayi')->name('add.register-bayi');
 
-  Route::get('/register-ibu-hamil', 'KaderController@registerIbuHamilPage')->name('ibu-hamil');
-  Route::get('/register-ibu-hamil/tambah', 'KaderController@addRegisterIbuHamil')->name('add.ibu-hamil');
-  Route::get('/register-ibu-hamil/data/{id}', 'KaderController@registerIbuHamilDataPage');
-  Route::get('/register-ibu-hamil/data/{id}/tambah', 'KaderController@addRegisterIbuHamilData');
+  Route::get('/ibu-hamil', 'KaderController@ibuHamilPage')->name('ibu-hamil');
+  Route::get('/ibu-hamil/tambah', 'KaderController@addIbuHamil')->name('add.ibu-hamil');
+  Route::get('/ibu-hamil/data/{id}', 'KaderController@ibuHamilDataPage');
+  Route::get('/ibu-hamil/data/{id}/tambah', 'KaderController@addIbuHamilData');
 
   Route::get('/posyandu', 'KaderController@posyandu')->name('posyandu');
   Route::get('/posyandu/tambah', 'KaderController@addPosyandu')->name('add.posyandu');

@@ -1,5 +1,6 @@
 php artisan krlove:generate:model Agama --table-name=agama
 php artisan krlove:generate:model Anak --table-name=anak
+php artisan krlove:generate:model Bulan --table-name=bulan
 php artisan krlove:generate:model Catatan --table-name=catatan
 php artisan krlove:generate:model Desa --table-name=desa
 php artisan krlove:generate:model Kabupaten --table-name=kabupaten

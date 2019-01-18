@@ -9,6 +9,7 @@ use App\Catatan;
 use App\Pasangan;
 use App\OrangTua;
 use App\Agama;
+use App\Bulan;
 use App\Kecamatan;
 use App\Pendidikan;
 use App\Anak;
@@ -122,12 +123,24 @@ class KaderController extends Controller
       return view('pages.register-bayi-data');
     }
 
-    public function registerIbuHamilPage()
+    public function addRegisterBayi()
+    {
+      $anaks = Anak::get();
+      $bulans = Bulan::get();
+      return view('pages.add.register-bayi', compact('anaks', 'bulans'));
+    }
+
+    public function ibuHamilPage()
     {
       return view('pages.ibu-hamil');
     }
 
-    public function registerIbuHamilDataPage()
+    public function addIbuHamil()
+    {
+      return "Pages tambah ibu hamil";
+    }
+
+    public function ibuHamilDataPage()
     {
       return view('pages.ibu-hamil-data');
     }

@@ -45,6 +45,9 @@
               <a href="{{ route('pages.register.4859') }}">48 - 59 Bulan</a>
             </li>
 
+            <li>
+              <a href="{{ route('pages.add.register-bayi') }}">Tambah data register bayi</a>
+            </li>
           </ul>
         </li>
 

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property int $id
  * @property int $id_anak
+ * @property int $id_bulan
  * @property int $id_pemberian_asi
  * @property int $id_imunisasi
  * @property int $id_user
@@ -17,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property PemberianImunisasi $pemberianImunisasi
  * @property PemberianAsi $pemberianAsi
  * @property User $user
+ * @property Bulan $bulan
  * @property PemberianAsi[] $pemberianAsis
  * @property PemberianImunisasi[] $pemberianImunisasis
  * @property PemberianVitum[] $pemberianVitAs
@@ -34,7 +36,7 @@ class RegisterBayi extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_anak', 'id_pemberian_asi', 'id_imunisasi', 'id_user', 'catatan', 'created_at', 'updated_at'];
+    protected $fillable = ['id_anak', 'id_bulan', 'id_pemberian_asi', 'id_imunisasi', 'id_user', 'catatan', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -66,6 +68,14 @@ class RegisterBayi extends Model
     public function user()
     {
         return $this->belongsTo('App\User', 'id_user');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function bulan()
+    {
+        return $this->belongsTo('App\Bulan', 'id_bulan');
     }
 
     /**
