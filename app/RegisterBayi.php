@@ -7,28 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property int $id
  * @property int $id_anak
- * @property int $id_bulan
- * @property int $id_pemberian_asi
- * @property int $id_imunisasi
  * @property int $id_user
  * @property string $catatan
  * @property string $created_at
  * @property string $updated_at
  * @property Anak $anak
- * @property PemberianImunisasi $pemberianImunisasi
- * @property PemberianAsi $pemberianAsi
  * @property User $user
- * @property Bulan $bulan
  * @property PemberianAsi[] $pemberianAsis
  * @property PemberianImunisasi[] $pemberianImunisasis
+ * @property PemberianNtob[] $pemberianNtobs
  * @property PemberianVitum[] $pemberianVitAs
- * @property Penimbangan[] $penimbangans
  */
 class RegisterBayi extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'register_bayi';
@@ -36,7 +30,7 @@ class RegisterBayi extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_anak', 'id_bulan', 'id_pemberian_asi', 'id_imunisasi', 'id_user', 'catatan', 'created_at', 'updated_at'];
+    protected $fillable = ['id_anak', 'id_user', 'umur', 'catatan', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -49,33 +43,9 @@ class RegisterBayi extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function pemberianImunisasi()
-    {
-        return $this->belongsTo('App\PemberianImunisasi', 'id_imunisasi');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function pemberianAsi()
-    {
-        return $this->belongsTo('App\PemberianAsi', 'id_pemberian_asi');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function user()
     {
         return $this->belongsTo('App\User', 'id_user');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function bulan()
-    {
-        return $this->belongsTo('App\Bulan', 'id_bulan');
     }
 
     /**
@@ -97,16 +67,16 @@ class RegisterBayi extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function pemberianVitAs()
+    public function pemberianNtobs()
     {
-        return $this->hasMany('App\PemberianVitum', 'id_register');
+        return $this->hasMany('App\PemberianNtob', 'id_register');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function penimbangans()
+    public function pemberianVitAs()
     {
-        return $this->hasMany('App\Penimbangan', 'id_rergister');
+        return $this->hasMany('App\PemberianVitaminA', 'id_register');
     }
 }

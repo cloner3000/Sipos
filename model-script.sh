@@ -1,6 +1,5 @@
 php artisan krlove:generate:model Agama --table-name=agama
 php artisan krlove:generate:model Anak --table-name=anak
-php artisan krlove:generate:model Bulan --table-name=bulan
 php artisan krlove:generate:model Catatan --table-name=catatan
 php artisan krlove:generate:model Desa --table-name=desa
 php artisan krlove:generate:model Kabupaten --table-name=kabupaten
@@ -9,6 +8,7 @@ php artisan krlove:generate:model OrangTua --table-name=ortu
 php artisan krlove:generate:model Pasangan --table-name=pasangan
 php artisan krlove:generate:model Pendidikan --table-name=pendidikan
 php artisan krlove:generate:model PemberianAsi --table-name=pemberian_asi
+php artisan krlove:generate:model PemberianNtob --table-name=pemberian_ntob
 php artisan krlove:generate:model PemberianImunisasi --table-name=pemberian_imunisasi
 php artisan krlove:generate:model PemberianVitaminA --table-name=pemberian_vit_a
 php artisan krlove:generate:model Penimbangan --table-name=penimbangan

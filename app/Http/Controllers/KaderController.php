@@ -9,7 +9,6 @@ use App\Catatan;
 use App\Pasangan;
 use App\OrangTua;
 use App\Agama;
-use App\Bulan;
 use App\Kecamatan;
 use App\Pendidikan;
 use App\Anak;
@@ -126,7 +125,7 @@ class KaderController extends Controller
     public function addRegisterBayi()
     {
       $anaks = Anak::get();
-      $bulans = Bulan::get();
+      $bulans = $this->bulan;
       return view('pages.add.register-bayi', compact('anaks', 'bulans'));
     }
 

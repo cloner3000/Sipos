@@ -23,16 +23,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $dpt_hb_hib_2435
  * @property string $campak_2435
  * @property RegisterBayi $registerBayi
- * @property RegisterBayi[] $registerBayis
  */
 class PemberianImunisasi extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'pemberian_imunisasi';
+    public $timestamps = false;
 
     /**
      * @var array
@@ -45,13 +45,5 @@ class PemberianImunisasi extends Model
     public function registerBayi()
     {
         return $this->belongsTo('App\RegisterBayi', 'id_register');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function registerBayis()
-    {
-        return $this->hasMany('App\RegisterBayi', 'id_imunisasi');
     }
 }

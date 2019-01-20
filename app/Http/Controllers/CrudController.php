@@ -13,6 +13,11 @@ use App\User;
 use App\Kecamatan;
 use App\Desa;
 use App\Posyandu;
+use App\RegisterBayi;
+use App\PemberianAsi;
+use App\PemberianImunisasi;
+use App\PemberianNtob;
+use App\PemberianVitaminA;
 use Auth;
 
 class CrudController extends Controller
@@ -187,6 +192,27 @@ class CrudController extends Controller
       $p = Catatan::create([
         "id_anak" => $d->id,
         "id_user" => Auth::user()->id
+      ]);
+
+      $rb = RegisterBayi::create([
+        'id_anak' => $d->id,
+        'umur' => 0,
+        'id_user' => Auth::user()->id
+      ]);
+
+      $pa = PemberianAsi::create([
+        'id_register' => $rb->id
+      ]);
+
+      $pi = PemberianImunisasi::create([
+        'id_register' => $rb->id
+      ]);
+
+      $pn = PemberianNtob::create([
+        'id_register' => $rb->id,
+        'berat' => $d->berat_bayi_lahir,
+        'status' => 'Baru',
+        'tanggal' => $d->created_at
       ]);
 
       return redirect()->route('pages.anak')->with('success', 'Data has been successfully addedccessfully');

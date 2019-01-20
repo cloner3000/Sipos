@@ -65,6 +65,9 @@ Route::name('ajax.')->group(function (){
   Route::get('/ajax/{key}/list-anak', 'AjaxController@getAnakApi')->name('list-anak');
   Route::get('/ajax/{key}/list-desa', 'AjaxController@getDesaApi')->name('list-desa');
   Route::get('/ajax/{key}/list-posyandu', 'AjaxController@getPosyanduApi')->name('list-posyandu');
+
+
+  Route::get('/ajax/test/{id}', 'AjaxController@showRegisterBayiData')->name('data.register-bayi');
 });
 
 Route::name('crud.')->group(function(){

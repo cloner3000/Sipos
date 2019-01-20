@@ -14,10 +14,11 @@ class PemberianVitaminA extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'pemberian_vit_a';
+    public $timestamps = false;
 
     /**
      * @var array

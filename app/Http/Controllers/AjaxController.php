@@ -11,6 +11,7 @@ use App\OrangTua;
 use App\Anak;
 use App\User;
 use App\Desa;
+use App\RegisterBayi;
 use App\Posyandu;
 use Auth;
 use DataTables;
@@ -118,5 +119,11 @@ class AjaxController extends Controller
         }
 
         return 'lo cp?';
+    }
+
+    public function showRegisterBayiData($id)
+    {
+      $data = RegisterBayi::with('anak', 'pemberianAsis', 'pemberianImunisasis', 'pemberianNtobs', 'pemberianVitAs')->where('id_anak', $id)->first();
+      return $data;
     }
 }
