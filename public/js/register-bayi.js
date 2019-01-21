@@ -31,21 +31,22 @@ $('#option-anak').change(function() {
     });
 });
 
-$('#option-bulan').change(function(){
-  pemberianVitaminCheckBox();
+$('#option-bulan').change(function() {
+    pemberianVitaminCheckBox();
 });
 
 function createOptions(n, ban, element, o) {
     for (var i = 1; i <= n; i++) {
+      var a = document.createElement("option");
         if (ban[0] == i) {
             ban.shift();
             continue;
         }
-        var a = document.createElement("option");
         a.value = i;
         a.text = o[i];
         element.appendChild(a);
     }
+    $('#option-bulan').change();
 }
 
 function clearOptions(element) {
@@ -81,45 +82,45 @@ function resetAsiRadio() {
 }
 
 function pemberianVitaminCheckBox() {
-  var bulan = $('#option-bulan').val();
-  if(bulan == 2 || bulan == 8){
-    $('#vitamin-a-form')[0].hidden = false;
-  } else{
-    $('#vitamin-a-form')[0].hidden = true;
-  }
+    var bulan = $('#option-bulan').val();
+    if (bulan == 2 || bulan == 8) {
+        $('#vitamin-a-form')[0].hidden = false;
+    } else {
+        $('#vitamin-a-form')[0].hidden = true;
+    }
 }
 
 function pemberianImunisasiCheckBox(data) {
-  var datas = data['pemberian_imunisasis'][0];
-  var labels = $('#imunisasi-form').find("label");
-  for(var i=0; i<labels.length; i++){
-    var checkbox = labels[i].getElementsByTagName("input")[0];
-    if(datas[checkbox.name] != null){
-      checkbox.checked = true;
-      labels[i].readonly = true;
-      labels[i].style.cursor = "not-allowed";
-      checkbox.disabled = true;
+    var datas = data['pemberian_imunisasis'][0];
+    var labels = $('#imunisasi-form').find("label");
+    for (var i = 0; i < labels.length; i++) {
+        var checkbox = labels[i].getElementsByTagName("input")[0];
+        if (datas[checkbox.name] != null) {
+            checkbox.checked = true;
+            labels[i].readonly = true;
+            labels[i].style.cursor = "not-allowed";
+            checkbox.disabled = true;
+        }
     }
-  }
 }
 
 function resetImunisasiCheckBox() {
-  var labels = $('#imunisasi-form').find("label");
-  for (var i = 0; i < labels.length; i++) {
-      var checkbox = labels[i].getElementsByTagName('input')[0];
-      checkbox.checked = false;
-      labels[i].readonly = false;
-      labels[i].style.cursor = "pointer";
-      checkbox.disabled = false;
-  }
+    var labels = $('#imunisasi-form').find("label");
+    for (var i = 0; i < labels.length; i++) {
+        var checkbox = labels[i].getElementsByTagName('input')[0];
+        checkbox.checked = false;
+        labels[i].readonly = false;
+        labels[i].style.cursor = "pointer";
+        checkbox.disabled = false;
+    }
 }
 
 // createAsiRadio();
 
-// $.ajax({
-//     url: "http://localhost:8000/ajax/test/" + 6,
-//     cache: true,
-//     success: function(data) {
-//         // pemberianImunisasiCheckBox(data);
-//     }
-// });
+$.ajax({
+    url: "http://localhost:8000/ajax/test/" + 6,
+    cache: true,
+    success: function(data) {
+        console.log(data['anak']['tanggal_lahir']);
+    }
+});

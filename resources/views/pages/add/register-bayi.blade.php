@@ -16,10 +16,10 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
   </div>
 
   <div class="card-block">
-    <form class="form-horizontal m-t-sm" action="base_forms_samples.html" method="post" onsubmit="return false;">
-
+    <form class="form-horizontal m-t-sm" action="{{ route('crud.add.register-bayi', ['key' => Auth::user()->token_key]) }}" method="post">
+      @csrf
       <div class="form-group">
-        <div class="col-xs-8">
+        <div class="col-xs-12">
           <div class="form-material">
             <select class="js-select2 form-control" id="option-anak" name="id_anak" style="width: 100%;" data-placeholder="Nama anak.." required>
               <option></option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
@@ -30,10 +30,13 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
             <label for="option-anak">Nama Anak</label>
           </div>
         </div>
-        <div class="col-xs-4">
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-12">
           <div class="form-material">
-            <input class="form-control" type="text" id="register2-username1" placeholder="" value="1 Tahun" readonly/>
-            <label for="register2-username1">Umur</label>
+            <input class="form-control" type="number" id="register2-username1" placeholder="" name="umur" id="umur-form" value="" min="0"/>
+            <label for="register2-username1">Umur anak (tahun)</label>
           </div>
         </div>
       </div>
@@ -41,10 +44,19 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
       <div class="form-group">
         <div class="col-xs-12">
           <div class="form-material">
-            <select class="js-select2 form-control" id="option-bulan" name="bulan" style="width: 100%;" data-placeholder="Pilih bulan.." required>
-              <option></option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
+            <select class="js-select2 form-control" id="option-bulan" name="bulan" required>
+
             </select>
-            <label for="example2-select2">Bulan</label>
+            <label for="example2-select2">Bulan penimbangan</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-12">
+          <div class="form-material">
+            <input class="form-control" type="number" id="register2-username" name="berat" placeholder="Berat" min="0" step="0.1" required/>
+            <label for="register2-username">Berat penimbangan (kg)</label>
           </div>
         </div>
       </div>
@@ -137,7 +149,7 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
       <div class="form-group">
         <div class="col-xs-12">
           <div class="form-material">
-            <input class="form-control" type="text" id="register2-username" name="catatan" placeholder="Catatan" required/>
+            <input class="form-control" type="text" id="register2-username" name="catatan" placeholder="Catatan"/>
             <label for="register2-username">Catatan</label>
           </div>
         </div>

@@ -84,4 +84,5 @@ Route::name('crud.')->group(function(){
   Route::post('/crud/{key}/add_posyandu', 'CrudController@addPosyandu')->name('add.posyandu');
   Route::post('/crud/{key}/edit_posyandu', 'CrudController@editPosyandu')->name('edit.posyandu');
   Route::post('/crud/{key}/delete_posyandu', 'CrudController@deletePosyandu')->name('delete.posyandu');
+  Route::post('/crud/{key}/add_register_bayi', 'CrudController@addRegisterBayi')->name('add.register-bayi');
 });

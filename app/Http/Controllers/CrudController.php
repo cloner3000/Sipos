@@ -24,41 +24,41 @@ class CrudController extends Controller
 {
     public function editCatatan(Request $request)
     {
-      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
-        return 'Token Failed';
-      }
+        if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
+            return 'Token Failed';
+        }
 
-      $catatan = Catatan::find($request->id);
+        $catatan = Catatan::find($request->id);
 
-      if($catatan == NULL){
-        return redirect()->back()->with('error', 'Catatan not found')->withInput();
-      }
+        if ($catatan == null) {
+            return redirect()->back()->with('error', 'Catatan not found')->withInput();
+        }
 
-      return $request;
+        return $request;
 
-      $catatan->update([
+        $catatan->update([
         'meninggal' => $request->meninggal,
         'tanggal_meninggal' => DateHelper::DMYtoYMD($request->tanggal_meninggal),
         'penyebab_meninggal' => $request->penyebab_meninggal
       ]);
 
-      return redirect()->route('pages.catatan')->with('success', 'Update Catatan Successfully');
+        return redirect()->route('pages.catatan')->with('success', 'Update Catatan Successfully');
     }
 
     public function addPasangan(Request $request)
     {
-      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
-        return 'Token Failed';
-      }
+        if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
+            return 'Token Failed';
+        }
 
-      $pasangan = Pasangan::create([
+        $pasangan = Pasangan::create([
         'tanggal_menikah' => DateHelper::DMYtoYMD($request->tanggal_menikah),
         'alamat' => $request->alamat_pasangan,
         'id_desa' => $request->desa_pasangan,
         'id_user' => Auth::user()->id
       ]);
 
-      $ayah = OrangTua::create([
+        $ayah = OrangTua::create([
         'nama' => $request->nama_suami,
         'nik' => $request->nik_suami,
         'jenis_kelamin' => 'Laki-Laki',
@@ -72,7 +72,7 @@ class CrudController extends Controller
         'id_user' => Auth::user()->id
       ]);
 
-      $ibu = OrangTua::create([
+        $ibu = OrangTua::create([
         'nama' => $request->nama_istri,
         'nik' => $request->nik_istri,
         'jenis_kelamin' => 'Perempuan',
@@ -86,24 +86,24 @@ class CrudController extends Controller
         'id_user' => Auth::user()->id
       ]);
 
-      return redirect()->route('pages.pasangan')->with('success', 'Data has been successfully addedccessfully');
+        return redirect()->route('pages.pasangan')->with('success', 'Data has been successfully addedccessfully');
     }
 
     public function editPasangan(Request $request)
     {
-      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
-        return 'Token Failed';
-      }
+        if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
+            return 'Token Failed';
+        }
 
-      $ayah = OrangTua::find($request->id_suami);
-      $ibu = OrangTua::find($request->id_istri);
-      $pasangan = Pasangan::find($request->id_pasangan);
+        $ayah = OrangTua::find($request->id_suami);
+        $ibu = OrangTua::find($request->id_istri);
+        $pasangan = Pasangan::find($request->id_pasangan);
 
-      if($ayah == NULL || $ibu == NULL || $pasangan == NULL){
-        return redirect()->back()->with('error', 'Data Not Found');
-      }
+        if ($ayah == null || $ibu == null || $pasangan == null) {
+            return redirect()->back()->with('error', 'Data Not Found');
+        }
 
-      $update_ayah = $ayah->update([
+        $update_ayah = $ayah->update([
         'nama' => $request->nama_suami,
         'nik' => $request->nik_suami,
         'jenis_kelamin' => 'Laki-Laki',
@@ -117,7 +117,7 @@ class CrudController extends Controller
         'id_user' => Auth::user()->id
       ]);
 
-      $update_ibu = $ibu->update([
+        $update_ibu = $ibu->update([
         'nama' => $request->nama_istri,
         'nik' => $request->nik_istri,
         'jenis_kelamin' => 'Perempuan',
@@ -131,7 +131,7 @@ class CrudController extends Controller
         'id_user' => Auth::user()->id
       ]);
 
-      $update_pasangan = $pasangan->update([
+        $update_pasangan = $pasangan->update([
         'tanggal_menikah' => DateHelper::DMYtoYMD($request->tanggal_menikah),
         'alamat' => $request->alamat_pasangan,
         'id_desa' => $request->desa_pasangan,
@@ -140,44 +140,44 @@ class CrudController extends Controller
 
 
 
-      if($update_ayah == 0 || $update_ibu == 0 || $update_pasangan == 0){
-        return redirect()->back()->with('error', 'Update Failed');
-      }
+        if ($update_ayah == 0 || $update_ibu == 0 || $update_pasangan == 0) {
+            return redirect()->back()->with('error', 'Update Failed');
+        }
 
-      return redirect()->route('pages.pasangan')->with('success', 'Update Successfully');
+        return redirect()->route('pages.pasangan')->with('success', 'Update Successfully');
     }
 
     public function deletePasangan(Request $request)
     {
-      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
-        return 'Token Failed';
-      }
+        if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
+            return 'Token Failed';
+        }
 
-      $pasangan = Pasangan::with('anaks', 'ortus')->find($request->id);
+        $pasangan = Pasangan::with('anaks', 'ortus')->find($request->id);
 
-      if($pasangan == NULL){
-        return redirect()->back()->with('error', 'Data Not Found');
-      }
+        if ($pasangan == null) {
+            return redirect()->back()->with('error', 'Data Not Found');
+        }
 
-      foreach($pasangan->anaks as $anak){
-        Anak::find($anak->id)->delete();
-        Catatan::where('id_anak', $anak->id)->get()->first()->delete();
-      }
-      foreach($pasangan->ortus as $ortu){
-        OrangTua::find($ortu->id)->delete();
-      }
+        foreach ($pasangan->anaks as $anak) {
+            Anak::find($anak->id)->delete();
+            Catatan::where('id_anak', $anak->id)->get()->first()->delete();
+        }
+        foreach ($pasangan->ortus as $ortu) {
+            OrangTua::find($ortu->id)->delete();
+        }
 
-      $pasangan->delete();
-      return redirect()->route('pages.pasangan')->with('success', 'Delete Successfully');
+        $pasangan->delete();
+        return redirect()->route('pages.pasangan')->with('success', 'Delete Successfully');
     }
 
     public function addAnak(Request $request)
     {
-      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
-        return 'Token Failed';
-      }
+        if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
+            return 'Token Failed';
+        }
 
-      $d = Anak::create([
+        $d = Anak::create([
         "id_pasangan" => $request->pasangan,
         "nama_anak" => $request->nama,
         "tempat_lahir" => $request->tempat_lahir,
@@ -189,64 +189,64 @@ class CrudController extends Controller
         "id_user" => Auth::user()->id
       ]);
 
-      $p = Catatan::create([
+        $p = Catatan::create([
         "id_anak" => $d->id,
         "id_user" => Auth::user()->id
       ]);
 
-      $rb = RegisterBayi::create([
+        $rb = RegisterBayi::create([
         'id_anak' => $d->id,
         'umur' => 0,
         'id_user' => Auth::user()->id
       ]);
 
-      $pa = PemberianAsi::create([
+        $pa = PemberianAsi::create([
         'id_register' => $rb->id
       ]);
 
-      $pi = PemberianImunisasi::create([
+        $pi = PemberianImunisasi::create([
         'id_register' => $rb->id
       ]);
 
-      $pn = PemberianNtob::create([
+        $pn = PemberianNtob::create([
         'id_register' => $rb->id,
         'berat' => $d->berat_bayi_lahir,
         'status' => 'Baru',
         'tanggal' => $d->created_at
       ]);
 
-      return redirect()->route('pages.anak')->with('success', 'Data has been successfully addedccessfully');
+        return redirect()->route('pages.anak')->with('success', 'Data has been successfully addedccessfully');
     }
 
     public function deleteAnak(Request $request)
     {
-      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
-        return 'Token Failed';
-      }
+        if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
+            return 'Token Failed';
+        }
 
-      $data = Anak::find($request->id);
-      if($data == NULL){
-        return redirect()->route('pages.anak')->with('Error', 'Data Not Found');
-      }
-      $catatan = Catatan::where('id_anak', $request->id)->get()->first()->delete();
-      $data->delete();
-      return redirect()->route('pages.anak')->with('success', 'Delete Successfully');
+        $data = Anak::find($request->id);
+        if ($data == null) {
+            return redirect()->route('pages.anak')->with('Error', 'Data Not Found');
+        }
+        $catatan = Catatan::where('id_anak', $request->id)->get()->first()->delete();
+        $data->delete();
+        return redirect()->route('pages.anak')->with('success', 'Delete Successfully');
     }
 
     public function editAnak(Request $request)
     {
-      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
-        return 'Token Failed';
-      }
+        if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
+            return 'Token Failed';
+        }
 
-      $data = Anak::find($request->id);
-      if($data == NULL){
-        return redirect()->route('pages.anak')->with('Error', 'Data Not Found');
-      }
+        $data = Anak::find($request->id);
+        if ($data == null) {
+            return redirect()->route('pages.anak')->with('Error', 'Data Not Found');
+        }
 
-      $b = $data;
+        $b = $data;
 
-      $update = $data->update([
+        $update = $data->update([
         "nama_anak" => $request->nama,
         "tempat_lahir" => $request->tempat_lahir,
         "tanggal_lahir" => DateHelper::DMYtoYMD($request->tanggal_lahir),
@@ -257,84 +257,84 @@ class CrudController extends Controller
         "id_user" => Auth::user()->id
       ]);
 
-      if($update == 0){
-        return redirect()->back()->with('error', 'Update Error');
-      }
-      return redirect()->route('pages.anak')->with('success', 'Update Successfully');
+        if ($update == 0) {
+            return redirect()->back()->with('error', 'Update Error');
+        }
+        return redirect()->route('pages.anak')->with('success', 'Update Successfully');
     }
 
     public function addDesa(Request $request)
     {
-      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
-        return 'Token Failed';
-      }
+        if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
+            return 'Token Failed';
+        }
 
-      if(Kecamatan::find($request->kecamatan) == NULL){
-        return redirect()->back()->with('error', 'Kecamatan Not Found')->withInput();
-      }
+        if (Kecamatan::find($request->kecamatan) == null) {
+            return redirect()->back()->with('error', 'Kecamatan Not Found')->withInput();
+        }
 
-      Desa::create([
+        Desa::create([
         'nama_desa' => $request->nama_desa,
         'id_kecamatan' => $request->kecamatan,
         'id_user' => Auth::user()->id
       ]);
 
-      return redirect()->route('pages.desa')->with('success', 'Data has been successfully added');
+        return redirect()->route('pages.desa')->with('success', 'Data has been successfully added');
     }
 
     public function editDesa(Request $request)
     {
-      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
-        return 'Token Failed';
-      }
+        if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
+            return 'Token Failed';
+        }
 
-      $desa = Desa::find($request->id);
-      if($desa == NULL){
-        return redirect()->route('pages.desa')->with('error', 'Data not found');
-      }
+        $desa = Desa::find($request->id);
+        if ($desa == null) {
+            return redirect()->route('pages.desa')->with('error', 'Data not found');
+        }
 
-      if(Kecamatan::find($request->kecamatan) == NULL){
-        return redirect()->back()->with('error', 'Kecamatan not found')->withInput();
-      }
+        if (Kecamatan::find($request->kecamatan) == null) {
+            return redirect()->back()->with('error', 'Kecamatan not found')->withInput();
+        }
 
-      $desa->update([
+        $desa->update([
         'nama_desa' => $request->nama_desa,
         'id_kecamatan' => $request->kecamatan,
       ]);
 
-      return redirect()->route('pages.desa')->with('success', 'Update successfully');
+        return redirect()->route('pages.desa')->with('success', 'Update successfully');
     }
 
     public function deleteDesa(Request $request)
     {
-      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
-        return 'Token Failed';
-      }
+        if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
+            return 'Token Failed';
+        }
 
-      $desa = Desa::with('posyandus')->find($request->id);
-      if($desa == NULL){
-        return redirect()->route('pages.desa')->with('error', 'Data not found');
-      }
+        $desa = Desa::with('posyandus')->find($request->id);
+        if ($desa == null) {
+            return redirect()->route('pages.desa')->with('error', 'Data not found');
+        }
 
-      if(count($desa->posyandus) > 0){
-        return redirect()->route('pages.desa')->with('error', 'Desa has relation with posyandu');
-      }
+        if (count($desa->posyandus) > 0) {
+            return redirect()->route('pages.desa')->with('error', 'Desa has relation with posyandu');
+        }
 
-      $desa->delete();
-      return redirect()->route('pages.desa')->with('success', 'Delete successfully');
+        $desa->delete();
+        return redirect()->route('pages.desa')->with('success', 'Delete successfully');
     }
 
     public function addPosyandu(Request $request)
     {
-      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
-        return 'Token Failed';
-      }
+        if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
+            return 'Token Failed';
+        }
 
-      if(Desa::find($request->desa) == NULL){
-        return redirect()->back()->with('error', 'Desa not found')->withInput();
-      }
+        if (Desa::find($request->desa) == null) {
+            return redirect()->back()->with('error', 'Desa not found')->withInput();
+        }
 
-      $p = Posyandu::create([
+        $p = Posyandu::create([
         'no_posyandu' => $request->no_posyandu,
         'nama_posyandu' => $request->nama_posyandu,
         'alamat' => $request->alamat_posyandu,
@@ -342,26 +342,26 @@ class CrudController extends Controller
         'id_user' => Auth::user()->id
       ]);
 
-      return redirect()->route('pages.posyandu')->with('success', 'Data has been successfully added');
+        return redirect()->route('pages.posyandu')->with('success', 'Data has been successfully added');
     }
 
     public function editPosyandu(Request $request)
     {
-      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
-        return 'Token Failed';
-      }
+        if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
+            return 'Token Failed';
+        }
 
-      if(Desa::find($request->desa) == NULL){
-        return redirect()->back()->with('error', 'Desa not found')->withInput();
-      }
+        if (Desa::find($request->desa) == null) {
+            return redirect()->back()->with('error', 'Desa not found')->withInput();
+        }
 
-      $posyandu = Posyandu::find($request->id);
+        $posyandu = Posyandu::find($request->id);
 
-      if($posyandu == NULL){
-        return redirect()->back()->with('error', 'Posyandu not found')->withInput();
-      }
+        if ($posyandu == null) {
+            return redirect()->back()->with('error', 'Posyandu not found')->withInput();
+        }
 
-      $posyandu->update([
+        $posyandu->update([
         'no_posyandu' => $request->no_posyandu,
         'nama_posyandu' => $request->nama_posyandu,
         'alamat' => $request->alamat_posyandu,
@@ -369,24 +369,88 @@ class CrudController extends Controller
         'id_user' => Auth::user()->id
       ]);
 
-      return redirect()->route('pages.posyandu')->with('success', 'Update successfully');
+        return redirect()->route('pages.posyandu')->with('success', 'Update successfully');
     }
 
     public function deletePosyandu(Request $request)
     {
-      if(!KeyHelper::checkKey(Auth::user()->id, $request->key)){
-        return 'Token Failed';
-      }
+        if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
+            return 'Token Failed';
+        }
 
-      $posyandu = Posyandu::find($request->id);
+        $posyandu = Posyandu::find($request->id);
 
-      if($posyandu == NULL){
-        return redirect()->route('pages.posyandu')->with('error', 'Posyandu not found');
-      }
+        if ($posyandu == null) {
+            return redirect()->route('pages.posyandu')->with('error', 'Posyandu not found');
+        }
 
-      $posyandu->delete();
+        $posyandu->delete();
 
-      return redirect()->route('pages.posyandu')->with('success', 'Delete successfully');
+        return redirect()->route('pages.posyandu')->with('success', 'Delete successfully');
     }
 
+    public function addRegisterBayi(Request $request)
+    {
+        $date_now = date('Y-m-d');
+        $rb = RegisterBayi::where('id_anak', $request->id_anak)->get()->first();
+        $ntob_last = PemberianNtob::orderBy('tanggal', 'desc')->where('id_register', $rb->id)->get()->first();
+        $m_last = explode('-', $ntob_last->tanggal)[1];
+        $m_now = $request->bulan;
+        if($m_now - $m_last > 1){
+          $status = "Tidak Datang";
+        } else if($request->umur != $rb->umur){
+          $status = "Baru";
+        } else if($request->berat - $ntob_last->berat > 0){
+          $status = "Naik";
+        } else {
+          $status = "Turun";
+        }
+
+        $ntob = PemberianNtob::create([
+          'id_register' => $rb->id,
+          'berat' => $request->berat,
+          'status' => $status,
+          'tanggal' => date_create(date("Y") . '-' . $request->bulan . '-01')
+        ]);
+
+
+        $pemberian_asi = PemberianAsi::where('id_register', $rb->id)->get()->first();
+        $pemberian_asi->update([
+          'e0' => $request->e0 != null ? $date_now : $pemberian_asi->e0,
+          'e1' => $request->e1 != null ? $date_now : $pemberian_asi->e1,
+          'e2' => $request->e2 != null ? $date_now : $pemberian_asi->e2,
+          'e3' => $request->e3 != null ? $date_now : $pemberian_asi->e3,
+          'e4' => $request->e4 != null ? $date_now : $pemberian_asi->e4,
+          'e5' => $request->e5 != null ? $date_now : $pemberian_asi->e5,
+          'e6' => $request->e6 != null ? $date_now : $pemberian_asi->e6
+        ]);
+
+        $pemberian_imunisasi = PemberianImunisasi::where('id_register', $rb->id)->get()->first();
+        $pemberian_imunisasi->update([
+          'hb0' => $request->hb0 != null ? $date_now : $pemberian_imunisasi->hb0,
+          'bcg' => $request->bcg != null ? $date_now : $pemberian_imunisasi->bcg,
+          'dpt_hb_1' => $request->dpt_hb_1 != null ? $date_now : $pemberian_imunisasi->dpt_hb_1,
+          'dpt_hb_2' => $request->dpt_hb_2 != null ? $date_now : $pemberian_imunisasi->dpt_hb_2,
+          'dpt_hb_3' => $request->dpt_hb_3 != null ? $date_now : $pemberian_imunisasi->dpt_hb_3,
+          'polio_1' => $request->polio_1 != null ? $date_now : $pemberian_imunisasi->polio_1,
+          'polio_2' => $request->polio_2 != null ? $date_now : $pemberian_imunisasi->polio_2,
+          'polio_3' => $request->polio_3 != null ? $date_now : $pemberian_imunisasi->polio_3,
+          'polio_4' => $request->polio_4 != null ? $date_now : $pemberian_imunisasi->polio_4,
+          'polio_5' => $request->polio_5 != null ? $date_now : $pemberian_imunisasi->polio_5,
+          'campak_011' => $request->campak_011 != null ? $date_now : $pemberian_imunisasi->campak_011,
+          'dpt_hb_hib_1223' => $request->dpt_hb_hib_1223 != null ? $date_now : $pemberian_imunisasi->dpt_hb_hib_1223,
+          'campak_1223' => $request->campak_1223 != null ? $date_now : $pemberian_imunisasi->campak_1223,
+          'dpt_hb_hib_2435' => $request->dpt_hb_hib_2435 != null ? $date_now : $pemberian_imunisasi->dpt_hb_hib_2435,
+          'campak_2435' => $request->campak_2435 != null ? $date_now : $pemberian_imunisasi->campak_2435
+        ]);
+
+        if($request->vitamin_a != null){
+          PemberianVitaminA::create([
+            'id_register' => $rb->id,
+            'tanggal_pemberian' => $date_now
+          ]);
+        }
+
+        return redirect()->route('pages.add.register-bayi')->with('success', 'Data has been added');
+    }
 }
