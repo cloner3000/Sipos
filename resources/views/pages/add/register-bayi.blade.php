@@ -35,7 +35,7 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
       <div class="form-group">
         <div class="col-xs-12">
           <div class="form-material">
-            <input class="form-control" type="number" id="register2-username1" placeholder="" name="umur" id="umur-form" value="" min="0"/>
+            <input class="form-control" type="number" placeholder="" name="umur" id="umur-anak-form" min="0" readonly/>
             <label for="register2-username1">Umur anak (tahun)</label>
           </div>
         </div>

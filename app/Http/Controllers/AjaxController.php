@@ -123,7 +123,7 @@ class AjaxController extends Controller
 
     public function showRegisterBayiData($id)
     {
-      $data = RegisterBayi::with('anak', 'pemberianAsis', 'pemberianImunisasis', 'pemberianNtobs', 'pemberianVitAs')->where('id_anak', $id)->first();
+      $data = RegisterBayi::orderBy('umur', 'desc')->with('anak', 'pemberianAsis', 'pemberianImunisasis', 'pemberianNtobs', 'pemberianVitAs')->where('id_anak', $id)->first();
       return $data;
     }
 }

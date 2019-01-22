@@ -10,23 +10,27 @@ $('#option-anak').change(function() {
         cache: false,
         success: function(data) {
             // console.log(data['pemberian_ntobs']);
+            setUmur(data);
             var ban = [];
-            for (var d in data['pemberian_ntobs']) {
-                var ntob = data['pemberian_ntobs'][d];
-                var num = parseInt(ntob.tanggal.split('-')[1]);
-                ban.push(num);
+            var ban_asi = [];
+            if($('#umur-anak-form').val() == data['umur']){
+              for (var d in data['pemberian_ntobs']) {
+                  var ntob = data['pemberian_ntobs'][d];
+                  var num = parseInt(ntob.tanggal.split('-')[1]);
+                  ban.push(num);
+              }
+              var asis = data['pemberian_asis'][0];
+              for (var i = 0; i < 7; i++) {
+                  if (asis["e" + i] != null) {
+                      ban_asi.push("e" + i);
+                  }
+              }
+              pemberianImunisasiCheckBox(data);
+            } else{
+              resetImunisasiCheckBox();
             }
             createOptions(12, ban, options, bulans);
-            var asis = data['pemberian_asis'][0];
-            console.log(asis);
-            ban = [];
-            for (var i = 0; i < 7; i++) {
-                if (asis["e" + i] != null) {
-                    ban.push("e" + i);
-                }
-            }
-            pemberianImunisasiCheckBox(data);
-            createAsiRadio(ban);
+            createAsiRadio(ban_asi);
         }
     });
 });
@@ -37,7 +41,7 @@ $('#option-bulan').change(function() {
 
 function createOptions(n, ban, element, o) {
     for (var i = 1; i <= n; i++) {
-      var a = document.createElement("option");
+        var a = document.createElement("option");
         if (ban[0] == i) {
             ban.shift();
             continue;
@@ -115,12 +119,22 @@ function resetImunisasiCheckBox() {
     }
 }
 
+function setUmur(data) {
+    var d = new Date();
+    var date_now = d.getFullYear() + '-' + d.getMonth() + 1 + '-' + d.getDate()
+    var date_birth = data['anak']['tanggal_lahir'];
+    var m_now = d.getMonth() + 1;
+    var m_birth = date_birth.split('-')[1];
+    var umur = Math.floor((12 * (d.getFullYear() - date_birth.split('-')[0]) - (Math.abs(m_birth - m_now))) / 12);
+    $('#umur-anak-form').val(umur);
+}
+
 // createAsiRadio();
 
 $.ajax({
-    url: "http://localhost:8000/ajax/test/" + 6,
+    url: "http://localhost:8000/ajax/test/" + 10,
     cache: true,
     success: function(data) {
-        console.log(data['anak']['tanggal_lahir']);
+        console.log(data);
     }
 });
