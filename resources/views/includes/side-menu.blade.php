@@ -13,65 +13,65 @@
 
         <li class="nav-item nav-drawer-header">Apps</li>
 
-        <li class="nav-item active">
+        <li class="nav-item {{ request()->is('home') ? 'active' : ''}}">
           <a href="{{ route('pages.home') }}"><i class="ion-ios-speedometer-outline"></i> Dashboard</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item {{ request()->is('catatan') ? 'active' : ''}}">
           <a href="{{ route('pages.catatan') }}"><i class="ion-android-document"></i>Catatan</a>
         </li>
 
-        <li class="nav-item nav-item-has-subnav">
+        <li class="nav-item nav-item-has-subnav {{ request()->is('register-bayi/*') ? 'active open' : ''}}">
           <a href="javascript:void(0)"><i class="ion-android-add-circle"></i>Register Bayi</a>
           <ul class="nav nav-subnav">
 
-            <li>
+            <li class="{{ request()->is('register-bayi/0-11/*') ? 'active' : ''}}">
               <a href="{{ route('pages.register.011') }}">0 - 11 Bulan</a>
             </li>
 
-            <li>
+            <li class="{{ request()->is('register-bayi/12-23/*') ? 'active' : ''}}">
               <a href="{{ route('pages.register.1223') }}">12 - 23 Bulan</a>
             </li>
 
-            <li>
+            <li class="{{ request()->is('register-bayi/24-35/*') ? 'active' : ''}}">
               <a href="{{ route('pages.register.2435') }}">24 - 35 Bulan</a>
             </li>
 
-            <li>
+            <li class="{{ request()->is('register-bayi/36-47/*') ? 'active' : ''}}">
               <a href="{{ route('pages.register.3647') }}">36 - 47 Bulan</a>
             </li>
 
-            <li>
+            <li class="{{ request()->is('register-bayi/48-59/*') ? 'active' : ''}}">
               <a href="{{ route('pages.register.4859') }}">48 - 59 Bulan</a>
             </li>
 
-            <li>
+            <li class="{{ request()->is('register-bayi/tambah-data') ? 'active' : ''}}">
               <a href="{{ route('pages.add.register-bayi') }}">Tambah data register bayi</a>
             </li>
           </ul>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item {{ request()->is('wuspus') ? 'active' : ''}}">
           <a href="{{ route('pages.wuspus') }}"><i class="ion-android-add-circle"></i>Register Wuspus</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item {{ request()->is('ibu-hamil') ? 'active' : ''}}">
           <a href="{{ route('pages.ibu-hamil') }}"><i class="ion-android-add-circle"></i>Register Ibu Hamil</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item {{ request()->is('pasangan') ? 'active' : ''}}">
           <a href="{{ route('pages.pasangan') }}"><i class="ion-android-add-circle"></i>Daftar Pasangan</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item {{ request()->is('anak') ? 'active' : ''}}">
           <a href="{{ route('pages.anak') }}"><i class="ion-android-add-circle"></i>Daftar Anak</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item {{ request()->is('posyandu') ? 'active' : ''}}">
           <a href="{{ route('pages.posyandu') }}"><i class="ion-android-add-circle"></i>Daftar Posyandu</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item {{ request()->is('desa') ? 'active' : ''}}">
           <a href="{{ route('pages.desa') }}"><i class="ion-android-add-circle"></i>Daftar Desa</a>
         </li>
 

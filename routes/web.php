@@ -86,3 +86,11 @@ Route::name('crud.')->group(function(){
   Route::post('/crud/{key}/delete_posyandu', 'CrudController@deletePosyandu')->name('delete.posyandu');
   Route::post('/crud/{key}/add_register_bayi', 'CrudController@addRegisterBayi')->name('add.register-bayi');
 });
+
+Route::get('/test', function(){
+  $a = array();
+  array_push($a, route('test'));
+  array_push($a, request()->is(route('test')));
+  array_push($a, route('ajax.list-anak', ['key' => Auth::user()->token_key]));
+  return $a;
+})->name('test');
