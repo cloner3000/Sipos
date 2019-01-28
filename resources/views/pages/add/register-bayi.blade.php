@@ -16,7 +16,7 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
   </div>
 
   <div class="card-block">
-    <form class="form-horizontal m-t-sm" action="{{ route('crud.add.register-bayi', ['key' => Auth::user()->token_key]) }}" method="post">
+    <form class="form-horizontal m-t-sm" action="{{ route('crud.add.register-bayi') }}" method="post">
       @csrf
       <div class="form-group">
         <div class="col-xs-12">

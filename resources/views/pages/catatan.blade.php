@@ -50,7 +50,7 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
       serverSide: true,
       responsive: true,
       dom : 'lf<"table-responsive"t>ip',
-      ajax: '{{ route("ajax.catatan", ["key" => Auth::user()->token_key]) }}',
+      ajax: '{{ route("ajax.catatan") }}',
       columns: [
         { data: 'no', name: 'no' },
         { data: 'nama_ibu', name: 'nama_ibu' },

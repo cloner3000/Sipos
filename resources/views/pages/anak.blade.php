@@ -37,7 +37,7 @@ Daftar Anak
     </div>
   </div>
 
-  <form class="" action="{{ route('crud.delete.anak', ['key' => Auth::user()->token_key]) }}" method="post" style="display: none;" id="delete-form">
+  <form class="" action="{{ route('crud.delete.anak') }}" method="post" style="display: none;" id="delete-form">
     @csrf
     <input type="hidden" name="id" value="-1">
   </form>
@@ -60,7 +60,7 @@ Daftar Anak
       serverSide: true,
       responsive: true,
       dom : 'lf<"table-responsive"t>ip',
-      ajax: '{{ route("ajax.list-anak", ["key" => Auth::user()->token_key]) }}',
+      ajax: '{{ route("ajax.list-anak") }}',
       columns: [
         { data: 'no', name: 'no' },
         { data: 'nama_anak', name: 'nama_anak' },

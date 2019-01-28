@@ -16,7 +16,7 @@ Tambah Data Anak
   </div>
 
   <div class="card-block">
-    <form class="form-horizontal m-t-sm" action="{{route('crud.add.anak', ['key' => Auth::user()->token_key])}}" method="post">
+    <form class="form-horizontal m-t-sm" action="{{route('crud.add.anak')}}" method="post">
 
       {{ csrf_field() }}
 

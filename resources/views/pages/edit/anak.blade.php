@@ -16,7 +16,7 @@ Edit Data Anak
   </div>
 
   <div class="card-block">
-    <form class="form-horizontal m-t-sm" action="{{route('crud.edit.anak', ['key' => Auth::user()->token_key])}}" method="post">
+    <form class="form-horizontal m-t-sm" action="{{route('crud.edit.anak')}}" method="post">
 
       {{ csrf_field() }}
 

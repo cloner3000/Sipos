@@ -60,31 +60,31 @@ Route::name('pages.')->group(function(){
 });
 
 Route::name('ajax.')->group(function (){
-  Route::get('/ajax/{key}/catatan', 'AjaxController@getCatatanApi')->name('catatan');
-  Route::get('/ajax/{key}/list-pasangan', 'AjaxController@getPasanganApi')->name('list-pasangan');
-  Route::get('/ajax/{key}/list-anak', 'AjaxController@getAnakApi')->name('list-anak');
-  Route::get('/ajax/{key}/list-desa', 'AjaxController@getDesaApi')->name('list-desa');
-  Route::get('/ajax/{key}/list-posyandu', 'AjaxController@getPosyanduApi')->name('list-posyandu');
+  Route::get('/ajax/catatan', 'AjaxController@getCatatanApi')->name('catatan');
+  Route::get('/ajax/list-pasangan', 'AjaxController@getPasanganApi')->name('list-pasangan');
+  Route::get('/ajax/list-anak', 'AjaxController@getAnakApi')->name('list-anak');
+  Route::get('/ajax/list-desa', 'AjaxController@getDesaApi')->name('list-desa');
+  Route::get('/ajax/list-posyandu', 'AjaxController@getPosyanduApi')->name('list-posyandu');
 
 
   Route::get('/ajax/test/{id}', 'AjaxController@showRegisterBayiData')->name('data.register-bayi');
 });
 
 Route::name('crud.')->group(function(){
-  Route::post('/crud/{key}/edit_catatan', 'CrudController@editCatatan')->name('edit.catatan');
-  Route::post('/crud/{key}/add_pasangan', 'CrudController@addPasangan')->name('add.pasangan');
-  Route::post('/crud/{key}/edit_pasangan', 'CrudController@editPasangan')->name('edit.pasangan');
-  Route::post('/crud/{key}/delete_pasangan', 'CrudController@deletePasangan')->name('delete.pasangan');
-  Route::post('/crud/{key}/add_anak', 'CrudController@addAnak')->name('add.anak');
-  Route::post('/crud/{key}/edit_anak', 'CrudController@editAnak')->name('edit.anak');
-  Route::post('/crud/{key}/delete_anak', 'CrudController@deleteAnak')->name('delete.anak');
-  Route::post('/crud/{key}/add_desa', 'CrudController@addDesa')->name('add.desa');
-  Route::post('/crud/{key}/edit_desa', 'CrudController@editDesa')->name('edit.desa');
-  Route::post('/crud/{key}/delete_desa', 'CrudController@deleteDesa')->name('delete.desa');
-  Route::post('/crud/{key}/add_posyandu', 'CrudController@addPosyandu')->name('add.posyandu');
-  Route::post('/crud/{key}/edit_posyandu', 'CrudController@editPosyandu')->name('edit.posyandu');
-  Route::post('/crud/{key}/delete_posyandu', 'CrudController@deletePosyandu')->name('delete.posyandu');
-  Route::post('/crud/{key}/add_register_bayi', 'CrudController@addRegisterBayi')->name('add.register-bayi');
+  Route::post('/crud/edit_catatan', 'CrudController@editCatatan')->name('edit.catatan');
+  Route::post('/crud/add_pasangan', 'CrudController@addPasangan')->name('add.pasangan');
+  Route::post('/crud/edit_pasangan', 'CrudController@editPasangan')->name('edit.pasangan');
+  Route::post('/crud/delete_pasangan', 'CrudController@deletePasangan')->name('delete.pasangan');
+  Route::post('/crud/add_anak', 'CrudController@addAnak')->name('add.anak');
+  Route::post('/crud/edit_anak', 'CrudController@editAnak')->name('edit.anak');
+  Route::post('/crud/delete_anak', 'CrudController@deleteAnak')->name('delete.anak');
+  Route::post('/crud/add_desa', 'CrudController@addDesa')->name('add.desa');
+  Route::post('/crud/edit_desa', 'CrudController@editDesa')->name('edit.desa');
+  Route::post('/crud/delete_desa', 'CrudController@deleteDesa')->name('delete.desa');
+  Route::post('/crud/add_posyandu', 'CrudController@addPosyandu')->name('add.posyandu');
+  Route::post('/crud/edit_posyandu', 'CrudController@editPosyandu')->name('edit.posyandu');
+  Route::post('/crud/delete_posyandu', 'CrudController@deletePosyandu')->name('delete.posyandu');
+  Route::post('/crud/add_register_bayi', 'CrudController@addRegisterBayi')->name('add.register-bayi');
 });
 
 Route::get('/test', function(){

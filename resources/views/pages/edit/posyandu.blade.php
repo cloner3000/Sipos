@@ -16,7 +16,7 @@ Edit Data Posyandu
   </div>
 
   <div class="card-block">
-    <form class="form-horizontal m-t-sm" action="{{ route('crud.edit.posyandu', ['key' => Auth::user()->token_key]) }}" method="post">
+    <form class="form-horizontal m-t-sm" action="{{ route('crud.edit.posyandu') }}" method="post">
       @csrf
       <input type="hidden" name="id" value="{{ $posyandu->id }}">
       <div class="form-group">

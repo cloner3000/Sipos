@@ -31,7 +31,7 @@ Daftar Desa
         </div>
     </div>
 
-    <form class="" action="{{ route('crud.delete.desa', ['key' => Auth::user()->token_key]) }}" method="post" style="display: none;" id="delete-form">
+    <form class="" action="{{ route('crud.delete.desa') }}" method="post" style="display: none;" id="delete-form">
       @csrf
       <input type="hidden" name="id" value="-1">
     </form>
@@ -53,7 +53,7 @@ Daftar Desa
       serverSide: true,
       responsive: true,
       dom : 'lf<"table-responsive"t>ip',
-      ajax: '{{ route("ajax.list-desa", ["key" => Auth::user()->token_key]) }}',
+      ajax: '{{ route("ajax.list-desa") }}',
       columns: [
         { data: 'no', name: 'no' },
         { data: 'nama_desa', name: 'nama_desa' },
