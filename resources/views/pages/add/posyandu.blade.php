@@ -16,7 +16,7 @@ Tambah Data Posyandu
   </div>
 
   <div class="card-block">
-    <form class="form-horizontal m-t-sm" action="{{ route('crud.add.posyandu', ['key' => Auth::user()->token_key]) }}" method="post">
+    <form class="form-horizontal m-t-sm" action="{{ route('crud.add.posyandu') }}" method="post">
       @csrf
 
       <div class="form-group">

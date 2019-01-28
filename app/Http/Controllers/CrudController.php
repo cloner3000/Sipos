@@ -24,9 +24,6 @@ class CrudController extends Controller
 {
   public function editCatatan(Request $request)
   {
-    if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
-      return 'Token Failed';
-    }
 
     $catatan = Catatan::find($request->id);
 
@@ -47,9 +44,6 @@ class CrudController extends Controller
 
   public function addPasangan(Request $request)
   {
-    if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
-      return 'Token Failed';
-    }
 
     $pasangan = Pasangan::create([
       'tanggal_menikah' => DateHelper::DMYtoYMD($request->tanggal_menikah),
@@ -91,9 +85,6 @@ class CrudController extends Controller
 
   public function editPasangan(Request $request)
   {
-    if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
-      return 'Token Failed';
-    }
 
     $ayah = OrangTua::find($request->id_suami);
     $ibu = OrangTua::find($request->id_istri);
@@ -149,9 +140,6 @@ class CrudController extends Controller
 
   public function deletePasangan(Request $request)
   {
-    if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
-      return 'Token Failed';
-    }
 
     $pasangan = Pasangan::with('anaks', 'ortus')->find($request->id);
 
@@ -173,9 +161,6 @@ class CrudController extends Controller
 
   public function addAnak(Request $request)
   {
-    if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
-      return 'Token Failed';
-    }
 
     $d = Anak::create([
       "id_pasangan" => $request->pasangan,
@@ -220,9 +205,6 @@ class CrudController extends Controller
 
   public function deleteAnak(Request $request)
   {
-    if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
-      return 'Token Failed';
-    }
 
     $data = Anak::find($request->id);
     if ($data == null) {
@@ -235,9 +217,6 @@ class CrudController extends Controller
 
   public function editAnak(Request $request)
   {
-    if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
-      return 'Token Failed';
-    }
 
     $data = Anak::find($request->id);
     if ($data == null) {
@@ -265,9 +244,6 @@ class CrudController extends Controller
 
   public function addDesa(Request $request)
   {
-    if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
-      return 'Token Failed';
-    }
 
     if (Kecamatan::find($request->kecamatan) == null) {
       return redirect()->back()->with('error', 'Kecamatan Not Found')->withInput();
@@ -284,9 +260,6 @@ class CrudController extends Controller
 
   public function editDesa(Request $request)
   {
-    if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
-      return 'Token Failed';
-    }
 
     $desa = Desa::find($request->id);
     if ($desa == null) {
@@ -307,9 +280,6 @@ class CrudController extends Controller
 
   public function deleteDesa(Request $request)
   {
-    if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
-      return 'Token Failed';
-    }
 
     $desa = Desa::with('posyandus')->find($request->id);
     if ($desa == null) {
@@ -326,9 +296,6 @@ class CrudController extends Controller
 
   public function addPosyandu(Request $request)
   {
-    if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
-      return 'Token Failed';
-    }
 
     if (Desa::find($request->desa) == null) {
       return redirect()->back()->with('error', 'Desa not found')->withInput();
@@ -347,9 +314,6 @@ class CrudController extends Controller
 
   public function editPosyandu(Request $request)
   {
-    if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
-      return 'Token Failed';
-    }
 
     if (Desa::find($request->desa) == null) {
       return redirect()->back()->with('error', 'Desa not found')->withInput();
@@ -374,10 +338,7 @@ class CrudController extends Controller
 
   public function deletePosyandu(Request $request)
   {
-    if (!KeyHelper::checkKey(Auth::user()->id, $request->key)) {
-      return 'Token Failed';
-    }
-
+    
     $posyandu = Posyandu::find($request->id);
 
     if ($posyandu == null) {

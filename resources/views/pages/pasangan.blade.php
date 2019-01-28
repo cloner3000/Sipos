@@ -36,7 +36,7 @@ Daftar Pasangan
     </div>
   </div>
 
-  <form class="" action="{{ route('crud.delete.pasangan', ['key' => Auth::user()->token_key]) }}" method="post" style="display: none;" id="delete-form">
+  <form class="" action="{{ route('crud.delete.pasangan') }}" method="post" style="display: none;" id="delete-form">
     @csrf
     <input type="hidden" name="id" value="-1">
   </form>
@@ -59,7 +59,7 @@ function deleteData(id){
       serverSide: true,
       responsive: true,
       dom : 'lf<"table-responsive"t>ip',
-      ajax: '{{ route("ajax.list-pasangan", ["key" => Auth::user()->token_key]) }}',
+      ajax: '{{ route("ajax.list-pasangan") }}',
       columns: [
         { data: 'no', name: 'no' },
         { data: 'ayah.nama', name: 'nama_ayah' },

@@ -16,7 +16,7 @@ Edit Data Pasangan
     </div>
 
     <div class="card-block">
-        <form class="form-horizontal m-t-sm" action="{{ route('crud.edit.pasangan', ['key' => Auth::user()->token_key]) }}" method="post">
+        <form class="form-horizontal m-t-sm" action="{{ route('crud.edit.pasangan') }}" method="post">
           @csrf
 
           <input type="hidden" name="id_suami" value="{{ $data->ayah->id }}">

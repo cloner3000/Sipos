@@ -16,7 +16,7 @@ Tambah Data Pasangan
     </div>
 
     <div class="card-block">
-        <form class="form-horizontal m-t-sm" action="{{ route('crud.add.pasangan', ['key' => Auth::user()->token_key]) }}" method="post">
+        <form class="form-horizontal m-t-sm" action="{{ route('crud.add.pasangan') }}" method="post">
           @csrf
             <div class="col-md-6">
                 <div class="form-group">
