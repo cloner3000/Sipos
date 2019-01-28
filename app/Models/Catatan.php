@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $penyebab_meninggal
  * @property string $created_at
  * @property string $updated_at
- * @property string $deleted_at
  * @property Anak $anak
  * @property User $user
  */
@@ -31,7 +30,7 @@ class Catatan extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_anak', 'id_user', 'meninggal', 'tanggal_meninggal', 'penyebab_meninggal', 'created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['id_anak', 'id_user', 'meninggal', 'tanggal_meninggal', 'penyebab_meninggal', 'created_at', 'updated_at'];
     protected $dates = ['deleted_at'];
 
     /**

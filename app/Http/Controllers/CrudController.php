@@ -10,9 +10,9 @@ use App\Pasangan;
 use App\OrangTua;
 use App\Anak;
 use App\User;
-use App\Kecamatan;
-use App\Desa;
-use App\Posyandu;
+use App\BaseKecamatan as Kecamatan;
+use App\BaseDesa as Desa;
+use App\BasePosyandu as Posyandu;
 use App\RegisterBayi;
 use App\PemberianAsi;
 use App\PemberianImunisasi;
@@ -338,7 +338,7 @@ class CrudController extends Controller
 
   public function deletePosyandu(Request $request)
   {
-    
+
     $posyandu = Posyandu::find($request->id);
 
     if ($posyandu == null) {
@@ -354,112 +354,7 @@ class CrudController extends Controller
   {
     $date_now = date('Y-m-d');
     $rb = RegisterBayi::where('id_anak', $request->id_anak)->get()->first();
-    if ($request->umur != $rb->umur) {
-      $rb_new = RegisterBayi::create([
-        'id_anak' => $rb->id_anak,
-        'umur' => $request->umur,
-        'catatan' => $request->catatan,
-        'id_user' => Auth::user()->id
-      ]);
 
-      $pa = PemberianAsi::create([
-        'id_register' => $rb_new->id,
-        'e0' => $request->e0 != null ? $date_now : null,
-        'e1' => $request->e1 != null ? $date_now : null,
-        'e2' => $request->e2 != null ? $date_now : null,
-        'e3' => $request->e3 != null ? $date_now : null,
-        'e4' => $request->e4 != null ? $date_now : null,
-        'e5' => $request->e5 != null ? $date_now : null,
-        'e6' => $request->e6 != null ? $date_now : null
-      ]);
-
-      $pi = PemberianImunisasi::create([
-        'id_register' => $rb_new->id,
-        'hb0' => $request->hb0 != null ? $date_now : null,
-        'bcg' => $request->bcg != null ? $date_now : null,
-        'dpt_hb_1' => $request->dpt_hb_1 != null ? $date_now : null,
-        'dpt_hb_2' => $request->dpt_hb_2 != null ? $date_now : null,
-        'dpt_hb_3' => $request->dpt_hb_3 != null ? $date_now : null,
-        'polio_1' => $request->polio_1 != null ? $date_now : null,
-        'polio_2' => $request->polio_2 != null ? $date_now : null,
-        'polio_3' => $request->polio_3 != null ? $date_now : null,
-        'polio_4' => $request->polio_4 != null ? $date_now : null,
-        'polio_5' => $request->polio_5 != null ? $date_now : null,
-        'campak_011' => $request->campak_011 != null ? $date_now : null,
-        'dpt_hb_hib_1223' => $request->dpt_hb_hib_1223 != null ? $date_now : null,
-        'campak_1223' => $request->campak_1223 != null ? $date_now : null,
-        'dpt_hb_hib_2435' => $request->dpt_hb_hib_2435 != null ? $date_now : null,
-        'campak_2435' => $request->campak_2435 != null ? $date_now : null,
-      ]);
-
-      $ntob = PemberianNtob::create([
-        'id_register' => $rb_new->id,
-        'berat' => $request->berat,
-        'status' => 'Baru',
-        'tanggal' => date_create(date("Y") . '-' . $request->bulan . '-' . date('d'))
-      ]);
-
-      if ($request->vitamin_a != null) {
-        PemberianVitaminA::create([
-          'id_register' => $rb_new->id,
-          'tanggal_pemberian' => $date_now
-        ]);
-      }
-
-      return redirect()->route('pages.add.register-bayi')->with('success', 'Data has been added');
-    }
-
-
-    $ntob_last = PemberianNtob::orderBy('tanggal', 'desc')->where('id_register', $rb->id)->get()->first();
-    $m_last = explode('-', $ntob_last->tanggal)[1];
-    $m_now = $request->bulan;
-    if ($m_now - $m_last > 1) {
-      $status = "Tidak Datang";
-    } elseif ($request->umur != $rb->umur) {
-      $status = "Baru";
-    } elseif ($request->berat - $ntob_last->berat > 0) {
-      $status = "Naik";
-    } else {
-      $status = "Turun";
-    }
-
-    $ntob = PemberianNtob::create([
-      'id_register' => $rb->id,
-      'berat' => $request->berat,
-      'status' => $status,
-      'tanggal' => date_create(date("Y") . '-' . $request->bulan . '-' . date('d'))
-    ]);
-
-
-    $pemberian_asi = PemberianAsi::where('id_register', $rb->id)->get()->first();
-    $pemberian_asi->update([
-      'e0' => $request->e0 != null ? $date_now : $pemberian_asi->e0,
-      'e1' => $request->e1 != null ? $date_now : $pemberian_asi->e1,
-      'e2' => $request->e2 != null ? $date_now : $pemberian_asi->e2,
-      'e3' => $request->e3 != null ? $date_now : $pemberian_asi->e3,
-      'e4' => $request->e4 != null ? $date_now : $pemberian_asi->e4,
-      'e5' => $request->e5 != null ? $date_now : $pemberian_asi->e5,
-      'e6' => $request->e6 != null ? $date_now : $pemberian_asi->e6
-    ]);
-
-    $pemberian_imunisasi = PemberianImunisasi::where('id_register', $rb->id)->get()->first();
-    $pemberian_imunisasi->update([
-      'hb0' => $request->hb0 != null ? $date_now : $pemberian_imunisasi->hb0,
-      'bcg' => $request->bcg != null ? $date_now : $pemberian_imunisasi->bcg,
-      'dpt_hb_1' => $request->dpt_hb_1 != null ? $date_now : $pemberian_imunisasi->dpt_hb_1,
-      'dpt_hb_2' => $request->dpt_hb_2 != null ? $date_now : $pemberian_imunisasi->dpt_hb_2,
-      'dpt_hb_3' => $request->dpt_hb_3 != null ? $date_now : $pemberian_imunisasi->dpt_hb_3,
-      'polio_1' => $request->polio_1 != null ? $date_now : $pemberian_imunisasi->polio_1,
-      'polio_2' => $request->polio_2 != null ? $date_now : $pemberian_imunisasi->polio_2,
-      'polio_3' => $request->polio_3 != null ? $date_now : $pemberian_imunisasi->polio_3,
-      'polio_4' => $request->polio_4 != null ? $date_now : $pemberian_imunisasi->polio_4,
-      'polio_5' => $request->polio_5 != null ? $date_now : $pemberian_imunisasi->polio_5,
-      'campak_011' => $request->campak_011 != null ? $date_now : $pemberian_imunisasi->campak_011,
-      'dpt_hb_hib_1223' => $request->dpt_hb_hib_1223 != null ? $date_now : $pemberian_imunisasi->dpt_hb_hib_1223,
-      'campak_1223' => $request->campak_1223 != null ? $date_now : $pemberian_imunisasi->campak_1223,
-      'dpt_hb_hib_2435' => $request->dpt_hb_hib_2435 != null ? $date_now : $pemberian_imunisasi->dpt_hb_hib_2435,
-      'campak_2435' => $request->campak_2435 != null ? $date_now : $pemberian_imunisasi->campak_2435
-    ]);
 
     if ($request->vitamin_a != null) {
       PemberianVitaminA::create([

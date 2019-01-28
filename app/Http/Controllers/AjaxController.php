@@ -10,9 +10,9 @@ use App\Pasangan;
 use App\OrangTua;
 use App\Anak;
 use App\User;
-use App\Desa;
+use App\BaseDesa as Desa;
 use App\RegisterBayi;
-use App\Posyandu;
+use App\BasePosyandu as Posyandu;
 use Auth;
 use DataTables;
 
@@ -73,7 +73,7 @@ class AjaxController extends Controller
 
     public function getAnakApi()
     {
-        $data = Anak::with('pasangan.ortus', 'agama')->get();
+        $data = Anak::with('agama', 'pasangan.ortus')->get();
         $i = 1;
         foreach ($data as $d) {
             $d->no = $i++;
@@ -109,6 +109,35 @@ class AjaxController extends Controller
         return DataTables::of($posyandus)->make(true);
     }
 
+    public function getRegisterBayiApi($umur, $tahun)
+    {
+
+        switch ($umur) {
+        case '0-11':
+          return "0 - 11";
+          break;
+
+        case '12-23':
+          return "12 - 23";
+          break;
+
+        case '24-35':
+          return "0 - 11";
+          break;
+
+        case '36-47':
+          return "0 - 11";
+          break;
+
+        case '48-59':
+          return "0 - 11";
+          break;
+
+        default:
+          abort(404);
+          break;
+      }
+    }
 
 
     public function showRegisterBayiData($id)

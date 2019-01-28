@@ -7,26 +7,24 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property int $id
- * @property int $id_agama
- * @property int $id_pendidikan_terakhir
  * @property int $id_pasangan
+ * @property int $id_agama
  * @property int $id_user
- * @property string $nama
- * @property string $nik
- * @property string $jenis_kelamin
+ * @property string $nama_anak
  * @property string $tempat_lahir
  * @property string $tanggal_lahir
- * @property string $pekerjaan
+ * @property string $jenis_kelamin
+ * @property float $berat_bayi_lahir
  * @property boolean $status
  * @property string $created_at
  * @property string $updated_at
- * @property string $deleted_at
  * @property Pasangan $pasangan
  * @property User $user
- * @property BaseAgama $baseAgama
- * @property BasePendidikan $basePendidikan
+ * @property Agama $agama
+ * @property Catatan[] $catatans
+ * @property RegisterBayi[] $registerBayis
  */
-class OrangTua extends Model
+class Anak extends Model
 {
     use SoftDeletes;
     /**
@@ -34,13 +32,13 @@ class OrangTua extends Model
      *
      * @var string
      */
-    protected $table = 'ortu';
-    protected $dates = ['deleted_at'];
+    protected $table = 'anak';
 
     /**
      * @var array
      */
-    protected $fillable = ['id_agama', 'id_pendidikan_terakhir', 'id_pasangan', 'id_user', 'nama', 'nik', 'jenis_kelamin', 'tempat_lahir', 'tanggal_lahir', 'pekerjaan', 'status', 'created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['id_pasangan', 'id_agama', 'id_user', 'nama_anak', 'tempat_lahir', 'tanggal_lahir', 'jenis_kelamin', 'berat_bayi_lahir', 'status', 'created_at', 'updated_at'];
+    protected $dates = ['deleted_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -63,14 +61,22 @@ class OrangTua extends Model
      */
     public function agama()
     {
-        return $this->belongsTo('App\BaseAgama', 'id_agama');
+        return $this->belongsTo('App\Agama', 'id_agama');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function pendidikan()
+    public function catatans()
     {
-        return $this->belongsTo('App\BasePendidikan', 'id_pendidikan_terakhir');
+        return $this->hasMany('App\Catatan', 'id_anak');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function registerBayis()
+    {
+        return $this->hasMany('App\RegisterBayi', 'id_anak');
     }
 }

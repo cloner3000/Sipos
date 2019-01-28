@@ -13,9 +13,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $alamat
  * @property string $created_at
  * @property string $updated_at
- * @property string $deleted_at
  * @property User $user
- * @property BaseDesa $baseDesa
+ * @property Desa $desa
  * @property Anak[] $anaks
  * @property Ortu[] $ortus
  */
@@ -32,7 +31,7 @@ class Pasangan extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_desa', 'id_user', 'tanggal_menikah', 'alamat', 'created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['id_desa', 'id_user', 'tanggal_menikah', 'alamat', 'created_at', 'updated_at'];
     protected $dates = ['deleted_at'];
 
     /**
@@ -48,7 +47,7 @@ class Pasangan extends Model
      */
     public function desa()
     {
-        return $this->belongsTo('App\BaseDesa', 'id_desa');
+        return $this->belongsTo('App\Desa', 'id_desa');
     }
 
     /**

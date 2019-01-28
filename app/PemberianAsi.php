@@ -7,15 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property int $id
  * @property int $id_register
- * @property string $e0
- * @property string $e1
- * @property string $e2
- * @property string $e3
- * @property string $e4
- * @property string $e5
- * @property string $e6
- * @property string $e7_asi
+ * @property int $id_asi
+ * @property string $tanggal
  * @property RegisterBayi $registerBayi
+ * @property BaseAsi $baseAsi
  */
 class PemberianAsi extends Model
 {
@@ -25,12 +20,11 @@ class PemberianAsi extends Model
      * @var string
      */
     protected $table = 'pemberian_asi';
-    public $timestamps = false;
 
     /**
      * @var array
      */
-    protected $fillable = ['id_register', 'e0', 'e1', 'e2', 'e3', 'e4', 'e5', 'e6', 'e7_asi'];
+    protected $fillable = ['id_register', 'id_asi', 'tanggal'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -38,5 +32,13 @@ class PemberianAsi extends Model
     public function registerBayi()
     {
         return $this->belongsTo('App\RegisterBayi', 'id_register');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function asi()
+    {
+        return $this->belongsTo('App\BaseAsi', 'id_asi');
     }
 }

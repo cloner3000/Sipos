@@ -8,13 +8,13 @@ use App\Helpers\DateHelper;
 use App\Catatan;
 use App\Pasangan;
 use App\OrangTua;
-use App\Agama;
-use App\Kecamatan;
-use App\Pendidikan;
+use App\BaseAgama as Agama;
+use App\BaseKecamatan as Kecamatan;
+use App\BasePendidikan as Pendidikan;
 use App\Anak;
 use App\User;
-use App\Desa;
-use App\Posyandu;
+use App\BaseDesa as Desa;
+use App\BasePosyandu as Posyandu;
 use Auth;
 
 class KaderController extends Controller

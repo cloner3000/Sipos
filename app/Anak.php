@@ -18,9 +18,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property boolean $status
  * @property string $created_at
  * @property string $updated_at
+ * @property string $deleted_at
  * @property Pasangan $pasangan
  * @property User $user
- * @property Agama $agama
+ * @property BaseAgama $baseAgama
  * @property Catatan[] $catatans
  * @property RegisterBayi[] $registerBayis
  */
@@ -37,7 +38,7 @@ class Anak extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_pasangan', 'id_agama', 'id_user', 'nama_anak', 'tempat_lahir', 'tanggal_lahir', 'jenis_kelamin', 'berat_bayi_lahir', 'status', 'created_at', 'updated_at'];
+    protected $fillable = ['id_pasangan', 'id_agama', 'id_user', 'nama_anak', 'tempat_lahir', 'tanggal_lahir', 'jenis_kelamin', 'berat_bayi_lahir', 'status', 'created_at', 'updated_at', 'deleted_at'];
     protected $dates = ['deleted_at'];
 
     /**
@@ -61,7 +62,7 @@ class Anak extends Model
      */
     public function agama()
     {
-        return $this->belongsTo('App\Agama', 'id_agama');
+        return $this->belongsTo('App\BaseAgama', 'id_agama');
     }
 
     /**

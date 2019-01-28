@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $id_anak
  * @property int $id_user
- * @property int $umur
  * @property string $catatan
  * @property string $created_at
  * @property string $updated_at
@@ -23,7 +22,7 @@ class RegisterBayi extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'register_bayi';
@@ -78,6 +77,6 @@ class RegisterBayi extends Model
      */
     public function pemberianVitAs()
     {
-        return $this->hasMany('App\PemberianVitum', 'id_register');
+        return $this->hasMany('App\PemberianVitaminA', 'id_register');
     }
 }

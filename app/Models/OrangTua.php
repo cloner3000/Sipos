@@ -20,11 +20,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property boolean $status
  * @property string $created_at
  * @property string $updated_at
- * @property string $deleted_at
  * @property Pasangan $pasangan
  * @property User $user
- * @property BaseAgama $baseAgama
- * @property BasePendidikan $basePendidikan
+ * @property Agama $agama
+ * @property Pendidikan $pendidikan
  */
 class OrangTua extends Model
 {
@@ -35,12 +34,12 @@ class OrangTua extends Model
      * @var string
      */
     protected $table = 'ortu';
-    protected $dates = ['deleted_at'];
 
     /**
      * @var array
      */
-    protected $fillable = ['id_agama', 'id_pendidikan_terakhir', 'id_pasangan', 'id_user', 'nama', 'nik', 'jenis_kelamin', 'tempat_lahir', 'tanggal_lahir', 'pekerjaan', 'status', 'created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['id_agama', 'id_pendidikan_terakhir', 'id_pasangan', 'id_user', 'nama', 'nik', 'jenis_kelamin', 'tempat_lahir', 'tanggal_lahir', 'pekerjaan', 'status', 'created_at', 'updated_at'];
+    protected $dates = ['deleted_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -63,7 +62,7 @@ class OrangTua extends Model
      */
     public function agama()
     {
-        return $this->belongsTo('App\BaseAgama', 'id_agama');
+        return $this->belongsTo('App\Agama', 'id_agama');
     }
 
     /**
@@ -71,6 +70,6 @@ class OrangTua extends Model
      */
     public function pendidikan()
     {
-        return $this->belongsTo('App\BasePendidikan', 'id_pendidikan_terakhir');
+        return $this->belongsTo('App\Pendidikan', 'id_pendidikan_terakhir');
     }
 }

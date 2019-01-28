@@ -5,26 +5,27 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * @property int $id_register_bayi
  * @property int $id
- * @property int $id_register
- * @property float $berat
- * @property string $status
- * @property string $tanggal
+ * @property int $berat
+ * @property int $status
+ * @property int $tanggal
  * @property RegisterBayi $registerBayi
  */
 class PemberianNtob extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'pemberian_ntob';
+    public $timestamps = false;
 
     /**
      * @var array
      */
-    protected $fillable = ['id_register', 'berat', 'status', 'tanggal'];
+    protected $fillable = ['id_register', 'id', 'berat', 'status', 'tanggal'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
