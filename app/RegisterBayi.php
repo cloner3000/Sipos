@@ -23,7 +23,7 @@ class RegisterBayi extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'register_bayi';
@@ -78,6 +78,6 @@ class RegisterBayi extends Model
      */
     public function pemberianVitAs()
     {
-        return $this->hasMany('App\PemberianVitum', 'id_register');
+        return $this->hasMany('App\PemberianVitaminA', 'id_register');
     }
 }

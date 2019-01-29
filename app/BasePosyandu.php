@@ -31,6 +31,7 @@ class BasePosyandu extends Model
      */
     protected $fillable = ['id_desa', 'id_user', 'no_posyandu', 'nama_posyandu', 'alamat', 'created_at', 'updated_at'];
 
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

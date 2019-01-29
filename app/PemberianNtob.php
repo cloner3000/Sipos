@@ -16,7 +16,7 @@ class PemberianNtob extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'pemberian_ntob';
@@ -25,6 +25,7 @@ class PemberianNtob extends Model
      * @var array
      */
     protected $fillable = ['id_register', 'berat', 'status', 'tanggal'];
+    public $timestamps = false;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

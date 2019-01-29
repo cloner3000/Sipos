@@ -25,6 +25,7 @@ class PemberianAsi extends Model
      * @var array
      */
     protected $fillable = ['id_register', 'id_asi', 'tanggal'];
+    public $timestamps = false;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

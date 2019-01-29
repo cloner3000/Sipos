@@ -18,13 +18,14 @@ use App\PemberianAsi;
 use App\PemberianImunisasi;
 use App\PemberianNtob;
 use App\PemberianVitaminA;
+use App\BaseImunisasi;
+use App\BaseAsi;
 use Auth;
 
 class CrudController extends Controller
 {
   public function editCatatan(Request $request)
   {
-
     $catatan = Catatan::find($request->id);
 
     if ($catatan == null) {
@@ -44,7 +45,6 @@ class CrudController extends Controller
 
   public function addPasangan(Request $request)
   {
-
     $pasangan = Pasangan::create([
       'tanggal_menikah' => DateHelper::DMYtoYMD($request->tanggal_menikah),
       'alamat' => $request->alamat_pasangan,
@@ -85,7 +85,6 @@ class CrudController extends Controller
 
   public function editPasangan(Request $request)
   {
-
     $ayah = OrangTua::find($request->id_suami);
     $ibu = OrangTua::find($request->id_istri);
     $pasangan = Pasangan::find($request->id_pasangan);
@@ -140,7 +139,6 @@ class CrudController extends Controller
 
   public function deletePasangan(Request $request)
   {
-
     $pasangan = Pasangan::with('anaks', 'ortus')->find($request->id);
 
     if ($pasangan == null) {
@@ -161,7 +159,6 @@ class CrudController extends Controller
 
   public function addAnak(Request $request)
   {
-
     $d = Anak::create([
       "id_pasangan" => $request->pasangan,
       "nama_anak" => $request->nama,
@@ -185,14 +182,6 @@ class CrudController extends Controller
       'id_user' => Auth::user()->id
     ]);
 
-    $pa = PemberianAsi::create([
-      'id_register' => $rb->id
-    ]);
-
-    $pi = PemberianImunisasi::create([
-      'id_register' => $rb->id
-    ]);
-
     $pn = PemberianNtob::create([
       'id_register' => $rb->id,
       'berat' => $d->berat_bayi_lahir,
@@ -205,7 +194,6 @@ class CrudController extends Controller
 
   public function deleteAnak(Request $request)
   {
-
     $data = Anak::find($request->id);
     if ($data == null) {
       return redirect()->route('pages.anak')->with('Error', 'Data Not Found');
@@ -217,7 +205,6 @@ class CrudController extends Controller
 
   public function editAnak(Request $request)
   {
-
     $data = Anak::find($request->id);
     if ($data == null) {
       return redirect()->route('pages.anak')->with('Error', 'Data Not Found');
@@ -244,7 +231,6 @@ class CrudController extends Controller
 
   public function addDesa(Request $request)
   {
-
     if (Kecamatan::find($request->kecamatan) == null) {
       return redirect()->back()->with('error', 'Kecamatan Not Found')->withInput();
     }
@@ -260,7 +246,6 @@ class CrudController extends Controller
 
   public function editDesa(Request $request)
   {
-
     $desa = Desa::find($request->id);
     if ($desa == null) {
       return redirect()->route('pages.desa')->with('error', 'Data not found');
@@ -280,7 +265,6 @@ class CrudController extends Controller
 
   public function deleteDesa(Request $request)
   {
-
     $desa = Desa::with('posyandus')->find($request->id);
     if ($desa == null) {
       return redirect()->route('pages.desa')->with('error', 'Data not found');
@@ -296,7 +280,6 @@ class CrudController extends Controller
 
   public function addPosyandu(Request $request)
   {
-
     if (Desa::find($request->desa) == null) {
       return redirect()->back()->with('error', 'Desa not found')->withInput();
     }
@@ -314,7 +297,6 @@ class CrudController extends Controller
 
   public function editPosyandu(Request $request)
   {
-
     if (Desa::find($request->desa) == null) {
       return redirect()->back()->with('error', 'Desa not found')->withInput();
     }
@@ -338,7 +320,6 @@ class CrudController extends Controller
 
   public function deletePosyandu(Request $request)
   {
-
     $posyandu = Posyandu::find($request->id);
 
     if ($posyandu == null) {
@@ -353,14 +334,83 @@ class CrudController extends Controller
   public function addRegisterBayi(Request $request)
   {
     $date_now = date('Y-m-d');
-    $rb = RegisterBayi::where('id_anak', $request->id_anak)->get()->first();
 
+    $rb = RegisterBayi::where('id_anak', $request->id_anak)->get()->first();
+    $ntob_last = PemberianNtob::orderBy('tanggal', 'desc')->where('id_register', $rb->id)->get()->first();
+    $m_last = explode('-', $ntob_last->tanggal)[1];
+    $m_now = $request->bulan;
+    if ($m_now - $m_last > 1) {
+      $status = "Tidak Datang";
+    } elseif ($request->umur != $rb->umur) {
+      $status = "Baru";
+    } elseif ($request->berat - $ntob_last->berat > 0) {
+      $status = "Naik";
+    } else {
+      $status = "Turun";
+    }
+
+    return $request;
+
+    $ntob = null;
+
+    if ($request->umur != $rb->umur) {
+      $rb = RegisterBayi::create([
+        'id_anak' => $rb->id_anak,
+        'umur' => $request->umur,
+        'catatan' => $request->catatan,
+        'id_user' => Auth::user()->id
+      ]);
+
+      $ntob = PemberianNtob::create([
+        'id_register' => $rb->id,
+        'berat' => $request->berat,
+        'status' => 'Baru',
+        'tanggal' => date_create(date("Y") . '-' . $request->bulan - 1 . '-' . date('d'))
+      ]);
+    }
 
     if ($request->vitamin_a != null) {
       PemberianVitaminA::create([
         'id_register' => $rb->id,
-        'tanggal_pemberian' => $date_now
+        'tanggal' => $date_now
       ]);
+    }
+
+    if($ntob == null){
+      $ntob = PemberianNtob::create([
+        'id_register' => $rb->id,
+        'berat' => $request->berat,
+        'status' => $status,
+        'tanggal' => date_create(date("Y") . '-' . $request->bulan - 1 . '-' . date('d'))
+      ]);
+    }
+
+    foreach($request->imunisasi as $imunisasi => $status){
+      $imun = explode('-', $imunisasi);
+      $nama_imunisasi = $imun[0];
+      $no_imunisasi = $imun[1];
+
+      if($status == "on"){
+        $id = BaseImunisasi::where('imunisasi', $nama_imunisasi)->get()->first()->id;
+        PemberianImunisasi::create([
+          'id_register' => $rb->id,
+          'id_imunisasi' => $id,
+          'nomor_imunisasi' => $no_imunisasi,
+          'tanggal_pemberian' => $date_now
+        ]);
+      }
+    }
+
+    foreach($request->asi as $asi => $status){
+
+      if($status == "on"){
+        $id = BaseAsi::where('asi', $asi)->get()->first()->id;
+        PemberianAsi::create([
+          'id_register' => $rb->id,
+          'id_asi' => $id,
+          'tanggal' => $date_now
+        ]);
+      }
     }
 
     return redirect()->route('pages.add.register-bayi')->with('success', 'Data has been added');

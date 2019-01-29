@@ -14,7 +14,7 @@ class PemberianVitaminA extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'pemberian_vit_a';
@@ -22,7 +22,8 @@ class PemberianVitaminA extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_register', 'tanggal_pemberian'];
+    protected $fillable = ['id_register', 'tanggal'];
+    public $timestamps = false;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

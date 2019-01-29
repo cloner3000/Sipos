@@ -4,7 +4,6 @@ $('#option-anak').change(function() {
     resetAsiRadio();
     resetImunisasiCheckBox();
     var data = $('#option-anak option:selected').val();
-    console.log(data);
     $.ajax({
         url: "http://localhost:8000/ajax/test/" + data,
         cache: false,
@@ -13,21 +12,20 @@ $('#option-anak').change(function() {
             setUmur(data);
             var ban = [];
             var ban_asi = [];
-            if($('#umur-anak-form').val() == data['umur']){
-              for (var d in data['pemberian_ntobs']) {
-                  var ntob = data['pemberian_ntobs'][d];
-                  var num = parseInt(ntob.tanggal.split('-')[1]);
-                  ban.push(num);
-              }
-              var asis = data['pemberian_asis'][0];
-              for (var i = 0; i < 7; i++) {
-                  if (asis["e" + i] != null) {
-                      ban_asi.push("e" + i);
-                  }
-              }
-              pemberianImunisasiCheckBox(data);
-            } else{
-              resetImunisasiCheckBox();
+            if ($('#umur-anak-form').val() == data['umur']) {
+                for (var d in data['pemberian_ntobs']) {
+                    var ntob = data['pemberian_ntobs'][d];
+                    var num = parseInt(ntob.tanggal.split('-')[1]);
+                    ban.push(num);
+                }
+                var asis = data['pemberian_asis'];
+                for (asi in asis) {
+                    ban_asi.push(asis[asi]["asi"]["asi"]);
+                }
+                // console.log(asis);
+                pemberianImunisasiCheckBox(data);
+            } else {
+                resetImunisasiCheckBox();
             }
             createOptions(12, ban, options, bulans);
             createAsiRadio(ban_asi);
@@ -64,10 +62,11 @@ function createAsiRadio(ban) {
     var labels = document.getElementsByClassName('asi-box');
     for (var i = 0; i < labels.length; i++) {
         var checkbox = labels[i].getElementsByTagName('input')[0];
-        if (ban[0] == checkbox.name) {
+        if ("asi["+ban[0]+"]" == checkbox.name) {
             ban.shift();
             checkbox.checked = true;
             labels[i].readonly = true;
+            10
             labels[i].style.cursor = "not-allowed";
             checkbox.disabled = true;
         }
@@ -95,15 +94,25 @@ function pemberianVitaminCheckBox() {
 }
 
 function pemberianImunisasiCheckBox(data) {
-    var datas = data['pemberian_imunisasis'][0];
+    var datas = data['pemberian_imunisasis'];
     var labels = $('#imunisasi-form').find("label");
+    var data_ban = [];
+    for (d in datas) {
+        data_ban.push(datas[d]["imunisasi"]["imunisasi"] + '-' + datas[d]["nomor_imunisasi"]);
+    }
+    console.log(data_ban);
     for (var i = 0; i < labels.length; i++) {
         var checkbox = labels[i].getElementsByTagName("input")[0];
-        if (datas[checkbox.name] != null) {
-            checkbox.checked = true;
-            labels[i].readonly = true;
-            labels[i].style.cursor = "not-allowed";
-            checkbox.disabled = true;
+        console.log(checkbox.name);
+        for(d in data_ban){
+          if (checkbox.name == "imunisasi["+data_ban[d]+"]") {
+              checkbox.checked = true;
+              labels[i].readonly = true;
+              labels[i].style.cursor = "not-allowed";
+              checkbox.disabled = true;
+              break;
+          }
+
         }
     }
 }
@@ -132,9 +141,9 @@ function setUmur(data) {
 // createAsiRadio();
 
 $.ajax({
-    url: "http://localhost:8000/ajax/test/" + 10,
+    url: "http://localhost:8000/ajax/test/" + 6,
     cache: true,
     success: function(data) {
-        console.log(data);
+        console.log(data["pemberian_asis"]);
     }
 });

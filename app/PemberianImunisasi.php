@@ -26,6 +26,7 @@ class PemberianImunisasi extends Model
      * @var array
      */
     protected $fillable = ['id_register', 'id_imunisasi', 'nomor_imunisasi', 'tanggal_pemberian'];
+    public $timestamps = false;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

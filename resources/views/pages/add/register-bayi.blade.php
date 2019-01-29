@@ -62,28 +62,28 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
       </div>
 
       <div class="form-group">
-          <label class="col-md-12">Pemberian Asi</label>
+        <label class="col-md-12">Pemberian Asi</label>
         <div class="col-md-12">
           <label class="css-input css-checkbox css-checkbox-success asi-box">
-            <input type="checkbox" name="e0"><span></span> E0
+            <input type="checkbox" name="asi[e0]"><span></span> E0
           </label>
           <label class="css-input css-checkbox css-checkbox-success asi-box">
-            <input type="checkbox" name="e1"><span></span> E1
+            <input type="checkbox" name="asi[e1]"><span></span> E1
           </label>
           <label class="css-input css-checkbox css-checkbox-success asi-box">
-            <input type="checkbox" name="e2"><span></span> E2
+            <input type="checkbox" name="asi[e2]"><span></span> E2
           </label>
           <label class="css-input css-checkbox css-checkbox-success asi-box">
-            <input type="checkbox" name="e3"><span></span> E3
+            <input type="checkbox" name="asi[e3]"><span></span> E3
           </label>
           <label class="css-input css-checkbox css-checkbox-success asi-box">
-            <input type="checkbox" name="e4"><span></span> E4
+            <input type="checkbox" name="asi[e4]"><span></span> E4
           </label>
           <label class="css-input css-checkbox css-checkbox-success asi-box">
-            <input type="checkbox" name="e5"><span></span> E5
+            <input type="checkbox" name="asi[e5]"><span></span> E5
           </label>
           <label class="css-input css-checkbox css-checkbox-success asi-box">
-            <input type="checkbox" name="e6"><span></span> E6
+            <input type="checkbox" name="asi[e6]"><span></span> E6
           </label>
         </div>
       </div>
@@ -101,46 +101,46 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
         <div class="col-xs-12" id="imunisasi-form">
           Pemberian Imunisasi <br>
           <label class="css-input css-checkbox css-checkbox-success">
-            <input type="checkbox" name="hb0"><span></span> HB O
+            <input type="checkbox" name="imunisasi[hb0-1]"><span></span> HB O
           </label>
           <label class="css-input css-checkbox css-checkbox-success">
-            <input type="checkbox" name="bcg"><span></span> BCG
+            <input type="checkbox" name="imunisasi[bcg-1]"><span></span> BCG
           </label>
           <label class="css-input css-checkbox css-checkbox-success">
-            <input type="checkbox" name="dpt_hb_1"><span></span> DPT/HB 1
+            <input type="checkbox" name="imunisasi[dpt_hb-1]"><span></span> DPT/HB 1
           </label>
           <label class="css-input css-checkbox css-checkbox-success">
-            <input type="checkbox" name="dpt_hb_2"><span></span> DPT/HB 2
+            <input type="checkbox" name="imunisasi[dpt_hb-2]"><span></span> DPT/HB 2
           </label>
           <label class="css-input css-checkbox css-checkbox-success">
-            <input type="checkbox" name="dpt_hb_3"><span></span> DPT/HB 3
+            <input type="checkbox" name="imunisasi[dpt_hb-3]"><span></span> DPT/HB 3
           </label>
           <label class="css-input css-checkbox css-checkbox-success">
-            <input type="checkbox" name="polio_1"><span></span> Polio 1
+            <input type="checkbox" name="imunisasi[polio-1]"><span></span> Polio 1
           </label>
           <label class="css-input css-checkbox css-checkbox-success">
-            <input type="checkbox" name="polio_2"><span></span> Polio 2
+            <input type="checkbox" name="imunisasi[polio-2]"><span></span> Polio 2
           </label>
           <label class="css-input css-checkbox css-checkbox-success">
-            <input type="checkbox" name="polio_3"><span></span> Polio 3
+            <input type="checkbox" name="imunisasi[polio-3]"><span></span> Polio 3
           </label>
           <label class="css-input css-checkbox css-checkbox-success">
-            <input type="checkbox" name="polio_4"><span></span> Polio 4
+            <input type="checkbox" name="imunisasi[polio-4]"><span></span> Polio 4
           </label>
           <label class="css-input css-checkbox css-checkbox-success">
-            <input type="checkbox" name="campak_011"><span></span> Campak
+            <input type="checkbox" name="imunisasi[campak-1]"><span></span> Campak
           </label>
           <label class="css-input css-checkbox css-checkbox-success">
-            <input type="checkbox" name="dpt_hb_hib_1223"><span></span> DPT/HB/HIB
+            <input type="checkbox" name="imunisasi[dpt_hb_hib-1]"><span></span> DPT/HB/HIB
           </label>
           <label class="css-input css-checkbox css-checkbox-success">
-            <input type="checkbox" name="campak_1223"><span></span> Campak
+            <input type="checkbox" name="imunisasi[campak-2]"><span></span> Campak
           </label>
           <label class="css-input css-checkbox css-checkbox-success">
-            <input type="checkbox" name="dpt_hb_hib_2435"><span></span> DPT/HB/HIB
+            <input type="checkbox" name="imunisasi[dpt_hb_hib-2]"><span></span> DPT/HB/HIB
           </label>
           <label class="css-input css-checkbox css-checkbox-success">
-            <input type="checkbox" name="campak_2435"><span></span> Campak
+            <input type="checkbox" name="imunisasi[campak-3]"><span></span> Campak
           </label>
         </div>
       </div>
@@ -170,7 +170,7 @@ Catatan Ibu Hamil, Kelahiran, Kematian Bayi dan Kematian Bumil/Nifas
 
 @section('scripts')
 <script>
-  var bulans = {!! json_encode($bulans) !!};
+var bulans = {!! json_encode($bulans) !!};
 </script>
 @include('assets.js-form')
 <script src="{{ asset('js/register-bayi.js') }}" charset="utf-8"></script>
