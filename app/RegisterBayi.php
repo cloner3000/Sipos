@@ -31,7 +31,7 @@ class RegisterBayi extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_anak', 'id_user', 'umur', 'catatan', 'created_at', 'updated_at'];
+    protected $fillable = ['id_anak', 'id_user', 'umur', 'catatan', 'created_at', 'updated_at', 'active'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

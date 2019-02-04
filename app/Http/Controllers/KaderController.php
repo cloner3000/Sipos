@@ -13,6 +13,7 @@ use App\BaseKecamatan as Kecamatan;
 use App\BasePendidikan as Pendidikan;
 use App\Anak;
 use App\User;
+use App\PemberianNtob;
 use App\BaseDesa as Desa;
 use App\BasePosyandu as Posyandu;
 use Auth;
@@ -55,7 +56,9 @@ class KaderController extends Controller
         return $this->registerBayi011();
       }
       $bulan = $this->bulan;
-      return view('pages.register-bayi-011', compact('bulan', 'tahun'));
+      $data = (new AjaxController)->getRegisterBayiApi(0, $tahun);
+      // return $data;
+      return view('pages.register-bayi-011', compact('bulan', 'tahun', 'data'));
     }
 
     public function registerBayi1223()
@@ -271,6 +274,15 @@ class KaderController extends Controller
 
       $data->anak->tanggal_lahir = DateHelper::YMDtoDMY($data->anak->tanggal_lahir);
       return view('pages.edit.catatan', compact('data', 'key'));
+    }
+
+    public function editNtob($id)
+    {
+      $ntob = PemberianNtob::with('registerBayi.anak')->find($id);
+      if($ntob == null){
+        return redirect()->back()->with('error', 'Data Not Found');
+      }
+      return view('pages.edit.ntob', compact('ntob'));
     }
 
 }

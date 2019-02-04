@@ -42,6 +42,7 @@ Route::name('pages.')->group(function () {
     Route::get('/register-bayi/48-59/{tahun}', 'KaderController@registerBayi4859Tahun')->name('register.4859.thn');
     Route::get('/register-bayi/data/{id_bayi}', 'KaderController@registerBayiDataPage');
     Route::get('/register-bayi/tambah-data', 'KaderController@addRegisterBayi')->name('add.register-bayi');
+    Route::get('/register-bayi/edit-ntob/{id}', 'KaderController@editNtob')->name('edit.ntob');
 
     Route::get('/ibu-hamil', 'KaderController@ibuHamilPage')->name('ibu-hamil');
     Route::get('/ibu-hamil/tambah', 'KaderController@addIbuHamil')->name('add.ibu-hamil');
@@ -65,7 +66,7 @@ Route::name('ajax.')->group(function () {
     Route::get('/ajax/list-anak', 'AjaxController@getAnakApi')->name('list-anak');
     Route::get('/ajax/list-desa', 'AjaxController@getDesaApi')->name('list-desa');
     Route::get('/ajax/list-posyandu', 'AjaxController@getPosyanduApi')->name('list-posyandu');
-    Route::get('/ajax/register-bayi/{umur}/{tahun}', 'AjaxController@getRegisterBayiApi');
+    Route::get('/ajax/register-bayi/{umur}/{tahun}', 'AjaxController@getRegisterBayiApi')->name('list-register-bayi');
 
     Route::get('/ajax/test/{id}', 'AjaxController@showRegisterBayiData')->name('data.register-bayi');
 });
@@ -85,4 +86,5 @@ Route::name('crud.')->group(function () {
     Route::post('/crud/edit_posyandu', 'CrudController@editPosyandu')->name('edit.posyandu');
     Route::post('/crud/delete_posyandu', 'CrudController@deletePosyandu')->name('delete.posyandu');
     Route::post('/crud/add_register_bayi', 'CrudController@addRegisterBayi')->name('add.register-bayi');
+    Route::post('/crud/edit_ntob', 'CrudController@editNtobBayi')->name('edit.ntob');
 });

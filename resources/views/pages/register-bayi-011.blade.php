@@ -44,19 +44,31 @@ Register Bayi
                                         <th>Nama Anak</th>
                                         <th>Tanggal Lahir</th>
                                         <th>BBL</th>
-                                        <th>Nama Ibu</th>
+                                        <th>Berat Penimbangan</th>
                                         <th>Status Penimbangan</th>
                                         {!! $no <= 6 ? "<th>ASI</th>" : '' !!}
                                         {!! $no == 2 || $no == 8 ? '<th>Vit A</th>' : '' !!}
                                         <th>Imunisasi</th>
                                         <th>Catatan</th>
-                                        <th>Action</th>
                                       </tr>
                                     </thead>
 
                                     <tbody>
                                       <!-- Body Data -->
-
+                                      @foreach($data as $d)
+                                        @if(!empty($d->ntobs[$no]) && explode('-', $d->ntobs[$no]->tanggal)[1] == $no)
+                                          <td>{{ $d->no }}</td>
+                                          <td>{{ $d->anak->nama_anak }}</td>
+                                          <td>{{ $d->anak->tanggal_lahir }}</td>
+                                          <td>{{ $d->anak->berat_bayi_lahir }}</td>
+                                          <td>{{ $d->ntobs[$no]->berat }}</td>
+                                          <td>{{ $d->ntobs[$no]->status }}</td>
+                                          {!! $no <= 6 && !empty($d->asis[$no]) ? "<td>".$d->asis[$no]->asi->nama_asi."</td>" : "<td> - </td>" !!}
+                                          {!! $no == 2 || $no == 8 ? "<td>"."test"."</td>" : "" !!}
+                                          <td>{{ $d->imunisasis }}</td>
+                                          <td>{{ $d->catatan }}</td>
+                                          @endif
+                                      @endforeach
                                       <!-- End of Body Data -->
                                     </tbody>
                                   </table>
@@ -86,4 +98,5 @@ Register Bayi
           App.initHelpers(['select2']);
       });
     </script>
+
     @endsection

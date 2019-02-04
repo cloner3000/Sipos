@@ -349,11 +349,14 @@ class CrudController extends Controller
       $status = "Turun";
     }
 
-    return $request;
-
     $ntob = null;
 
     if ($request->umur != $rb->umur) {
+
+      $rb->update([
+        'active' => 0
+      ]);
+
       $rb = RegisterBayi::create([
         'id_anak' => $rb->id_anak,
         'umur' => $request->umur,
@@ -365,7 +368,7 @@ class CrudController extends Controller
         'id_register' => $rb->id,
         'berat' => $request->berat,
         'status' => 'Baru',
-        'tanggal' => date_create(date("Y") . '-' . $request->bulan - 1 . '-' . date('d'))
+        'tanggal' => date_create(date("Y") . '-' . ($request->bulan - 1) . '-' . date('d'))
       ]);
     }
 
@@ -381,7 +384,7 @@ class CrudController extends Controller
         'id_register' => $rb->id,
         'berat' => $request->berat,
         'status' => $status,
-        'tanggal' => date_create(date("Y") . '-' . $request->bulan - 1 . '-' . date('d'))
+        'tanggal' => date_create(date("Y") . '-' . ($request->bulan - 1) . '-' . date('d'))
       ]);
     }
 
@@ -414,5 +417,35 @@ class CrudController extends Controller
     }
 
     return redirect()->route('pages.add.register-bayi')->with('success', 'Data has been added');
+  }
+
+  public function editNtobBayi(Request $request)
+  {
+
+    return "Saya Menyerah!";
+
+    $ntob = PemberianNtob::find($request->id);
+    if($ntob == null){
+      return redirect()->back()->with('error', 'Data not found');
+    }
+
+    if($ntob->status == 'Baru'){
+
+    }
+
+    // return $request->id_reg;
+    $ntob_last = PemberianNtob::orderBy('tanggal', 'desc')->where('id_register', $request->id_reg)->get()[1];
+    // return $ntob_last;
+    if ($request->berat - $ntob_last->berat > 0) {
+      $status = "Naik";
+    } else {
+      $status = "Turun";
+    }
+    return $status;
+
+    $ntob->update([
+
+    ]);
+    return $ntob;
   }
 }
